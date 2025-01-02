@@ -4,7 +4,7 @@
 
 /* Light mode selection */
 ::selection {
-  background-color: rgba(162, 162, 255, 0.3); /* Soft purple with transparency */
+  background-color: rgba(190, 190, 255, 0.3); /* Soft purple with transparency */
   color: #1c1c1c;
 }
 
