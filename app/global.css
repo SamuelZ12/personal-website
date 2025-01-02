@@ -2,9 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Light mode selection */
 ::selection {
-  background-color: #47a3f3;
-  color: #fefefe;
+  background-color: rgba(162, 162, 255, 0.3); /* Soft purple with transparency */
+  color: #1c1c1c;
+}
+
+/* Dark mode selection */
+.dark ::selection {
+  background-color: rgba(138, 138, 255, 0.2); /* Darker purple with transparency */
+  color: #ffffff;
 }
 
 html {
