@@ -11,10 +11,17 @@ interface Dot {
   currentOpacity: number;
 }
 
+interface MousePosition {
+  x: number;
+  y: number;
+  targetX: number;
+  targetY: number;
+}
+
 export function GravityDots() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const dotsRef = useRef<Dot[]>([]);
-  const mouseRef = useRef({ x: 0, y: 0 });
+  const mouseRef = useRef<MousePosition>({ x: 0, y: 0, targetX: 0, targetY: 0 });
   const animationFrameRef = useRef<number>();
   const isDarkMode = useRef(false);
   const [isGravityEnabled, setIsGravityEnabled] = useState(false);
@@ -49,10 +56,8 @@ export function GravityDots() {
     dotsRef.current = dots;
 
     const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current = {
-        x: e.clientX,
-        y: e.clientY,
-      };
+      mouseRef.current.targetX = e.clientX;
+      mouseRef.current.targetY = e.clientY;
     };
 
     const handleThemeChange = () => {
@@ -68,12 +73,22 @@ export function GravityDots() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      const mouse = mouseRef.current;
+      const mouseEasing = 0.1;
+      mouseRef.current.x += (mouseRef.current.targetX - mouseRef.current.x) * mouseEasing;
+      mouseRef.current.y += (mouseRef.current.targetY - mouseRef.current.y) * mouseEasing;
+      
+      const mouse = {
+        x: mouseRef.current.x,
+        y: mouseRef.current.y
+      };
+
       const gravitationalConstant = 2000;
       const maxDistance = 10000;
-      const lightRadius = 100;
+      const lightRadius = 300;
       const opacityEasing = 0.1;
       const dotRadius = 1;
+      const maxOpacity = 0.4;
+      const minOpacity = 0.08;
 
       dots.forEach((dot) => {
         const dx = mouse.x - dot.x;
@@ -88,17 +103,16 @@ export function GravityDots() {
           dot.x += moveX;
           dot.y += moveY;
         } else if (!isGravityEnabled) {
-          // Reset position when gravity is disabled
           dot.x = dot.originalX;
           dot.y = dot.originalY;
         } else {
-          // When gravity is enabled but dot is beyond maxDistance
           dot.x += (dot.originalX - dot.x) * 0.1;
           dot.y += (dot.originalY - dot.y) * 0.1;
         }
 
-        // Always calculate opacity based on distance to mouse
-        dot.targetOpacity = Math.max(0.08, Math.min(0.3, 1 - (distance / lightRadius)));
+        const normalizedDistance = Math.min(distance / lightRadius, 1);
+        const opacityFalloff = Math.cos(normalizedDistance * Math.PI / 2);
+        dot.targetOpacity = minOpacity + (maxOpacity - minOpacity) * Math.max(0, opacityFalloff);
         dot.currentOpacity += (dot.targetOpacity - dot.currentOpacity) * opacityEasing;
 
         ctx.beginPath();
