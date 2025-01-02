@@ -18,14 +18,10 @@
   --sh-jsxliterals: #6266d1;
   --sh-property: #e25a1c;
   --sh-entity: #e25a1c;
-  background-image: radial-gradient(circle at 1px 1px, rgb(0 0 0 / 0.06) 1px, transparent 0);
-  background-size: 40px 40px;
-  background-position: -19px -19px;
 }
 
 /* Dark theme colors */
 .dark {
-  background-color: #121212;
   --sh-class: #4c97f8;
   --sh-identifier: white;
   --sh-sign: #8996a3;
@@ -35,13 +31,22 @@
   --sh-jsxliterals: #6266d1;
   --sh-property: #e25a1c;
   --sh-entity: #e25a1c;
-  background-image: radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.06) 1px, transparent 0);
-  background-size: 40px 40px;
-  background-position: -19px -19px;
 }
 
 html {
   min-width: 360px;
+  background-color: white;
+  min-height: 100vh;
+  background-image: radial-gradient(circle at 1px 1px, rgb(0 0 0 / 0.08) 2px, transparent 0);
+  background-size: 40px 40px;
+  background-position: center;
+}
+
+html.dark {
+  background-color: #121212;
+  background-image: radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.08) 2px, transparent 0);
+  background-size: 40px 40px;
+  background-position: center;
 }
 
 .prose {
@@ -154,4 +159,16 @@ table {
 
 .title {
   text-wrap: balance;
+}
+
+body {
+  background-image: radial-gradient(circle at 1px 1px, rgb(0 0 0 / 0.08) 2px, transparent 0);
+  background-size: 40px 40px;
+  background-position: -19px -19px;
+}
+
+.dark body {
+  background-image: radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.08) 2px, transparent 0);
+  background-size: 40px 40px;
+  background-position: -19px -19px;
 }
