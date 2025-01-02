@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { projects } from "./project-data";
-import Image from "next/image";
+import { TiltImage } from '../components/TiltImage';
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -22,15 +22,11 @@ export default function Projects() {
             className="block group"
           >
             <div className="flex flex-col space-y-6">
-              {/* Project Image */}
-              <div className="relative w-full aspect-video overflow-hidden rounded-xl">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-              </div>
+              <TiltImage
+                src={project.image}
+                alt={project.title}
+                className="shadow-lg"
+              />
               
               {/* Project Details */}
               <div className="flex flex-col md:flex-row gap-6">
