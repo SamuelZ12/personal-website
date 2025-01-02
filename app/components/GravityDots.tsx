@@ -7,6 +7,8 @@ interface Dot {
   y: number;
   originalX: number;
   originalY: number;
+  targetOpacity: number;
+  currentOpacity: number;
 }
 
 export function GravityDots() {
@@ -38,6 +40,8 @@ export function GravityDots() {
           y,
           originalX: x,
           originalY: y,
+          targetOpacity: 0.08,
+          currentOpacity: 0.08
         });
       }
     }
@@ -66,6 +70,8 @@ export function GravityDots() {
       const mouse = mouseRef.current;
       const gravitationalConstant = 2000;
       const maxDistance = 10000;
+      const lightRadius = 100;
+      const opacityEasing = 0.1 // Controls smoothness of opacity changes
 
       dots.forEach((dot) => {
         const dx = mouse.x - dot.x;
@@ -84,11 +90,17 @@ export function GravityDots() {
           dot.y += (dot.originalY - dot.y) * 0.1;
         }
 
+        // Calculate target opacity based on distance
+        dot.targetOpacity = Math.max(0.08, Math.min(0.3, 1 - (distance / lightRadius)));
+        
+        // Smoothly interpolate current opacity towards target opacity
+        dot.currentOpacity += (dot.targetOpacity - dot.currentOpacity) * opacityEasing;
+
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, 2, 0, Math.PI * 2);
         ctx.fillStyle = isDarkMode.current 
-          ? 'rgba(255, 255, 255, 0.08)' 
-          : 'rgba(0, 0, 0, 0.08)';
+          ? `rgba(255, 255, 255, ${dot.currentOpacity})` 
+          : `rgba(0, 0, 0, ${dot.currentOpacity})`;
         ctx.fill();
       });
 
