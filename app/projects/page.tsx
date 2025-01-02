@@ -14,38 +14,43 @@ export default function Projects() {
       <h1 className="mb-12 text-3xl font-medium tracking-tight">Projects</h1>
       <div className="space-y-16">
         {projects.map((project, index) => (
-          <a
-            key={index}
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block group"
-          >
-            <div className="flex flex-col space-y-6">
+          <div key={index} className="flex flex-col space-y-6">
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block group"
+            >
               <TiltImage
                 src={project.image}
                 alt={project.title}
                 className="shadow-lg"
               />
-              
-              {/* Project Details */}
-              <div className="flex flex-col md:flex-row gap-6">
-                <div className="md:w-1/3">
+            </a>
+            
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="md:w-1/3">
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-neutral-800 dark:hover:text-neutral-200"
+                >
                   <h2 className="text-xl font-medium tracking-tight">
                     {project.title}
                     <span className="ml-2 text-neutral-600 dark:text-neutral-400 text-sm">
                       {project.year}
                     </span>
                   </h2>
-                </div>
-                <div className="md:w-2/3">
-                  <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
+                </a>
+              </div>
+              <div className="md:w-2/3">
+                <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                  {project.description}
+                </p>
               </div>
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </section>
