@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ThemeSwitch } from "./theme-switch";
 import { metaData } from "../config";
+import { AnimatedText } from './AnimatedText';
 
 const navItems = {
   "/blog": { name: "Blog" },
@@ -13,7 +14,9 @@ export function Navbar() {
       <div className="flex flex-col md:flex-row md:items-center justify-between">
         <div className="flex items-center">
           <Link href="/" className="text-3xl font-semibold tracking-tight">
-            {metaData.title}
+            <AnimatedText trigger="instant" speed="slow">
+              {metaData.title}
+            </AnimatedText>
           </Link>
         </div>
         <div className="flex flex-row gap-4 mt-6 md:mt-0 md:ml-auto items-center">
