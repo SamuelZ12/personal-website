@@ -71,7 +71,8 @@ export function GravityDots() {
       const gravitationalConstant = 2000;
       const maxDistance = 10000;
       const lightRadius = 100;
-      const opacityEasing = 0.1 // Controls smoothness of opacity changes
+      const opacityEasing = 0.1;
+      const dotRadius = 1;
 
       dots.forEach((dot) => {
         const dx = mouse.x - dot.x;
@@ -97,7 +98,7 @@ export function GravityDots() {
         dot.currentOpacity += (dot.targetOpacity - dot.currentOpacity) * opacityEasing;
 
         ctx.beginPath();
-        ctx.arc(dot.x, dot.y, 2, 0, Math.PI * 2);
+        ctx.arc(dot.x, dot.y, dotRadius, 0, Math.PI * 2);
         ctx.fillStyle = isDarkMode.current 
           ? `rgba(255, 255, 255, ${dot.currentOpacity})` 
           : `rgba(0, 0, 0, ${dot.currentOpacity})`;
