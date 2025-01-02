@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface Dot {
   x: number;
@@ -17,6 +17,7 @@ export function GravityDots() {
   const mouseRef = useRef({ x: 0, y: 0 });
   const animationFrameRef = useRef<number>();
   const isDarkMode = useRef(false);
+  const [isGravityEnabled, setIsGravityEnabled] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -79,22 +80,25 @@ export function GravityDots() {
         const dy = mouse.y - dot.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < maxDistance) {
+        if (isGravityEnabled && distance < maxDistance) {
           const force = (gravitationalConstant / (distance * distance));
           const moveX = (dx / distance) * force;
           const moveY = (dy / distance) * force;
 
           dot.x += moveX;
           dot.y += moveY;
+        } else if (!isGravityEnabled) {
+          // Reset position when gravity is disabled
+          dot.x = dot.originalX;
+          dot.y = dot.originalY;
         } else {
+          // When gravity is enabled but dot is beyond maxDistance
           dot.x += (dot.originalX - dot.x) * 0.1;
           dot.y += (dot.originalY - dot.y) * 0.1;
         }
 
-        // Calculate target opacity based on distance
+        // Always calculate opacity based on distance to mouse
         dot.targetOpacity = Math.max(0.08, Math.min(0.3, 1 - (distance / lightRadius)));
-        
-        // Smoothly interpolate current opacity towards target opacity
         dot.currentOpacity += (dot.targetOpacity - dot.currentOpacity) * opacityEasing;
 
         ctx.beginPath();
@@ -121,12 +125,20 @@ export function GravityDots() {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, []);
+  }, [isGravityEnabled]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"
-    />
+    <>
+      <canvas
+        ref={canvasRef}
+        className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"
+      />
+      <button
+        onClick={() => setIsGravityEnabled(!isGravityEnabled)}
+        className="fixed bottom-4 right-4 p-2 text-xs opacity-20 hover:opacity-100 transition-opacity duration-200"
+      >
+        {isGravityEnabled ? '⦿' : '◎'}
+      </button>
+    </>
   );
 } 
