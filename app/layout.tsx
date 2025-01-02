@@ -8,6 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
 import { ThemeProvider } from "./components/theme-switch";
 import { metaData } from "./config";
+import { GravityDots } from "./components/GravityDots";
 
 export const metadata: Metadata = {
   metadataBase: new URL(metaData.baseUrl),
@@ -75,6 +76,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased flex flex-col items-center justify-center mx-auto mt-2 lg:mt-8 mb-20 lg:mb-40">
+        <GravityDots />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
