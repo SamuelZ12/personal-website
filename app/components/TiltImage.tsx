@@ -46,7 +46,7 @@ export function TiltImage({ src, alt, className = '' }: TiltImageProps) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
-      className="relative w-full aspect-video overflow-hidden rounded-xl perspective-1000"
+      className="relative w-full aspect-video perspective-1000 p-4"
     >
       <div
         className={`w-full h-full rounded-xl transition-transform duration-200 ease-out ${className}`}
