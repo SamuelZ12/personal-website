@@ -26,7 +26,7 @@ export default function Page() {
           and I'm interested in blockchain and AI.
         </p>
         <p>
-          My other interests include working out, reading, and fencing.
+          I also like lifting weights, reading, and fencing.
         </p>
         <p>
           I'm always excited to meet new people so feel free to reach out!
