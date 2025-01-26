@@ -39,7 +39,7 @@ export function GravityDots() {
     };
     updateCanvasSize();
 
-    const spacing = 40;
+    const spacing = 25;
     const dots: Dot[] = [];
     for (let x = 0; x < canvas.width; x += spacing) {
       for (let y = 0; y < canvas.height; y += spacing) {
