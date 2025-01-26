@@ -83,7 +83,7 @@ export function GravityDots() {
       };
 
       const gravitationalConstant = 2000;
-      const maxDistance = 10000;
+      const maxDistance = 3000;
       const lightRadius = 300;
       const opacityEasing = 0.1;
       const dotRadius = 1;
@@ -95,24 +95,28 @@ export function GravityDots() {
         const dy = mouse.y - dot.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (isGravityEnabled && distance < maxDistance) {
-          const force = (gravitationalConstant / (distance * distance));
-          const moveX = (dx / distance) * force;
-          const moveY = (dy / distance) * force;
+        if (isGravityEnabled) {
+          if (distance < maxDistance) {
+            const force = (gravitationalConstant / (distance * distance));
+            const moveX = (dx / distance) * force;
+            const moveY = (dy / distance) * force;
 
-          dot.x += moveX;
-          dot.y += moveY;
-        } else if (!isGravityEnabled) {
-          dot.x = dot.originalX;
-          dot.y = dot.originalY;
+            dot.x += moveX;
+            dot.y += moveY;
+          } else {
+            dot.x += (dot.originalX - dot.x) * 0.1;
+            dot.y += (dot.originalY - dot.y) * 0.1;
+          }
+
+          const normalizedDistance = Math.min(distance / lightRadius, 1);
+          const opacityFalloff = Math.cos(normalizedDistance * Math.PI / 2);
+          dot.targetOpacity = minOpacity + (maxOpacity - minOpacity) * Math.max(0, opacityFalloff);
         } else {
           dot.x += (dot.originalX - dot.x) * 0.1;
           dot.y += (dot.originalY - dot.y) * 0.1;
+          dot.targetOpacity = minOpacity;
         }
 
-        const normalizedDistance = Math.min(distance / lightRadius, 1);
-        const opacityFalloff = Math.cos(normalizedDistance * Math.PI / 2);
-        dot.targetOpacity = minOpacity + (maxOpacity - minOpacity) * Math.max(0, opacityFalloff);
         dot.currentOpacity += (dot.targetOpacity - dot.currentOpacity) * opacityEasing;
 
         ctx.beginPath();
