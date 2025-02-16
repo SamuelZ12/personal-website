@@ -1,7 +1,6 @@
 'use client'
 
 import { Icons } from '@/components/icons'
-import { type transformData } from '@/components/open-source'
 import { Button } from '@/components/ui/button'
 import {
     Card,
@@ -33,8 +32,13 @@ const chartConfig = {
     },
 } satisfies ChartConfig
 
+type TransformedData = {
+    month: string
+    count: number
+}[]
+
 interface StarsChartProps {
-    data: ReturnType<typeof transformData>
+    data: TransformedData
     title: string
     description: string | JSX.Element
     link: string
