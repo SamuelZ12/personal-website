@@ -107,6 +107,22 @@ export const CONFIG: Config = {
     workExperience: {
         positions: [
             {
+                company: 'TechInsights',
+                role: 'Software Engineer Intern',
+                duration: 'Jan 2025 - Present',
+                description: (
+                    <>
+                        Building AI Search using RAG
+                    </>
+                ),
+                link: 'https://techinsights.com',
+                tags: [
+                    { name: 'AWS', icon: 'github' },
+                    { name: 'Python', icon: 'python' },
+                    { name: 'AI/ML', icon: 'github' },
+                ]
+            },
+            {
                 company: 'Dappd',
                 role: 'Software Engineer Intern',
                 duration: 'May 2024 - Aug 2024',
