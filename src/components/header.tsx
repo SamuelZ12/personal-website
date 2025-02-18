@@ -33,7 +33,7 @@ const Header = () => {
                         </AvatarFallback>
                     </Avatar>
                     <div>
-                        <h1 className='font-semibold'>{CONFIG.name}</h1>
+                        <h1 className='text-2xl font-semibold'>{CONFIG.name}</h1>
                         <p className='mt-0.5 text-sm text-muted-foreground'>
                             {CONFIG.title}
                         </p>

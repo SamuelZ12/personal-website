@@ -44,7 +44,7 @@ type Config = {
 export const CONFIG: Config = {
     name: 'Samuel Zhang',
     avatar: '/images/headshot.png',
-    title: 'Software Engineer',
+    title: '',
     siteUrl: 'https://samuelzhang.ca/',
     socials: [
         {
@@ -70,7 +70,7 @@ export const CONFIG: Config = {
     ],
     description: (
         <>
-            Hi! I&apos;m a first year Math student at the University of Waterloo
+            👋 Hi! I&apos;m a first year Math student at the University of Waterloo
             and I&apos;m interested in blockchain and AI. I also like lifting
             weights, reading, and fencing. I&apos;m always excited to meet new
             people so feel free to reach out!
@@ -98,7 +98,9 @@ export const CONFIG: Config = {
             tags: [
                 { name: 'Next.js', icon: 'next' },
                 { name: 'TypeScript', icon: 'typescript' },
-                { name: 'Tailwind CSS', icon: 'tailwindcss' }
+                { name: 'Tailwind CSS', icon: 'tailwindcss' },
+                { name: 'OpenAI', icon: 'openai' },
+                { name: 'Google Cloud', icon: 'googlecloud' }
             ],
             featured: true,
             github: 'https://github.com/Brucewang15/TalkTuahTherapist'
@@ -117,9 +119,10 @@ export const CONFIG: Config = {
                 ),
                 link: 'https://techinsights.com',
                 tags: [
-                    { name: 'AWS', icon: 'github' },
+                    { name: 'AWS', icon: 'aws' },
                     { name: 'Python', icon: 'python' },
-                    { name: 'AI/ML', icon: 'github' },
+                    { name: 'LLMs', icon: 'llm' },
+                    { name: 'SQL', icon: 'sql' },
                 ]
             },
             {
@@ -143,7 +146,7 @@ export const CONFIG: Config = {
             {
                 company: 'University of Toronto',
                 role: 'Research Assistant',
-                duration: 'Sep 2022 - Dec 2022',
+                duration: 'Aug 2022 - Dec 2022',
                 description: (
                     <>
                         Bitcoin research under Prof. Anwar Husain
