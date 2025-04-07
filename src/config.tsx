@@ -79,17 +79,18 @@ export const CONFIG: Config = {
     descriptionRaw: `Hi! I'm a first year Math student at the University of Waterloo and I'm interested in blockchain and AI. I also like lifting weights, reading, and fencing. I'm always excited to meet new people so feel free to reach out!`,
     projects: [
         {
-            name: 'Portfolio Website',
-            description: 'Built with Next.js, TypeScript, and Tailwind CSS',
-            url: 'https://samuelzhang.com',
+            name: 'Swapify',
+            description: 'University of Waterloo Community Bartering Platform',
+            url: 'https://swapifyy.vercel.app',
             tags: [
                 { name: 'Next.js', icon: 'next' },
                 { name: 'TypeScript', icon: 'typescript' },
                 { name: 'Tailwind CSS', icon: 'tailwindcss' },
+                { name: 'Supabase', icon: 'supabase' },
                 { name: 'shadcn/ui', icon: 'shadcn' },
             ],
             featured: true,
-            github: 'https://github.com/SamuelZ12/personal-website'
+            github: 'https://github.com/SamuelZ12/swapify'
         },
         {
             name: 'TalkTuahTherapist',
