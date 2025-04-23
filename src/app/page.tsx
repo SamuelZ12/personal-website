@@ -16,7 +16,7 @@ export default function Home() {
                 </p>
             </div>
             <div className='flex animate-slide-from-down-and-fade-3 flex-col gap-3'>
-                <h2 className='px-4 font-semibold'>Featured Projects</h2>
+                <h2 className='px-4 font-bold'>Featured Projects</h2>
                 {CONFIG.projects
                     .filter((project) => project.featured)
                     .map((project, idx) => (
