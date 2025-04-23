@@ -10,9 +10,8 @@ export default function Home() {
     return (
         <div className='flex flex-col gap-12'>
             <Header />
-            <div className='animate-slide-from-down-and-fade-2 space-y-2 px-4'>
-                <h2 className='font-semibold'>About me</h2>
-                <p className='leading-6 text-muted-foreground'>
+            <div className='animate-slide-from-down-and-fade-2 px-4'>
+                <p className='leading-relaxed text-muted-foreground'>
                     {CONFIG.description}
                 </p>
             </div>
