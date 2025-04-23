@@ -70,13 +70,13 @@ export const CONFIG: Config = {
     ],
     description: (
         <>
-            👋 Hi! I&apos;m a first year Math student at the University of Waterloo
-            and I&apos;m interested in blockchain and AI. I also like lifting
-            weights, reading, and fencing. I&apos;m always excited to meet new
-            people so feel free to reach out!
+            👋 Hi! I&apos;m a second-year Math student at the University of Waterloo
+            and I&apos;m interested in blockchain and AI. When I'm not studying or coding, 
+            I enjoy lifting weights, reading, fencing, running, and playing poker. 
+            I&apos;m always excited to meet new people, so feel free to reach out!
         </>
     ),
-    descriptionRaw: `Hi! I'm a first year Math student at the University of Waterloo and I'm interested in blockchain and AI. I also like lifting weights, reading, and fencing. I'm always excited to meet new people so feel free to reach out!`,
+    descriptionRaw: `Hi! I'm a second year Math student at the University of Waterloo and I'm interested in blockchain and AI. When I'm not studying or coding, I enjoy lifting weights, reading, fencing, running, and playing poker. I'm always excited to meet new people, so feel free to reach out!`,
     projects: [
         {
             name: 'Swapify',
@@ -124,6 +124,7 @@ export const CONFIG: Config = {
                     { name: 'Python', icon: 'python' },
                     { name: 'LLMs', icon: 'llm' },
                     { name: 'SQL', icon: 'sql' },
+                    { name: 'Docker', icon: 'docker' },
                 ]
             },
             {
@@ -141,7 +142,7 @@ export const CONFIG: Config = {
                     { name: 'Next.js', icon: 'next' },
                     { name: 'TypeScript', icon: 'typescript' },
                     { name: 'Tailwind CSS', icon: 'tailwindcss' },
-                    { name: 'Docker', icon: 'github' },
+                    { name: 'Docker', icon: 'docker' },
                 ]
             },
             {
