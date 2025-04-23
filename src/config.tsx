@@ -124,6 +124,7 @@ export const CONFIG: Config = {
                     { name: 'Python', icon: 'python' },
                     { name: 'LLMs', icon: 'llm' },
                     { name: 'SQL', icon: 'sql' },
+                    { name: 'Docker', icon: 'docker' },
                 ]
             },
             {
@@ -141,7 +142,7 @@ export const CONFIG: Config = {
                     { name: 'Next.js', icon: 'next' },
                     { name: 'TypeScript', icon: 'typescript' },
                     { name: 'Tailwind CSS', icon: 'tailwindcss' },
-                    { name: 'Docker', icon: 'github' },
+                    { name: 'Docker', icon: 'docker' },
                 ]
             },
             {
