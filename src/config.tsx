@@ -80,7 +80,7 @@ export const CONFIG: Config = {
     projects: [
         {
             name: 'LaTeX OCR',
-            description: 'Mac app that converts screen captures of mathematical equations to LaTeX code',
+            description: 'Mac app that converts screen captures of math expressions to LaTeX',
             url: 'https://github.com/SamuelZ12/LaTeX-OCR',
             tags: [
                 { name: 'Swift', icon: 'swift' },
