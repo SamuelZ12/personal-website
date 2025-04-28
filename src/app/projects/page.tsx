@@ -37,10 +37,11 @@ const Projects = () => {
             <h1 className='animate-slide-from-down-and-fade-2 scroll-m-20 px-4 text-4xl font-bold tracking-tight'>
                 All Projects
             </h1>
-            <div className='animate-slide-from-down-and-fade-3 space-y-3 pt-12'>
+            <div className='animate-slide-from-down-and-fade-3 space-y-0 pt-12'>
                 {CONFIG.projects.map((project, idx) => (
                     <Project
                         key={idx}
+                        index={idx}
                         name={project.name}
                         icon={project.icon}
                         description={project.description}

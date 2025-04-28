@@ -1,15 +1,21 @@
 import { Icons } from '@/components/icons'
 import { CONFIG } from '@/config'
+import { Card } from '@/components/ui/card'
 import Link from 'next/link'
 
 const WorkExperience = () => {
     return (
-        <div className='animate-slide-from-down-and-fade-2 space-y-2 px-4'>
-            <h2 className='font-semibold'>Work Experience</h2>
+        <div className='animate-slide-from-down-and-fade-2 space-y-4 px-4'>
+            <h2 className='font-bold'>Work Experience</h2>
 
-            <div className='divide-y divide-solid'>
+            <div className='space-y-0'>
                 {CONFIG.workExperience?.positions?.map((position, idx) => (
-                    <div key={idx} className='py-4'>
+                    <Card 
+                        key={idx} 
+                        className={`rounded-none border-none border-t border-b border-dotted border-muted/80 bg-background hover:bg-accent/60 dark:hover:bg-secondary hover:rounded-xl transition-all duration-300 p-4 ${
+                            idx > 0 ? 'border-t-0' : ''
+                        }`}
+                    >
                         <div className='flex items-center justify-between'>
                             <div>
                                 <h3 className='font-medium'>{position.role}</h3>
@@ -49,7 +55,7 @@ const WorkExperience = () => {
                                 )
                             })}
                         </div>
-                    </div>
+                    </Card>
                 ))}
             </div>
         </div>

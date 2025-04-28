@@ -25,6 +25,7 @@ interface ProjectProps {
     }[]
     testimonial?: string
     github?: string
+    index?: number
 }
 
 const Project = ({
@@ -36,15 +37,20 @@ const Project = ({
     tags,
     testimonial,
     github,
+    index = 0,
 }: ProjectProps) => {
     const Icon = Icons[icon!]
     return (
-        <Card className='group rounded-none border-none bg-accent/60 from-neutral-800/10 p-4 dark:bg-neutral-900 dark:hover:bg-gradient-to-bl sm:rounded-lg'>
+        <Card 
+            className={`group rounded-none border-none border-t border-b border-dotted border-muted/80 bg-background hover:bg-accent/60 dark:hover:bg-secondary hover:rounded-xl transition-all duration-300 p-4 ${
+                index > 0 ? 'border-t-0' : ''
+            }`}
+        >
             <div className='flex flex-col gap-2'>
                 <div className='flex items-start justify-between'>
                     <div className='flex items-start gap-2'>
                         {icon && (
-                            <Icon className='h-12 w-12 shrink-0 transition-all group-hover:saturate-100 md:saturate-0' />
+                            <Icon className='h-12 w-12 shrink-0 transition-all saturate-100' />
                         )}
                         {image && (
                             <Image
@@ -52,11 +58,11 @@ const Project = ({
                                 width={64}
                                 height={64}
                                 alt='fds'
-                                className='h-12 w-auto shrink-0 transition-all group-hover:saturate-100 md:saturate-0'
+                                className='h-12 w-auto shrink-0 transition-all saturate-100'
                             />
                         )}
                         <div>
-                            <h3>{name}</h3>
+                            <h3 className="font-medium">{name}</h3>
                             <p className='text-sm text-muted-foreground'>
                                 {description}
                             </p>
@@ -128,7 +134,7 @@ const Project = ({
                                 return (
                                     <li key={idx}>
                                         <Badge variant={'outline'}>
-                                            <Icon className='mr-1.5 h-3 w-3 transition-all group-hover:saturate-100 md:saturate-0' />{' '}
+                                            <Icon className='mr-1.5 h-3 w-3 transition-all saturate-100' />{' '}
                                             {tag.name}
                                         </Badge>
                                     </li>

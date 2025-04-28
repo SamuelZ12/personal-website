@@ -15,23 +15,26 @@ export default function Home() {
                     {CONFIG.description}
                 </p>
             </div>
-            <div className='flex animate-slide-from-down-and-fade-3 flex-col gap-3'>
-                <h2 className='px-4 font-bold'>Featured Projects</h2>
-                {CONFIG.projects
-                    .filter((project) => project.featured)
-                    .map((project, idx) => (
-                        <Project
-                            key={idx}
-                            name={project.name}
-                            icon={project.icon}
-                            description={project.description}
-                            image={project.image}
-                            url={project.url}
-                            tags={project.tags}
-                            testimonial={project.testimonial}
-                            github={project.github}
-                        />
-                    ))}
+            <div className='animate-slide-from-down-and-fade-3 space-y-4 px-4'>
+                <h2 className='font-bold'>Featured Projects</h2>
+                <div className='space-y-0'>
+                    {CONFIG.projects
+                        .filter((project) => project.featured)
+                        .map((project, idx) => (
+                            <Project
+                                key={idx}
+                                index={idx}
+                                name={project.name}
+                                icon={project.icon}
+                                description={project.description}
+                                image={project.image}
+                                url={project.url}
+                                tags={project.tags}
+                                testimonial={project.testimonial}
+                                github={project.github}
+                            />
+                        ))}
+                </div>
                 <Button
                     asChild
                     className='ml-auto items-end text-muted-foreground underline hover:text-foreground'
