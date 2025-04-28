@@ -113,7 +113,7 @@ export const CONFIG: Config = {
                 { name: 'Supabase', icon: 'supabase' },
                 { name: 'shadcn/ui', icon: 'shadcn' },
             ],
-            featured: true,
+            featured: false,
             github: 'https://github.com/SamuelZ12/swapify'
         },
         {
@@ -127,7 +127,7 @@ export const CONFIG: Config = {
                 { name: 'OpenAI', icon: 'openai' },
                 { name: 'Google Cloud', icon: 'googlecloud' }
             ],
-            featured: true,
+            featured: false,
             github: 'https://github.com/Brucewang15/TalkTuahTherapist'
         }
     ],
