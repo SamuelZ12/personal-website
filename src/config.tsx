@@ -79,8 +79,32 @@ export const CONFIG: Config = {
     descriptionRaw: `Hi! I'm a Math student at the University of Waterloo and I'm interested in blockchain and AI. When I'm not studying or coding, I enjoy lifting weights, reading, fencing, running, and playing poker. I'm always excited to meet new people, so feel free to reach out!`,
     projects: [
         {
+            name: 'LaTeX OCR',
+            description: 'Mac app that converts screen captures of mathematical equations to LaTeX code',
+            url: 'https://github.com/SamuelZ12/LaTeX-OCR',
+            tags: [
+                { name: 'Swift', icon: 'swift' },
+                { name: 'Gemini', icon: 'gemini' },
+            ],
+            featured: true,
+            github: 'https://github.com/SamuelZ12/LaTeX-OCR'
+        },
+        {
+            name: '2048 AI',
+            description: 'AI agent that plays the 2048 game using expectimax search algorithm',
+            url: 'https://samuelz12.github.io/2048-ai/',
+            tags: [
+                { name: 'JavaScript', icon: 'javascript' },
+                { name: 'CSS', icon: 'css' },
+                { name: 'HTML', icon: 'html' },
+                { name: 'Web Workers', icon: 'gear' },
+            ],
+            featured: true,
+            github: 'https://github.com/SamuelZ12/2048-ai'
+        },
+        {
             name: 'Swapify',
-            description: 'University of Waterloo Community Bartering Platform',
+            description: 'University of Waterloo skill exchange platform',
             url: 'https://swapifyy.vercel.app',
             tags: [
                 { name: 'Next.js', icon: 'next' },
@@ -94,7 +118,7 @@ export const CONFIG: Config = {
         },
         {
             name: 'TalkTuahTherapist',
-            description: 'An AI therapist encrypted on Ethereum blockchain',
+            description: 'AI therapist encrypted on Ethereum blockchain',
             url: 'https://talktuahtherapist.co',
             tags: [
                 { name: 'Next.js', icon: 'next' },
@@ -112,10 +136,10 @@ export const CONFIG: Config = {
             {
                 company: 'TechInsights',
                 role: 'Software Engineer Intern',
-                duration: 'Jan 2025 - Present',
+                duration: 'Jan 2025 - Apr 2025',
                 description: (
                     <>
-                        Building AI Search using RAG
+                        Built AI Search using RAG
                     </>
                 ),
                 link: 'https://techinsights.com',
