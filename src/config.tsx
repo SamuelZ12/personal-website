@@ -129,6 +129,26 @@ export const CONFIG: Config = {
             ],
             featured: false,
             github: 'https://github.com/Brucewang15/TalkTuahTherapist'
+        },
+        {
+            name: 'ICS3U1 Python Projects',
+            description: 'Collection of Python games including Snake, Tank Battle, Text Adventure, etc.',
+            url: 'https://github.com/SamuelZ12/ICS3U1-projects',
+            tags: [
+                { name: 'Python', icon: 'python' },
+            ],
+            featured: false,
+            github: 'https://github.com/SamuelZ12/ICS3U1-projects'
+        },
+        {
+            name: 'Java Sudoku Solver',
+            description: 'Solves 9x9 Sudoku puzzles using a recursive backtracking algorithm',
+            url: 'https://github.com/SamuelZ12/Sudoku',
+            tags: [
+                { name: 'Java', icon: 'java' },
+            ],
+            featured: false,
+            github: 'https://github.com/SamuelZ12/Sudoku'
         }
     ],
     workExperience: {
