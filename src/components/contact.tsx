@@ -1,5 +1,4 @@
 import { Icons } from '@/components/icons'
-import { ModeToggle } from '@/components/mode-toggle'
 import { Button } from '@/components/ui/button'
 import {
     Tooltip,
@@ -48,7 +47,6 @@ const Contact = () => {
                                 </Tooltip>
                             )
                         })}
-                        <ModeToggle />
                         {/* Webring */}
                         <div className='ml-1 flex items-center gap-0 text-muted-foreground/60'>
                             <Link
