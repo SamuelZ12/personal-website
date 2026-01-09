@@ -52,13 +52,13 @@ const Contact = () => {
                         {/* Webring */}
                         <div className='ml-1 flex items-center gap-0 text-muted-foreground/60'>
                             <Link
-                                href='https://cs.uwatering.com/samuelzhang.ca/prev'
+                                href='https://cs.uwatering.com/#samuelzhang.ca?nav=prev'
                                 className='flex h-10 w-6 items-center justify-center transition-colors hover:text-foreground'
                             >
                                 ←
                             </Link>
                             <Link
-                                href='https://cs.uwatering.com'
+                                href='https://cs.uwatering.com/#samuelzhang.ca'
                                 target='_blank'
                                 className='flex h-10 w-6 items-center justify-center opacity-60 transition-opacity hover:opacity-100'
                             >
@@ -74,7 +74,7 @@ const Contact = () => {
                                 />
                             </Link>
                             <Link
-                                href='https://cs.uwatering.com/samuelzhang.ca/next'
+                                href='https://cs.uwatering.com/#samuelzhang.ca?nav=next'
                                 className='flex h-10 w-6 items-center justify-center transition-colors hover:text-foreground'
                             >
                                 →
