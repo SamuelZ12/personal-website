@@ -76,18 +76,32 @@ export const CONFIG: Config = {
             I&apos;m always excited to meet new people, so feel free to reach out!
         </>
     ),
-    descriptionRaw: `Hi! I'm a CS + Math student at the University of Waterloo and I'm interested in blockchain and AI. When I'm not studying or coding, I enjoy lifting weights, reading, fencing, running, and playing poker. I'm always excited to meet new people, so feel free to reach out!`,
+    descriptionRaw: `Hi! I'm a CS student at the University of Waterloo and I'm interested in blockchain and AI. When I'm not studying or coding, I enjoy lifting weights, reading, fencing, running, and playing poker. I'm always excited to meet new people, so feel free to reach out!`,
     projects: [
         {
-            name: 'LaTeX OCR',
+            name: 'LongCut',
+            description: 'Web app that transforms lengthy YouTube videos into structured learning materials',
+            url: 'https://github.com/SamuelZ12/longcut',
+            tags: [
+                { name: 'Next.js', icon: 'next' },
+                { name: 'TypeScript', icon: 'typescript' },
+                { name: 'Tailwind CSS', icon: 'tailwindcss' },
+                { name: 'Supabase', icon: 'supabase' },
+                { name: 'shadcn/ui', icon: 'shadcn' },
+            ],
+            featured: true,
+            github: 'https://github.com/SamuelZ12/longcut'
+        },
+        {
+            name: 'Screen Scribe',
             description: 'Mac app that converts screen captures of math expressions to LaTeX',
-            url: 'https://github.com/SamuelZ12/LaTeX-OCR',
+            url: 'https://github.com/samuelz12/screen-scribe',
             tags: [
                 { name: 'Swift', icon: 'swift' },
                 { name: 'Gemini', icon: 'gemini' },
             ],
             featured: true,
-            github: 'https://github.com/SamuelZ12/LaTeX-OCR'
+            github: 'https://github.com/samuelz12/screen-scribe'
         },
         {
             name: '2048 AI',
@@ -153,6 +167,21 @@ export const CONFIG: Config = {
     ],
     workExperience: {
         positions: [
+            {
+                company: 'Memories.ai',
+                role: 'Engineering Intern',
+                duration: 'Jan 2026 - Present',
+                description: (
+                    <>
+                        Building AI agents with visual memory
+                    </>
+                ),
+                link: 'https://memories.ai',
+                tags: [
+                    { name: 'Python', icon: 'python' },
+                    { name: 'LLMs', icon: 'llm' },
+                ]
+            },
             {
                 company: 'TechInsights',
                 role: 'Software Engineer Intern',
