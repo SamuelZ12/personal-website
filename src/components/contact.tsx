@@ -14,7 +14,7 @@ const Contact = () => {
     return (
         <div className='mt-8 animate-slide-from-down-and-fade-4'>
             {/* Gradient divider */}
-            <div className='mb-8 h-px bg-gradient-to-r from-transparent via-border to-transparent' />
+            <div className='mx-4 mb-8 h-px bg-gradient-to-r from-border to-transparent' />
 
             <div className='flex items-center justify-start px-4'>
                 {/* Social Links */}
