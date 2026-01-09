@@ -121,7 +121,7 @@ export const CONFIG: Config = {
                 link: 'https://memories.ai'
             },
             {
-                role: 'Undergraduate Researcher',
+                role: 'Undergraduate Research Assistant',
                 company: 'University of Waterloo',
                 link: 'https://uwaterloo.ca'
             },
