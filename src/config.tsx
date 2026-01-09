@@ -131,7 +131,7 @@ export const CONFIG: Config = {
                 link: 'https://dappd.net'
             },
             {
-                role: 'Research Assistant',
+                role: 'Research',
                 company: 'University of Toronto',
                 link: 'https://utoronto.ca'
             }
