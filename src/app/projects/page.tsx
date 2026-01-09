@@ -1,5 +1,5 @@
+import { Icons } from '@/components/icons'
 import { ModeToggle } from '@/components/mode-toggle'
-import Project from '@/components/project'
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -18,6 +18,7 @@ export const metadata = {
 const Projects = () => {
     return (
         <div>
+            {/* Breadcrumb header */}
             <div className='flex animate-slide-from-down-and-fade-1 items-start justify-between px-4'>
                 <Breadcrumb className='mb-4'>
                     <BreadcrumbList>
@@ -40,30 +41,42 @@ const Projects = () => {
                 <ModeToggle />
             </div>
 
+            {/* Minimal project list */}
             <div className='animate-slide-from-down-and-fade-2 px-4'>
-                <div className='flex items-center gap-3'>
-                    <h1 className='text-3xl font-bold tracking-tight'>
-                        All Projects
-                    </h1>
-                    <div className='h-px flex-1 bg-gradient-to-r from-border to-transparent' />
-                </div>
-            </div>
-
-            <div className='animate-slide-from-down-and-fade-3 space-y-3 px-4 pt-8'>
-                {CONFIG.projects.map((project, idx) => (
-                    <Project
-                        key={idx}
-                        index={idx}
-                        name={project.name}
-                        icon={project.icon}
-                        description={project.description}
-                        image={project.image}
-                        url={project.url}
-                        tags={project.tags}
-                        testimonial={project.testimonial}
-                        github={project.github}
-                    />
-                ))}
+                <ul className='space-y-3'>
+                    {CONFIG.projects.map((project, idx) => (
+                        <li key={idx} className='group'>
+                            <div className='flex items-center gap-2'>
+                                <span className='text-[15px] font-medium text-foreground/90'>
+                                    {project.name}
+                                </span>
+                                <div className='flex items-center gap-1 opacity-60 transition-opacity duration-200 group-hover:opacity-100'>
+                                    {project.github && (
+                                        <Link
+                                            href={project.github}
+                                            target='_blank'
+                                            className='text-muted-foreground transition-colors duration-200 hover:text-foreground'
+                                            aria-label='GitHub'
+                                        >
+                                            <Icons.github className='size-3.5' />
+                                        </Link>
+                                    )}
+                                    <Link
+                                        href={project.url}
+                                        target='_blank'
+                                        className='text-muted-foreground transition-colors duration-200 hover:text-foreground'
+                                        aria-label='Visit'
+                                    >
+                                        <Icons.arrowUpRight className='size-3.5' />
+                                    </Link>
+                                </div>
+                            </div>
+                            <p className='text-sm text-muted-foreground/70'>
+                                {project.description}
+                            </p>
+                        </li>
+                    ))}
+                </ul>
             </div>
         </div>
     )

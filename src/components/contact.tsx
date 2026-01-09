@@ -12,43 +12,12 @@ import Link from 'next/link'
 
 const Contact = () => {
     return (
-        <div className='mt-16 animate-slide-from-down-and-fade-5'>
+        <div className='mt-8 animate-slide-from-down-and-fade-4'>
             {/* Gradient divider */}
             <div className='mb-8 h-px bg-gradient-to-r from-transparent via-border to-transparent' />
 
             <div className='flex items-center justify-between px-4'>
-                {/* Webring */}
-                <div className='flex items-center gap-3 text-muted-foreground/60'>
-                    <Link
-                        href='https://cs.uwatering.com/samuelzhang.ca/prev'
-                        className='transition-colors hover:text-foreground'
-                    >
-                        ←
-                    </Link>
-                    <Link
-                        href='https://cs.uwatering.com'
-                        target='_blank'
-                        className='transition-opacity hover:opacity-80'
-                    >
-                        <img
-                            src='https://cs.uwatering.com/icon.black.svg'
-                            alt='CS Webring'
-                            className='h-5 w-5 dark:hidden'
-                        />
-                        <img
-                            src='https://cs.uwatering.com/icon.white.svg'
-                            alt='CS Webring'
-                            className='hidden h-5 w-5 dark:block'
-                        />
-                    </Link>
-                    <Link
-                        href='https://cs.uwatering.com/samuelzhang.ca/next'
-                        className='transition-colors hover:text-foreground'
-                    >
-                        →
-                    </Link>
-                </div>
-
+                {/* Social Links */}
                 <div className='flex items-center gap-1'>
                     <TooltipProvider delayDuration={70}>
                         {CONFIG.socials.map((social, idx) => {
@@ -81,6 +50,38 @@ const Contact = () => {
                         })}
                         <ModeToggle />
                     </TooltipProvider>
+                </div>
+
+                {/* Webring */}
+                <div className='flex items-center gap-3 text-muted-foreground/60'>
+                    <Link
+                        href='https://cs.uwatering.com/samuelzhang.ca/prev'
+                        className='transition-colors hover:text-foreground'
+                    >
+                        ←
+                    </Link>
+                    <Link
+                        href='https://cs.uwatering.com'
+                        target='_blank'
+                        className='transition-opacity hover:opacity-80'
+                    >
+                        <img
+                            src='https://cs.uwatering.com/icon.black.svg'
+                            alt='CS Webring'
+                            className='h-5 w-5 dark:hidden'
+                        />
+                        <img
+                            src='https://cs.uwatering.com/icon.white.svg'
+                            alt='CS Webring'
+                            className='hidden h-5 w-5 dark:block'
+                        />
+                    </Link>
+                    <Link
+                        href='https://cs.uwatering.com/samuelzhang.ca/next'
+                        className='transition-colors hover:text-foreground'
+                    >
+                        →
+                    </Link>
                 </div>
             </div>
         </div>
