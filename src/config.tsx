@@ -59,7 +59,7 @@ export const CONFIG: Config = {
         },
         {
             name: 'X',
-            url: 'https://x.com/zhangsamuel12',
+            url: 'https://x.com/samuelxzhang',
             icon: 'x',
         },
         {
