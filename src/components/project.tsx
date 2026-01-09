@@ -2,7 +2,6 @@ import { Icons } from '@/components/icons'
 import { ReadMore } from '@/components/read-more'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
 import {
     Tooltip,
     TooltipContent,
@@ -11,7 +10,6 @@ import {
 } from '@/components/ui/tooltip'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 
 interface ProjectProps {
     name: string
@@ -41,44 +39,55 @@ const Project = ({
 }: ProjectProps) => {
     const Icon = Icons[icon!]
     return (
-        <Card 
-            className={`group rounded-none border-none border-t border-b border-dotted border-muted/80 bg-background hover:bg-accent/60 dark:hover:bg-secondary hover:rounded-xl transition-all duration-300 p-4 ${
-                index > 0 ? 'border-t-0' : ''
+        <div
+            className={`group relative rounded-xl border border-transparent bg-card/50 p-5 backdrop-blur-sm transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-accent-primary/20 hover:bg-secondary/80 hover:shadow-[0_8px_32px_-8px_hsl(var(--accent-primary)/0.15)] ${
+                index > 0 ? 'mt-3' : ''
             }`}
         >
-            <div className='flex flex-col gap-2'>
+            {/* Subtle gradient overlay on hover */}
+            <div className='pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-br from-accent-primary/5 via-transparent to-accent-secondary/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100' />
+
+            <div className='relative flex flex-col gap-3'>
                 <div className='flex items-start justify-between'>
-                    <div className='flex items-start gap-2'>
+                    <div className='flex items-start gap-3'>
                         {icon && (
-                            <Icon className='h-12 w-12 shrink-0 transition-all saturate-100' />
+                            <div className='relative'>
+                                <div className='absolute inset-0 rounded-lg bg-accent-primary/0 blur-md transition-all duration-500 group-hover:bg-accent-primary/20' />
+                                <Icon className='relative h-12 w-12 shrink-0 transition-all duration-300 group-hover:scale-105' />
+                            </div>
                         )}
                         {image && (
-                            <Image
-                                src={image}
-                                width={64}
-                                height={64}
-                                alt='fds'
-                                className='h-12 w-auto shrink-0 transition-all saturate-100'
-                            />
+                            <div className='relative overflow-hidden rounded-lg'>
+                                <Image
+                                    src={image}
+                                    width={64}
+                                    height={64}
+                                    alt={name}
+                                    className='h-12 w-auto shrink-0 transition-all duration-500 group-hover:scale-110'
+                                />
+                            </div>
                         )}
-                        <div>
-                            <h3 className="font-medium">{name}</h3>
-                            <p className='text-sm text-muted-foreground'>
+                        <div className='space-y-1'>
+                            <h3 className='font-semibold text-foreground/90 transition-colors duration-300 group-hover:text-foreground'>
+                                {name}
+                            </h3>
+                            <p className='text-sm leading-relaxed text-muted-foreground'>
                                 {description}
                             </p>
                         </div>
                     </div>
+
                     {url && (
-                        <div className='flex'>
+                        <div className='flex gap-1 opacity-60 transition-opacity duration-300 group-hover:opacity-100'>
                             <TooltipProvider delayDuration={70}>
                                 {github && (
                                     <Tooltip>
                                         <TooltipTrigger asChild>
                                             <Button
                                                 asChild
-                                                size={'icon'}
-                                                variant={'ghost'}
-                                                className='shrink-0'
+                                                size='icon'
+                                                variant='ghost'
+                                                className='shrink-0 text-muted-foreground transition-colors duration-300 hover:bg-accent-primary/10 hover:text-foreground'
                                             >
                                                 <Link
                                                     href={github}
@@ -91,7 +100,7 @@ const Project = ({
                                         </TooltipTrigger>
                                         <TooltipContent
                                             side='bottom'
-                                            className='bg-transparent text-xs'
+                                            className='border-border/50 bg-card/90 text-xs backdrop-blur-sm'
                                         >
                                             Source Code
                                         </TooltipContent>
@@ -101,9 +110,9 @@ const Project = ({
                                     <TooltipTrigger asChild>
                                         <Button
                                             asChild
-                                            size={'icon'}
-                                            variant={'ghost'}
-                                            className='shrink-0'
+                                            size='icon'
+                                            variant='ghost'
+                                            className='shrink-0 text-muted-foreground transition-colors duration-300 hover:bg-accent-primary/10 hover:text-foreground'
                                         >
                                             <Link
                                                 href={url}
@@ -116,7 +125,7 @@ const Project = ({
                                     </TooltipTrigger>
                                     <TooltipContent
                                         side='bottom'
-                                        className='bg-transparent text-xs'
+                                        className='border-border/50 bg-card/90 text-xs backdrop-blur-sm'
                                     >
                                         Visit Website
                                     </TooltipContent>
@@ -126,30 +135,32 @@ const Project = ({
                     )}
                 </div>
 
-                <div>
-                    {tags && (
-                        <ul className='mt-2 flex flex-wrap gap-1'>
-                            {tags.map((tag, idx) => {
-                                const Icon = Icons[tag.icon]
-                                return (
-                                    <li key={idx}>
-                                        <Badge variant={'outline'}>
-                                            <Icon className='mr-1.5 h-3 w-3 transition-all saturate-100' />{' '}
-                                            {tag.name}
-                                        </Badge>
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    )}
-                </div>
+                {tags && (
+                    <ul className='mt-1 flex flex-wrap gap-2'>
+                        {tags.map((tag, idx) => {
+                            const TagIcon = Icons[tag.icon]
+                            return (
+                                <li key={idx}>
+                                    <Badge
+                                        variant='outline'
+                                        className='border-border/50 bg-muted/30 text-muted-foreground transition-all duration-300 hover:border-accent-primary/30 hover:bg-accent-primary/5 hover:text-foreground'
+                                    >
+                                        <TagIcon className='mr-1.5 h-3 w-3' />
+                                        {tag.name}
+                                    </Badge>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                )}
+
                 {testimonial && (
-                    <blockquote className='border-l-2 pl-6 text-sm italic text-muted-foreground'>
+                    <blockquote className='border-l-2 border-accent-primary/30 pl-6 text-sm italic text-muted-foreground'>
                         <ReadMore text={testimonial} id='d' />
                     </blockquote>
                 )}
             </div>
-        </Card>
+        </div>
     )
 }
 

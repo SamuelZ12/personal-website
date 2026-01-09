@@ -70,7 +70,7 @@ export const CONFIG: Config = {
     ],
     description: (
         <>
-            👋 Hi! I&apos;m a CS + Math student at the University of Waterloo
+            Hi! I&apos;m a CS student at the University of Waterloo
             and I&apos;m interested in blockchain and AI. When I'm not studying or coding, 
             I enjoy lifting weights, reading, fencing, running, and playing poker. 
             I&apos;m always excited to meet new people, so feel free to reach out!
@@ -80,7 +80,7 @@ export const CONFIG: Config = {
     projects: [
         {
             name: 'LongCut',
-            description: 'Web app that transforms lengthy YouTube videos into structured learning materials',
+            description: 'Transforms lengthy YouTube videos into structured learning materials',
             url: 'https://github.com/SamuelZ12/longcut',
             tags: [
                 { name: 'Next.js', icon: 'next' },
@@ -94,7 +94,7 @@ export const CONFIG: Config = {
         },
         {
             name: 'Screen Scribe',
-            description: 'Mac app that converts screen captures of math expressions to LaTeX',
+            description: 'macOS app that converts screen captures into text (LaTeX, Markdown, etc.)',
             url: 'https://github.com/samuelz12/screen-scribe',
             tags: [
                 { name: 'Swift', icon: 'swift' },

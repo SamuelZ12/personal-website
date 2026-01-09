@@ -18,12 +18,17 @@ export const metadata = {
 const Projects = () => {
     return (
         <div>
-            <div className='flex animate-slide-from-down-and-fade-1 items-start justify-between'>
-                <Breadcrumb className='mb-4 px-4'>
+            <div className='flex animate-slide-from-down-and-fade-1 items-start justify-between px-4'>
+                <Breadcrumb className='mb-4'>
                     <BreadcrumbList>
                         <BreadcrumbItem>
                             <BreadcrumbLink asChild>
-                                <Link href='/'>Home</Link>
+                                <Link
+                                    href='/'
+                                    className='text-muted-foreground transition-colors duration-300 hover:text-foreground'
+                                >
+                                    Home
+                                </Link>
                             </BreadcrumbLink>
                         </BreadcrumbItem>
                         <BreadcrumbSeparator />
@@ -34,10 +39,17 @@ const Projects = () => {
                 </Breadcrumb>
                 <ModeToggle />
             </div>
-            <h1 className='animate-slide-from-down-and-fade-2 scroll-m-20 px-4 text-4xl font-bold tracking-tight'>
-                All Projects
-            </h1>
-            <div className='animate-slide-from-down-and-fade-3 space-y-0 pt-12'>
+
+            <div className='animate-slide-from-down-and-fade-2 px-4'>
+                <div className='flex items-center gap-3'>
+                    <h1 className='text-3xl font-bold tracking-tight'>
+                        All Projects
+                    </h1>
+                    <div className='h-px flex-1 bg-gradient-to-r from-border to-transparent' />
+                </div>
+            </div>
+
+            <div className='animate-slide-from-down-and-fade-3 space-y-3 px-4 pt-8'>
                 {CONFIG.projects.map((project, idx) => (
                     <Project
                         key={idx}

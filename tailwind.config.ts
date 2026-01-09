@@ -48,6 +48,8 @@ const config = {
                 accent: {
                     DEFAULT: 'hsl(var(--accent))',
                     foreground: 'hsl(var(--accent-foreground))',
+                    primary: 'hsl(var(--accent-primary))',
+                    secondary: 'hsl(var(--accent-secondary))',
                 },
                 popover: {
                     DEFAULT: 'hsl(var(--popover))',
@@ -75,28 +77,49 @@ const config = {
                 'slide-from-down-and-fade': {
                     '0%': {
                         opacity: '0',
-                        transform: 'translateY(12px)',
-                        visibility: 'hidden',
+                        transform: 'translateY(20px)',
+                        filter: 'blur(4px)',
                     },
-                    '1%': { visibility: 'visible' },
-                    '100%': { opacity: '1', transform: 'translateY(0)' },
+                    '100%': {
+                        opacity: '1',
+                        transform: 'translateY(0)',
+                        filter: 'blur(0px)',
+                    },
+                },
+                'glow-pulse': {
+                    '0%, 100%': {
+                        opacity: '0.4',
+                    },
+                    '50%': {
+                        opacity: '0.8',
+                    },
+                },
+                'float': {
+                    '0%, 100%': {
+                        transform: 'translateY(0px)',
+                    },
+                    '50%': {
+                        transform: 'translateY(-6px)',
+                    },
                 },
             },
             animation: {
                 'accordion-down': 'accordion-down 0.2s ease-out',
                 'accordion-up': 'accordion-up 0.2s ease-out',
                 'slide-from-down-and-fade-1':
-                    'slide-from-down-and-fade 0.6s ease-in-out 0.1s both',
+                    'slide-from-down-and-fade 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both',
                 'slide-from-down-and-fade-2':
-                    'slide-from-down-and-fade 0.6s ease-in-out 0.2s both',
+                    'slide-from-down-and-fade 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both',
                 'slide-from-down-and-fade-3':
-                    'slide-from-down-and-fade 0.6s ease-in-out 0.3s both',
+                    'slide-from-down-and-fade 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both',
                 'slide-from-down-and-fade-4':
-                    'slide-from-down-and-fade 0.6s ease-in-out 0.4s both',
+                    'slide-from-down-and-fade 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both',
                 'slide-from-down-and-fade-5':
-                    'slide-from-down-and-fade 0.6s ease-in-out 0.5s both',
+                    'slide-from-down-and-fade 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.65s both',
                 'slide-from-down-and-fade-6':
-                    'slide-from-down-and-fade 0.6s ease-in-out 0.6s both',
+                    'slide-from-down-and-fade 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.8s both',
+                'glow-pulse': 'glow-pulse 4s ease-in-out infinite',
+                'float': 'float 6s ease-in-out infinite',
             },
         },
     },

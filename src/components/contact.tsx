@@ -8,15 +8,20 @@ import {
     TooltipTrigger,
 } from '@/components/ui/tooltip'
 import { CONFIG } from '@/config'
-import { cn } from '@/lib/utils'
 import Link from 'next/link'
 
 const Contact = () => {
     return (
-        <div className='mt-12 flex flex-col border-t pt-6 animate-slide-from-down-and-fade-5'>
+        <div className='mt-16 animate-slide-from-down-and-fade-5'>
+            {/* Gradient divider */}
+            <div className='mb-8 h-px bg-gradient-to-r from-transparent via-border to-transparent' />
+
             <div className='flex items-center justify-between px-4'>
-                <p className='text-sm text-muted-foreground'>© 2025 Samuel Zhang</p>
-                <div className='flex items-center gap-2'>
+                <p className='text-sm text-muted-foreground/60'>
+                    © 2025 Samuel Zhang
+                </p>
+
+                <div className='flex items-center gap-1'>
                     <TooltipProvider delayDuration={70}>
                         {CONFIG.socials.map((social, idx) => {
                             const Icon = Icons[social.icon]
@@ -25,10 +30,8 @@ const Contact = () => {
                                     <TooltipTrigger asChild>
                                         <Button
                                             asChild
-                                            variant={'ghost'}
-                                            className={cn(
-                                                'size-10 p-0 text-muted-foreground transition-colors duration-200 hover:text-foreground'
-                                            )}
+                                            variant='ghost'
+                                            className='size-10 p-0 text-muted-foreground/60 transition-all duration-300 hover:scale-110 hover:bg-accent-primary/10 hover:text-foreground'
                                         >
                                             <Link
                                                 href={social.url}
@@ -41,7 +44,7 @@ const Contact = () => {
                                     </TooltipTrigger>
                                     <TooltipContent
                                         side='top'
-                                        className='bg-transparent text-xs'
+                                        className='border-border/50 bg-card/90 text-xs backdrop-blur-sm'
                                     >
                                         {social.name}
                                     </TooltipContent>

@@ -55,6 +55,19 @@ export default function RootLayout({
                         fontSans.variable
                     )}
                 >
+                    {/* Ambient background effects */}
+                    <div className='fixed inset-0 -z-10 overflow-hidden pointer-events-none'>
+                        {/* Top-right gradient orb */}
+                        <div
+                            className='absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-accent-primary/10 blur-3xl animate-glow-pulse'
+                        />
+                        {/* Bottom-left gradient orb */}
+                        <div
+                            className='absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full bg-accent-secondary/8 blur-3xl animate-glow-pulse'
+                            style={{ animationDelay: '2s' }}
+                        />
+                    </div>
+
                     {process.env.NODE_ENV === 'production' && (
                         <GoogleAnalytics gaId='G-32FLEBL3F6' />
                     )}
@@ -65,7 +78,7 @@ export default function RootLayout({
                         enableSystem
                         disableTransitionOnChange
                     >
-                        <main className='mx-auto max-w-2xl py-4 md:pt-10'>
+                        <main className='mx-auto max-w-2xl py-8 md:pt-16'>
                             {children}
                             <Contact />
                         </main>

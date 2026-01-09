@@ -1,36 +1,26 @@
-import { Icons } from '@/components/icons'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { CONFIG } from '@/config'
-import { cn, getInitials } from '@/lib/utils'
-import Image from 'next/image'
 
 const Header = () => {
     return (
         <header className='flex w-full animate-slide-from-down-and-fade-1 flex-col gap-6 px-4'>
-            <div className='flex items-center justify-between'>
-                <div>
-                    <h1 className='text-2xl font-semibold'>{CONFIG.name}</h1>
-                    <p className='mt-1 text-sm text-muted-foreground'>
+            <div className='space-y-1'>
+                <h1 className='text-3xl font-bold tracking-tight'>
+                    <span className='bg-gradient-to-r from-foreground to-foreground bg-clip-text transition-all duration-500 hover:from-accent-primary hover:to-accent-secondary hover:text-transparent'>
+                        {CONFIG.name}
+                    </span>
+                </h1>
+                {CONFIG.title && (
+                    <p className='text-sm text-muted-foreground'>
                         {CONFIG.title}
                     </p>
-                    <p className='mt-1 text-sm text-muted-foreground'>
-                        📍 Toronto, Canada
-                    </p>
-                </div>
-                <Avatar className='size-20'>
-                    <AvatarImage src={CONFIG.avatar} asChild>
-                        <Image
-                            src={CONFIG.avatar}
-                            alt={CONFIG.name + ' avatar'}
-                            width={80}
-                            height={80}
-                            priority={true}
-                        />
-                    </AvatarImage>
-                    <AvatarFallback>
-                        {getInitials(CONFIG.name)}
-                    </AvatarFallback>
-                </Avatar>
+                )}
+                <p className='flex items-center gap-2 text-sm text-muted-foreground/80'>
+                    <span className='relative flex h-2 w-2'>
+                        <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75' />
+                        <span className='relative inline-flex h-2 w-2 rounded-full bg-green-500' />
+                    </span>
+                    Toronto, Canada
+                </p>
             </div>
         </header>
     )
