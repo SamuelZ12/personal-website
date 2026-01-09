@@ -16,7 +16,7 @@ const Contact = () => {
             {/* Gradient divider */}
             <div className='mb-8 h-px bg-gradient-to-r from-transparent via-border to-transparent' />
 
-            <div className='flex items-center justify-between px-4'>
+            <div className='flex items-center justify-start px-4'>
                 {/* Social Links */}
                 <div className='flex items-center gap-1'>
                     <TooltipProvider delayDuration={70}>
@@ -49,39 +49,38 @@ const Contact = () => {
                             )
                         })}
                         <ModeToggle />
+                        {/* Webring */}
+                        <div className='ml-1 flex items-center gap-0 text-muted-foreground/60'>
+                            <Link
+                                href='https://cs.uwatering.com/samuelzhang.ca/prev'
+                                className='flex h-10 w-6 items-center justify-center transition-colors hover:text-foreground'
+                            >
+                                ←
+                            </Link>
+                            <Link
+                                href='https://cs.uwatering.com'
+                                target='_blank'
+                                className='flex h-10 w-6 items-center justify-center opacity-60 transition-opacity hover:opacity-100'
+                            >
+                                <img
+                                    src='https://cs.uwatering.com/icon.black.svg'
+                                    alt='CS Webring'
+                                    className='h-5 w-5 dark:hidden'
+                                />
+                                <img
+                                    src='https://cs.uwatering.com/icon.white.svg'
+                                    alt='CS Webring'
+                                    className='hidden h-5 w-5 dark:block'
+                                />
+                            </Link>
+                            <Link
+                                href='https://cs.uwatering.com/samuelzhang.ca/next'
+                                className='flex h-10 w-6 items-center justify-center transition-colors hover:text-foreground'
+                            >
+                                →
+                            </Link>
+                        </div>
                     </TooltipProvider>
-                </div>
-
-                {/* Webring */}
-                <div className='flex items-center gap-3 text-muted-foreground/60'>
-                    <Link
-                        href='https://cs.uwatering.com/samuelzhang.ca/prev'
-                        className='transition-colors hover:text-foreground'
-                    >
-                        ←
-                    </Link>
-                    <Link
-                        href='https://cs.uwatering.com'
-                        target='_blank'
-                        className='transition-opacity hover:opacity-80'
-                    >
-                        <img
-                            src='https://cs.uwatering.com/icon.black.svg'
-                            alt='CS Webring'
-                            className='h-5 w-5 dark:hidden'
-                        />
-                        <img
-                            src='https://cs.uwatering.com/icon.white.svg'
-                            alt='CS Webring'
-                            className='hidden h-5 w-5 dark:block'
-                        />
-                    </Link>
-                    <Link
-                        href='https://cs.uwatering.com/samuelzhang.ca/next'
-                        className='transition-colors hover:text-foreground'
-                    >
-                        →
-                    </Link>
                 </div>
             </div>
         </div>
