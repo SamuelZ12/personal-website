@@ -81,7 +81,7 @@ export const CONFIG: Config = {
         {
             name: 'LongCut',
             description: 'Transforms lengthy YouTube videos into structured learning materials',
-            url: 'https://github.com/SamuelZ12/longcut',
+            url: 'https://www.longcut.ai',
             tags: [
                 { name: 'Next.js', icon: 'next' },
                 { name: 'TypeScript', icon: 'typescript' },
