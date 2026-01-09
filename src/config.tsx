@@ -121,19 +121,14 @@ export const CONFIG: Config = {
                 link: 'https://memories.ai'
             },
             {
-                role: 'Software Engineering',
+                role: 'Undergraduate Researcher',
+                company: 'University of Waterloo',
+                link: 'https://uwaterloo.ca'
+            },
+            {
+                role: 'Engineering',
                 company: 'TechInsights',
                 link: 'https://techinsights.com'
-            },
-            {
-                role: 'Software Engineering',
-                company: 'Dappd',
-                link: 'https://dappd.net'
-            },
-            {
-                role: 'Research',
-                company: 'University of Toronto',
-                link: 'https://utoronto.ca'
             }
         ]
     }
