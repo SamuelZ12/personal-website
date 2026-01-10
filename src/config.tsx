@@ -126,7 +126,7 @@ export const CONFIG: Config = {
                 link: 'https://uwaterloo.ca'
             },
             {
-                role: 'Engineering',
+                role: 'Software Engineer',
                 company: 'TechInsights',
                 link: 'https://techinsights.com'
             }
