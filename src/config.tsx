@@ -58,10 +58,11 @@ export const CONFIG: Config = {
     description: (
         <>
             CS @ UWaterloo. Building with AI.
-            Also into lifting, fencing, and poker.
+            <br />
+            Also into lifting (275lbs bench), fencing (13th @ Nationals), and poker (-EV).
         </>
     ),
-    descriptionRaw: `CS @ UWaterloo. Building things with AI and blockchain. Also into lifting, fencing, and poker.`,
+    descriptionRaw: `CS @ UWaterloo. Building with AI. Also into lifting (275lbs bench), fencing (13th @ Nationals), and poker (-EV).`,
     projects: [
         {
             name: 'LongCut',
