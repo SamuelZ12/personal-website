@@ -61,14 +61,16 @@ const Projects = () => {
                                             <Icons.github className='size-3.5' />
                                         </Link>
                                     )}
-                                    <Link
-                                        href={project.url}
-                                        target='_blank'
-                                        className='text-muted-foreground transition-colors duration-200 hover:text-foreground'
-                                        aria-label='Visit'
-                                    >
-                                        <Icons.arrowUpRight className='size-3.5' />
-                                    </Link>
+                                    {project.url && (
+                                        <Link
+                                            href={project.url}
+                                            target='_blank'
+                                            className='text-muted-foreground transition-colors duration-200 hover:text-foreground'
+                                            aria-label='Visit'
+                                        >
+                                            <Icons.arrowUpRight className='size-3.5' />
+                                        </Link>
+                                    )}
                                 </div>
                             </div>
                             <p className='text-sm text-muted-foreground/70'>

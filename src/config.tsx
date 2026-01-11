@@ -15,7 +15,7 @@ type Config = {
     projects: {
         name: string
         description: string
-        url: string
+        url?: string
         github?: string
         featured: boolean
     }[]
@@ -74,7 +74,6 @@ export const CONFIG: Config = {
         {
             name: 'Screen Scribe',
             description: 'macOS app that converts screen captures into text (LaTeX, Markdown, etc.)',
-            url: 'https://github.com/samuelz12/screen-scribe',
             featured: true,
             github: 'https://github.com/samuelz12/screen-scribe'
         },
@@ -102,14 +101,12 @@ export const CONFIG: Config = {
         {
             name: 'ICS3U1 Python Projects',
             description: 'Collection of Python games including Snake, Tank Battle, Text Adventure, etc.',
-            url: 'https://github.com/SamuelZ12/ICS3U1-projects',
             featured: false,
             github: 'https://github.com/SamuelZ12/ICS3U1-projects'
         },
         {
             name: 'Java Sudoku Solver',
             description: 'Solves 9x9 Sudoku puzzles using a recursive backtracking algorithm',
-            url: 'https://github.com/SamuelZ12/Sudoku',
             featured: false,
             github: 'https://github.com/SamuelZ12/Sudoku'
         }
