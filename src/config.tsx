@@ -66,7 +66,7 @@ export const CONFIG: Config = {
     projects: [
         {
             name: 'LongCut',
-            description: 'Transforms lengthy YouTube videos into structured learning materials',
+            description: 'Transforms long-form YouTube videos into a structured learning workspace',
             url: 'https://www.longcut.ai',
             featured: true,
             github: 'https://github.com/SamuelZ12/longcut'
@@ -81,34 +81,15 @@ export const CONFIG: Config = {
             name: '2048 AI',
             description: 'AI agent that plays the 2048 game using expectimax search algorithm',
             url: 'https://samuelz12.github.io/2048-ai/',
-            featured: true,
+            featured: false,
             github: 'https://github.com/SamuelZ12/2048-ai'
         },
         {
             name: 'Swapify',
-            description: 'University of Waterloo skill exchange platform',
+            description: 'University of Waterloo skill exchange platform (discontinued unfortunately)',
             url: 'https://swapifyy.vercel.app',
             featured: false,
             github: 'https://github.com/SamuelZ12/swapify'
-        },
-        {
-            name: 'TalkTuahTherapist',
-            description: 'AI therapist encrypted on Ethereum blockchain',
-            url: 'https://talktuahtherapist.co',
-            featured: false,
-            github: 'https://github.com/Brucewang15/TalkTuahTherapist'
-        },
-        {
-            name: 'ICS3U1 Python Projects',
-            description: 'Collection of Python games including Snake, Tank Battle, Text Adventure, etc.',
-            featured: false,
-            github: 'https://github.com/SamuelZ12/ICS3U1-projects'
-        },
-        {
-            name: 'Java Sudoku Solver',
-            description: 'Solves 9x9 Sudoku puzzles using a recursive backtracking algorithm',
-            featured: false,
-            github: 'https://github.com/SamuelZ12/Sudoku'
         }
     ],
     experience: {
