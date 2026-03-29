@@ -6,30 +6,30 @@
     :root {
         /* Warm off-white background */
         --background: 210 20% 98%;
-        --foreground: 220 20% 10%;
+        --foreground: 220 20% 4%;
 
         /* Card surfaces */
         --card: 0 0% 100%;
-        --card-foreground: 220 20% 10%;
+        --card-foreground: 220 20% 4%;
 
         --popover: 0 0% 100%;
-        --popover-foreground: 220 20% 10%;
+        --popover-foreground: 220 20% 4%;
 
-        --primary: 220 15% 15%;
+        --primary: 220 15% 8%;
         --primary-foreground: 210 20% 98%;
 
         --secondary: 210 15% 96%;
-        --secondary-foreground: 220 15% 15%;
+        --secondary-foreground: 220 15% 8%;
 
         --muted: 210 15% 95%;
-        --muted-foreground: 215 15% 40%;
+        --muted-foreground: 215 16% 28%;
 
         --accent: 210 15% 96%;
-        --accent-foreground: 220 15% 15%;
+        --accent-foreground: 220 15% 8%;
 
         /* Accent colors - neutral ink */
-        --accent-primary: 215 12% 28%;
-        --accent-secondary: 215 10% 46%;
+        --accent-primary: 215 13% 18%;
+        --accent-secondary: 215 12% 32%;
 
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
@@ -66,14 +66,14 @@
         --secondary-foreground: 210 20% 98%;
 
         --muted: 220 15% 16%;
-        --muted-foreground: 215 15% 55%;
+        --muted-foreground: 215 15% 70%;
 
         --accent: 220 15% 14%;
         --accent-foreground: 210 20% 98%;
 
         /* Accent colors - neutral ink */
-        --accent-primary: 210 8% 72%;
-        --accent-secondary: 215 8% 58%;
+        --accent-primary: 210 8% 82%;
+        --accent-secondary: 215 8% 72%;
 
         --destructive: 0 62.8% 30.6%;
         --destructive-foreground: 210 20% 98%;
