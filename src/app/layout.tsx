@@ -55,16 +55,6 @@ export default function RootLayout({
                         fontSans.variable
                     )}
                 >
-                    {/* Ambient background effects */}
-                    <div className='fixed inset-0 -z-10 overflow-hidden pointer-events-none'>
-                        {/* Top-right gradient orb */}
-                        <div className='absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-foreground/[0.04] blur-3xl animate-glow-pulse dark:bg-foreground/[0.08]' />
-                        {/* Bottom-left gradient orb */}
-                        <div
-                            className='absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full bg-muted-foreground/[0.08] blur-3xl animate-glow-pulse dark:bg-muted-foreground/[0.12]'
-                            style={{ animationDelay: '2s' }}
-                        />
-                    </div>
 
                     {process.env.NODE_ENV === 'production' && (
                         <GoogleAnalytics gaId='G-32FLEBL3F6' />
