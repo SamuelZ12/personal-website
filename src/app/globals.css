@@ -27,16 +27,16 @@
         --accent: 210 15% 96%;
         --accent-foreground: 220 15% 15%;
 
-        /* Accent colors - blue-violet */
-        --accent-primary: 250 75% 55%;
-        --accent-secondary: 280 65% 50%;
+        /* Accent colors - neutral ink */
+        --accent-primary: 215 12% 28%;
+        --accent-secondary: 215 10% 46%;
 
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
 
         --border: 210 15% 90%;
         --input: 210 15% 90%;
-        --ring: 250 75% 55%;
+        --ring: 215 12% 28%;
 
         --radius: 0.5rem;
 
@@ -71,16 +71,16 @@
         --accent: 220 15% 14%;
         --accent-foreground: 210 20% 98%;
 
-        /* Accent colors - blue-violet */
-        --accent-primary: 250 85% 65%;
-        --accent-secondary: 280 75% 60%;
+        /* Accent colors - neutral ink */
+        --accent-primary: 210 8% 72%;
+        --accent-secondary: 215 8% 58%;
 
         --destructive: 0 62.8% 30.6%;
         --destructive-foreground: 210 20% 98%;
 
         --border: 220 15% 18%;
         --input: 220 15% 18%;
-        --ring: 250 85% 65%;
+        --ring: 210 8% 72%;
 
         --chart-1: 359 2% 90%;
         --chart-2: 240 1% 74%;
@@ -100,7 +100,7 @@
 
     /* Selection color with accent */
     ::selection {
-        background: hsl(var(--accent-primary) / 0.3);
+        background: hsl(var(--accent-primary) / 0.18);
         color: hsl(var(--foreground));
     }
 }
@@ -121,7 +121,11 @@
 
     /* Gradient text utility */
     .text-gradient {
-        background: linear-gradient(135deg, hsl(var(--accent-primary)), hsl(var(--accent-secondary)));
+        background: linear-gradient(
+            135deg,
+            hsl(var(--foreground)) 0%,
+            hsl(var(--accent-secondary)) 100%
+        );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -129,11 +133,11 @@
 
     /* Glow effect utilities */
     .glow-sm {
-        box-shadow: 0 0 20px -5px hsl(var(--accent-primary) / 0.3);
+        box-shadow: 0 0 20px -5px hsl(var(--accent-primary) / 0.16);
     }
 
     .glow-md {
-        box-shadow: 0 0 40px -10px hsl(var(--accent-primary) / 0.4);
+        box-shadow: 0 0 40px -10px hsl(var(--accent-primary) / 0.22);
     }
 
     /* Smooth transition utility */
@@ -146,9 +150,9 @@
         background: linear-gradient(
             120deg,
             hsl(var(--foreground)) 0%,
-            hsl(var(--foreground)) 40%,
-            hsl(var(--accent-primary)) 50%,
-            hsl(var(--foreground)) 60%,
+            hsl(var(--foreground)) 38%,
+            hsl(var(--accent-secondary)) 50%,
+            hsl(var(--foreground)) 62%,
             hsl(var(--foreground)) 100%
         );
         background-size: 300% 100%;
