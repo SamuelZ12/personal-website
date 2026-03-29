@@ -66,7 +66,7 @@ export default function RootLayout({
                         enableSystem
                         disableTransitionOnChange
                     >
-                        <main className='mx-auto max-w-2xl py-8 md:pt-16'>
+                        <main className='mx-auto max-w-xl py-8 md:pt-16'>
                             {children}
                             <Contact />
                         </main>
