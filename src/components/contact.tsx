@@ -27,7 +27,7 @@ const Contact = () => {
                                         <Button
                                             asChild
                                             variant='ghost'
-                                            className='size-10 p-0 text-muted-foreground transition-colors duration-200 hover:text-foreground'
+                                            className='size-10 p-0 text-muted-foreground transition duration-200 hover:text-foreground active:scale-90'
                                         >
                                             <Link
                                                 href={social.url}
@@ -52,7 +52,7 @@ const Contact = () => {
                             <Link
                                 href='https://cs.uwatering.com/#samuelzhang.ca?nav=prev'
                                 aria-label='Previous site in the CS webring'
-                                className='group flex h-10 w-6 items-center justify-center transition-colors hover:text-foreground'
+                                className='group flex h-10 w-6 items-center justify-center transition duration-200 hover:text-foreground active:scale-90'
                             >
                                 <span className='inline-block transition-transform duration-200 group-hover:-translate-x-0.5'>
                                     ←
@@ -61,7 +61,7 @@ const Contact = () => {
                             <Link
                                 href='https://cs.uwatering.com/#samuelzhang.ca'
                                 target='_blank'
-                                className='flex h-10 w-6 items-center justify-center opacity-70 transition-opacity duration-200 hover:opacity-100'
+                                className='flex h-10 w-6 items-center justify-center opacity-70 transition duration-200 hover:opacity-100 active:scale-90'
                             >
                                 <img
                                     src='https://cs.uwatering.com/icon.black.svg'
@@ -77,7 +77,7 @@ const Contact = () => {
                             <Link
                                 href='https://cs.uwatering.com/#samuelzhang.ca?nav=next'
                                 aria-label='Next site in the CS webring'
-                                className='group flex h-10 w-6 items-center justify-center transition-colors hover:text-foreground'
+                                className='group flex h-10 w-6 items-center justify-center transition duration-200 hover:text-foreground active:scale-90'
                             >
                                 <span className='inline-block transition-transform duration-200 group-hover:translate-x-0.5'>
                                     →

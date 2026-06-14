@@ -7,6 +7,7 @@ import type { Metadata } from 'next'
 import { Inter as FontSans } from 'next/font/google'
 import './globals.css'
 import Contact from '@/components/contact'
+import { ConsoleSignature } from '@/components/console-signature'
 import { GoogleAnalytics } from '@next/third-parties/google'
 
 const fontSans = FontSans({
@@ -60,6 +61,7 @@ export default function RootLayout({
                         <GoogleAnalytics gaId='G-32FLEBL3F6' />
                     )}
                     <Analytics />
+                    <ConsoleSignature />
                     <ThemeProvider
                         attribute='class'
                         defaultTheme='dark'
