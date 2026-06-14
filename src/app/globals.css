@@ -40,6 +40,9 @@
 
         --radius: 0.5rem;
 
+        /* Motion — one curve for the whole page (entrance + interactions) */
+        --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+
         --chart-1: 359 2% 10%;
         --chart-2: 240 1% 26%;
         --chart-3: 240 1% 42%;
@@ -106,45 +109,6 @@
 }
 
 @layer utilities {
-    /* Glass morphism utility */
-    .glass {
-        background: hsl(var(--card) / 0.6);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid hsl(var(--foreground) / 0.06);
-    }
-
-    .dark .glass {
-        background: hsl(var(--card) / 0.5);
-        border: 1px solid hsl(var(--foreground) / 0.08);
-    }
-
-    /* Gradient text utility */
-    .text-gradient {
-        background: linear-gradient(
-            135deg,
-            hsl(var(--foreground)) 0%,
-            hsl(var(--accent-secondary)) 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    /* Glow effect utilities */
-    .glow-sm {
-        box-shadow: 0 0 20px -5px hsl(var(--accent-primary) / 0.16);
-    }
-
-    .glow-md {
-        box-shadow: 0 0 40px -10px hsl(var(--accent-primary) / 0.22);
-    }
-
-    /* Smooth transition utility */
-    .transition-smooth {
-        transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
     /* Reduced motion support */
     @media (prefers-reduced-motion: reduce) {
         *,
