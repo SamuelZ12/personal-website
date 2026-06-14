@@ -86,6 +86,10 @@ const config = {
                         filter: 'blur(0px)',
                     },
                 },
+                'toggle-rotate': {
+                    '0%': { transform: 'rotate(0deg)' },
+                    '100%': { transform: 'rotate(360deg)' },
+                },
             },
             transitionTimingFunction: {
                 // Every transition decelerates on the same curve as the entrance.
@@ -107,6 +111,7 @@ const config = {
                     'slide-from-down-and-fade 0.7s var(--ease-out-quint) 0.65s both',
                 'slide-from-down-and-fade-6':
                     'slide-from-down-and-fade 0.7s var(--ease-out-quint) 0.8s both',
+                'toggle-rotate': 'toggle-rotate 0.5s var(--ease-out-quint)',
             },
         },
     },

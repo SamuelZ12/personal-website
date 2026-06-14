@@ -98,6 +98,31 @@
     }
 }
 
+@layer components {
+    /* Text-link hover: a hairline that wipes in from the left. Solid currentColor,
+       transform-only, so it stays crisp and cheap. Triggers on the link itself
+       (or its own `group/link`), never on the surrounding row — the underline is a
+       link affordance, so it should only answer to the link. */
+    .link-underline {
+        position: relative;
+    }
+    .link-underline::after {
+        content: '';
+        position: absolute;
+        inset-inline: 0;
+        bottom: -2px;
+        height: 1px;
+        background-color: currentColor;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.2s var(--ease-out-quint);
+    }
+    .link-underline:hover::after,
+    .group\/link:hover .link-underline::after {
+        transform: scaleX(1);
+    }
+}
+
 @layer utilities {
     /* Reduced motion support */
     @media (prefers-reduced-motion: reduce) {

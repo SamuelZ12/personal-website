@@ -26,7 +26,7 @@ const Projects = () => {
                             <BreadcrumbLink asChild>
                                 <Link
                                     href='/'
-                                    className='text-muted-foreground transition-colors duration-200 hover:text-foreground'
+                                    className='link-underline text-muted-foreground transition-colors duration-200 hover:text-foreground'
                                 >
                                     Home
                                 </Link>

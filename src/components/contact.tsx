@@ -1,3 +1,4 @@
+import { CopyEmail } from '@/components/copy-email'
 import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import {
@@ -21,6 +22,15 @@ const Contact = () => {
                     <TooltipProvider delayDuration={70}>
                         {CONFIG.socials.map((social, idx) => {
                             const Icon = Icons[social.icon]
+                            if (social.icon === 'email') {
+                                return (
+                                    <CopyEmail
+                                        key={idx}
+                                        href={social.url}
+                                        label={social.name}
+                                    />
+                                )
+                            }
                             return (
                                 <Tooltip key={idx}>
                                     <TooltipTrigger asChild>
