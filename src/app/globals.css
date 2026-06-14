@@ -43,11 +43,6 @@
         /* Motion — one curve for the whole page (entrance + interactions) */
         --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
 
-        --chart-1: 359 2% 10%;
-        --chart-2: 240 1% 26%;
-        --chart-3: 240 1% 42%;
-        --chart-4: 240 1% 58%;
-        --chart-5: 240 2% 74%;
     }
 
     .dark {
@@ -85,11 +80,6 @@
         --input: 220 15% 18%;
         --ring: 210 8% 72%;
 
-        --chart-1: 359 2% 90%;
-        --chart-2: 240 1% 74%;
-        --chart-3: 240 1% 58%;
-        --chart-4: 240 1% 42%;
-        --chart-5: 240 2% 26%;
     }
 }
 
