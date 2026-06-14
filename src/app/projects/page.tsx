@@ -19,14 +19,14 @@ const Projects = () => {
     return (
         <div>
             {/* Breadcrumb header */}
-            <div className='flex animate-slide-from-down-and-fade-1 items-start justify-between px-4'>
-                <Breadcrumb className='mb-4'>
+            <div className='mb-8 flex animate-slide-from-down-and-fade-1 items-center justify-between px-4'>
+                <Breadcrumb>
                     <BreadcrumbList>
                         <BreadcrumbItem>
                             <BreadcrumbLink asChild>
                                 <Link
                                     href='/'
-                                    className='text-muted-foreground transition-colors duration-300 hover:text-foreground'
+                                    className='text-muted-foreground transition-colors duration-200 hover:text-foreground'
                                 >
                                     Home
                                 </Link>
@@ -73,7 +73,7 @@ const Projects = () => {
                                     )}
                                 </div>
                             </div>
-                            <p className='text-sm text-muted-foreground/70'>
+                            <p className='text-sm text-muted-foreground/80'>
                                 {project.description}
                             </p>
                         </li>

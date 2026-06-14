@@ -12,8 +12,8 @@ import Link from 'next/link'
 const Contact = () => {
     return (
         <div className='mt-8 animate-slide-from-down-and-fade-4'>
-            {/* Gradient divider */}
-            <div className='mx-4 mb-8 h-px bg-gradient-to-r from-border to-transparent' />
+            {/* Divider */}
+            <div className='mx-4 mb-8 h-px bg-border' />
 
             <div className='flex items-center justify-start px-4'>
                 {/* Social Links */}
@@ -27,7 +27,7 @@ const Contact = () => {
                                         <Button
                                             asChild
                                             variant='ghost'
-                                            className='size-10 p-0 text-muted-foreground/60 transition-all duration-300 hover:scale-110 hover:bg-accent-primary/10 hover:text-foreground'
+                                            className='size-10 p-0 text-muted-foreground transition-colors duration-200 hover:text-foreground'
                                         >
                                             <Link
                                                 href={social.url}
@@ -40,7 +40,7 @@ const Contact = () => {
                                     </TooltipTrigger>
                                     <TooltipContent
                                         side='top'
-                                        className='border-border/50 bg-card/90 text-xs backdrop-blur-sm'
+                                        className='border-border bg-card text-xs'
                                     >
                                         {social.name}
                                     </TooltipContent>
@@ -48,7 +48,7 @@ const Contact = () => {
                             )
                         })}
                         {/* Webring */}
-                        <div className='ml-1 flex items-center gap-0 text-muted-foreground/60'>
+                        <div className='ml-1 flex items-center gap-0 text-muted-foreground'>
                             <Link
                                 href='https://cs.uwatering.com/#samuelzhang.ca?nav=prev'
                                 aria-label='Previous site in the CS webring'
@@ -61,7 +61,7 @@ const Contact = () => {
                             <Link
                                 href='https://cs.uwatering.com/#samuelzhang.ca'
                                 target='_blank'
-                                className='flex h-10 w-6 items-center justify-center opacity-60 transition-opacity hover:opacity-100'
+                                className='flex h-10 w-6 items-center justify-center opacity-70 transition-opacity duration-200 hover:opacity-100'
                             >
                                 <img
                                     src='https://cs.uwatering.com/icon.black.svg'
