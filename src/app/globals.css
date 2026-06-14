@@ -145,28 +145,6 @@
         transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    /* Text shimmer hover effect */
-    .text-shimmer {
-        background: linear-gradient(
-            120deg,
-            hsl(var(--foreground)) 0%,
-            hsl(var(--foreground)) 38%,
-            hsl(var(--accent-secondary)) 50%,
-            hsl(var(--foreground)) 62%,
-            hsl(var(--foreground)) 100%
-        );
-        background-size: 300% 100%;
-        background-position: 100% 0;
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        transition: background-position 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .text-shimmer:hover {
-        background-position: 0 0;
-    }
-
     /* Reduced motion support */
     @media (prefers-reduced-motion: reduce) {
         *,

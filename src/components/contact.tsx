@@ -51,9 +51,12 @@ const Contact = () => {
                         <div className='ml-1 flex items-center gap-0 text-muted-foreground/60'>
                             <Link
                                 href='https://cs.uwatering.com/#samuelzhang.ca?nav=prev'
-                                className='flex h-10 w-6 items-center justify-center transition-colors hover:text-foreground'
+                                aria-label='Previous site in the CS webring'
+                                className='group flex h-10 w-6 items-center justify-center transition-colors hover:text-foreground'
                             >
-                                ←
+                                <span className='inline-block transition-transform duration-200 group-hover:-translate-x-0.5'>
+                                    ←
+                                </span>
                             </Link>
                             <Link
                                 href='https://cs.uwatering.com/#samuelzhang.ca'
@@ -73,9 +76,12 @@ const Contact = () => {
                             </Link>
                             <Link
                                 href='https://cs.uwatering.com/#samuelzhang.ca?nav=next'
-                                className='flex h-10 w-6 items-center justify-center transition-colors hover:text-foreground'
+                                aria-label='Next site in the CS webring'
+                                className='group flex h-10 w-6 items-center justify-center transition-colors hover:text-foreground'
                             >
-                                →
+                                <span className='inline-block transition-transform duration-200 group-hover:translate-x-0.5'>
+                                    →
+                                </span>
                             </Link>
                         </div>
                     </TooltipProvider>

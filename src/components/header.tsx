@@ -6,9 +6,7 @@ const Header = () => {
         <header className='flex w-full animate-slide-from-down-and-fade-1 items-start justify-between px-4'>
             <div className='space-y-1'>
                 <h1 className='text-3xl font-bold tracking-tight'>
-                    <span className='text-shimmer cursor-pointer'>
-                        {CONFIG.name}
-                    </span>
+                    {CONFIG.name}
                 </h1>
                 {CONFIG.title && (
                     <p className='text-sm text-muted-foreground'>
