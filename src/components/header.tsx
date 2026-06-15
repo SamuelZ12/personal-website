@@ -1,3 +1,4 @@
+import { LocalTime } from '@/components/local-time'
 import { ModeToggle } from '@/components/mode-toggle'
 import { CONFIG } from '@/config'
 import type { CSSProperties } from 'react'
@@ -19,6 +20,7 @@ const Header = () => {
                 )}
                 <p className='text-sm text-muted-foreground/80'>
                     Toronto, Canada
+                    <LocalTime />
                 </p>
             </div>
             <ModeToggle />

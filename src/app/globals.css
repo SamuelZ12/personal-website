@@ -123,6 +123,19 @@
     .group\/link:focus-visible .link-underline::after {
         transform: scaleX(1);
     }
+
+    /* Live local clock in the header (see components/local-time.tsx). It mounts
+       client-side after the static "Toronto, Canada" line, so it arrives a beat
+       late on purpose — a quiet grace note rather than a layout glitch. */
+    .animate-time-in {
+        animation: time-fade-in 0.6s var(--ease-out-quint) 0.45s both;
+    }
+    /* The colons breathe at ~1Hz: the universal "running clock" cue, so the
+       seconds read as live without a separate status dot. Reduced motion neutralizes
+       the loop via the global override below (lands at full opacity, static). */
+    .time-colon {
+        animation: time-colon-pulse 1s ease-in-out infinite;
+    }
 }
 
 @layer utilities {
@@ -176,5 +189,28 @@
         opacity: 1;
         transform: translateY(0);
         filter: blur(0px);
+    }
+}
+
+/* Hand-written like the entrance keyframe above, and for the same reason:
+   Tailwind only emits @keyframes that a theme.animation entry references, so a
+   keyframe driven by hand-written CSS must live outside the @layer to survive
+   tree-shaking. */
+@keyframes time-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes time-colon-pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.4;
     }
 }
