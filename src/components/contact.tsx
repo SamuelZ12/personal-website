@@ -18,7 +18,7 @@ const Contact = () => {
             style={{ '--i': 11 } as CSSProperties}
         >
             {/* Divider */}
-            <div className='mx-4 mb-8 h-px bg-border' />
+            <div className='mx-4 mb-4 h-px bg-border' />
 
             <div className='flex items-center justify-between px-4'>
                 {/* Social Links */}
