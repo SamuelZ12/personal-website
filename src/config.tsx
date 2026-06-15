@@ -2,7 +2,6 @@ import { Icons } from '@/components/icons'
 
 type Config = {
     name: string
-    avatar: string
     title: string
     siteUrl: string
     socials: {
@@ -30,7 +29,6 @@ type Config = {
 
 export const CONFIG: Config = {
     name: 'Samuel Zhang',
-    avatar: '/images/headshot.png',
     title: '',
     siteUrl: 'https://samuelzhang.ca/',
     socials: [

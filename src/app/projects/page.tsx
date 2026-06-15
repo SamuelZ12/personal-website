@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/breadcrumb'
 import { CONFIG } from '@/config'
 import Link from 'next/link'
+import type { CSSProperties } from 'react'
 
 export const metadata = {
     title: 'Projects',
@@ -19,14 +20,17 @@ const Projects = () => {
     return (
         <div>
             {/* Breadcrumb header */}
-            <div className='flex animate-slide-from-down-and-fade-1 items-start justify-between px-4'>
-                <Breadcrumb className='mb-4'>
+            <div
+                className='mb-8 flex animate-enter items-center justify-between px-4'
+                style={{ '--i': 0 } as CSSProperties}
+            >
+                <Breadcrumb>
                     <BreadcrumbList>
                         <BreadcrumbItem>
                             <BreadcrumbLink asChild>
                                 <Link
                                     href='/'
-                                    className='text-muted-foreground transition-colors duration-300 hover:text-foreground'
+                                    className='link-underline text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
                                 >
                                     Home
                                 </Link>
@@ -42,20 +46,24 @@ const Projects = () => {
             </div>
 
             {/* Minimal project list */}
-            <div className='animate-slide-from-down-and-fade-2 px-4'>
+            <div className='px-4'>
                 <ul className='space-y-3'>
                     {CONFIG.projects.map((project, idx) => (
-                        <li key={idx} className='group'>
+                        <li
+                            key={idx}
+                            className='group animate-enter'
+                            style={{ '--i': idx + 1 } as CSSProperties}
+                        >
                             <div className='flex items-center gap-2'>
                                 <span className='text-[15px] font-medium text-foreground/90'>
                                     {project.name}
                                 </span>
-                                <div className='flex items-center gap-1 opacity-60 transition-opacity duration-200 group-hover:opacity-100'>
+                                <div className='flex items-center gap-1 opacity-60 transition-opacity duration-200 focus-within:opacity-100 group-hover:opacity-100'>
                                     {project.github && (
                                         <Link
                                             href={project.github}
                                             target='_blank'
-                                            className='text-muted-foreground transition-colors duration-200 hover:text-foreground'
+                                            className='text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
                                             aria-label='GitHub'
                                         >
                                             <Icons.github className='size-3.5' />
@@ -65,7 +73,7 @@ const Projects = () => {
                                         <Link
                                             href={project.url}
                                             target='_blank'
-                                            className='text-muted-foreground transition-colors duration-200 hover:text-foreground'
+                                            className='text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
                                             aria-label='Visit'
                                         >
                                             <Icons.arrowUpRight className='size-3.5' />
@@ -73,7 +81,7 @@ const Projects = () => {
                                     )}
                                 </div>
                             </div>
-                            <p className='text-sm text-muted-foreground/70'>
+                            <p className='text-sm text-muted-foreground/80'>
                                 {project.description}
                             </p>
                         </li>
