@@ -8,6 +8,7 @@ import { Inter as FontSans } from 'next/font/google'
 import './globals.css'
 import Contact from '@/components/contact'
 import { ConsoleSignature } from '@/components/console-signature'
+import { EntranceRelease } from '@/components/entrance'
 import { GoogleAnalytics } from '@next/third-parties/google'
 
 const fontSans = FontSans({
@@ -49,6 +50,20 @@ export default function RootLayout({
                         name='google-site-verification'
                         content='kMkiYVJqqIhu8LsCDe8BTV0Juty1tXWM9ur8S3_eENg'
                     />
+                    {/* Arm the entrance cascade hidden before first paint. The
+                        release (enter-armed -> enter-go) happens after hydration
+                        in <EntranceRelease/>, so the animation clock starts at
+                        real paint time rather than before hydration — otherwise
+                        the short-delay top items settle during the cold-load
+                        hydration gap and only the lower items are seen animating.
+                        The timeout is a safety net: if hydration never runs,
+                        reveal the content anyway. No-JS and reduced-motion never
+                        arm and fall through to fully-visible content. */}
+                    <script
+                        dangerouslySetInnerHTML={{
+                            __html: `(function(){try{var d=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('enter-armed');setTimeout(function(){if(d.classList.contains('enter-armed'))d.classList.remove('enter-armed')},4000)}catch(e){}})();`,
+                        }}
+                    />
                 </head>
                 <body
                     className={cn(
@@ -62,6 +77,7 @@ export default function RootLayout({
                     )}
                     <Analytics />
                     <ConsoleSignature />
+                    <EntranceRelease />
                     <ThemeProvider
                         attribute='class'
                         defaultTheme='dark'

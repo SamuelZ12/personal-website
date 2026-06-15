@@ -118,20 +118,63 @@
         transition: transform 0.2s var(--ease-out-quint);
     }
     .link-underline:hover::after,
-    .group\/link:hover .link-underline::after {
+    .link-underline:focus-visible::after,
+    .group\/link:hover .link-underline::after,
+    .group\/link:focus-visible .link-underline::after {
         transform: scaleX(1);
     }
 }
 
 @layer utilities {
+    /* Page-load entrance. One keyframe, one curve; each element places itself in
+       the cascade with --i (its running index) so the lists settle in item by
+       item instead of arriving as a single block.
+
+       The animation is gated on two classes toggled by an inline script in
+       <head> (see layout.tsx) rather than living on .animate-enter directly.
+       Why: a CSS animation's clock starts at the first render — for SSR content
+       that's ~navigation, long before a cold dev compile or a hydration stall
+       lets the first real frame paint. With the clock pinned that early, the
+       short-delay items at the top burn down to their end state during the stall
+       and arrive already settled, so only the lower items are still moving when
+       pixels finally reach the screen. `enter-armed` holds everything hidden;
+       `enter-go` (added one frame after the DOM is ready) starts the cascade at
+       real paint time, so every item animates. With no JS or reduced motion,
+       neither class is set and content is simply visible. */
+    .enter-armed .animate-enter {
+        opacity: 0;
+    }
+    .enter-go .animate-enter {
+        animation: slide-from-down-and-fade 0.7s var(--ease-out-quint) both;
+        animation-delay: calc(0.1s + var(--i, 0) * 0.06s);
+    }
+
     /* Reduced motion support */
     @media (prefers-reduced-motion: reduce) {
         *,
         *::before,
         *::after {
             animation-duration: 0.01ms !important;
+            animation-delay: 0s !important;
             animation-iteration-count: 1 !important;
             transition-duration: 0.01ms !important;
         }
+    }
+}
+
+/* Defined here, not in tailwind.config.ts: Tailwind emits a @keyframes block
+   only when a theme.animation entry references it. .animate-enter is hand-written
+   CSS, so its keyframe must be hand-written too — otherwise Tailwind tree-shakes
+   it out and the entrance silently no-ops (every element jumps to its end state). */
+@keyframes slide-from-down-and-fade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(4px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0px);
     }
 }
