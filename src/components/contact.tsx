@@ -20,7 +20,7 @@ const Contact = () => {
             {/* Divider */}
             <div className='mx-4 mb-8 h-px bg-border' />
 
-            <div className='flex items-center justify-start px-4'>
+            <div className='flex items-center justify-between px-4'>
                 {/* Social Links */}
                 <div className='flex items-center gap-1'>
                     <TooltipProvider delayDuration={70}>
@@ -61,44 +61,45 @@ const Contact = () => {
                                 </Tooltip>
                             )
                         })}
-                        {/* Webring */}
-                        <div className='ml-1 flex items-center gap-0 text-muted-foreground'>
-                            <Link
-                                href='https://cs.uwatering.com/#samuelzhang.ca?nav=prev'
-                                aria-label='Previous site in the CS webring'
-                                className='group flex h-10 w-6 items-center justify-center transition duration-150 hover:text-foreground focus-visible:text-foreground active:scale-90'
-                            >
-                                <span className='inline-block transition-transform duration-200 group-hover:-translate-x-0.5 group-focus-visible:-translate-x-0.5'>
-                                    ←
-                                </span>
-                            </Link>
-                            <Link
-                                href='https://cs.uwatering.com/#samuelzhang.ca'
-                                target='_blank'
-                                className='flex h-10 w-6 items-center justify-center opacity-70 transition duration-150 hover:opacity-100 focus-visible:opacity-100 active:scale-90'
-                            >
-                                <img
-                                    src='https://cs.uwatering.com/icon.black.svg'
-                                    alt='CS Webring'
-                                    className='h-5 w-5 dark:hidden'
-                                />
-                                <img
-                                    src='https://cs.uwatering.com/icon.white.svg'
-                                    alt='CS Webring'
-                                    className='hidden h-5 w-5 dark:block'
-                                />
-                            </Link>
-                            <Link
-                                href='https://cs.uwatering.com/#samuelzhang.ca?nav=next'
-                                aria-label='Next site in the CS webring'
-                                className='group flex h-10 w-6 items-center justify-center transition duration-150 hover:text-foreground focus-visible:text-foreground active:scale-90'
-                            >
-                                <span className='inline-block transition-transform duration-200 group-hover:translate-x-0.5 group-focus-visible:translate-x-0.5'>
-                                    →
-                                </span>
-                            </Link>
-                        </div>
                     </TooltipProvider>
+                </div>
+
+                {/* Webring */}
+                <div className='flex items-center gap-0 text-muted-foreground'>
+                    <Link
+                        href='https://cs.uwatering.com/#samuelzhang.ca?nav=prev'
+                        aria-label='Previous site in the CS webring'
+                        className='group flex h-10 w-6 items-center justify-center transition duration-150 hover:text-foreground focus-visible:text-foreground active:scale-90'
+                    >
+                        <span className='inline-block transition-transform duration-200 group-hover:-translate-x-0.5 group-focus-visible:-translate-x-0.5'>
+                            ←
+                        </span>
+                    </Link>
+                    <Link
+                        href='https://cs.uwatering.com/#samuelzhang.ca'
+                        target='_blank'
+                        className='flex h-10 w-6 items-center justify-center opacity-70 transition duration-150 hover:opacity-100 focus-visible:opacity-100 active:scale-90'
+                    >
+                        <img
+                            src='https://cs.uwatering.com/icon.black.svg'
+                            alt='CS Webring'
+                            className='h-5 w-5 dark:hidden'
+                        />
+                        <img
+                            src='https://cs.uwatering.com/icon.white.svg'
+                            alt='CS Webring'
+                            className='hidden h-5 w-5 dark:block'
+                        />
+                    </Link>
+                    <Link
+                        href='https://cs.uwatering.com/#samuelzhang.ca?nav=next'
+                        aria-label='Next site in the CS webring'
+                        className='group flex h-10 w-6 items-center justify-center transition duration-150 hover:text-foreground focus-visible:text-foreground active:scale-90'
+                    >
+                        <span className='inline-block transition-transform duration-200 group-hover:translate-x-0.5 group-focus-visible:translate-x-0.5'>
+                            →
+                        </span>
+                    </Link>
                 </div>
             </div>
         </div>
