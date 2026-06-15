@@ -125,7 +125,7 @@
     }
 
     /* Live local clock in the header (see components/local-time.tsx). It mounts
-       client-side after the static "Toronto, Canada" line, so it arrives a beat
+       client-side after the static "Toronto" line, so it arrives a beat
        late on purpose — a quiet grace note rather than a layout glitch. */
     .animate-time-in {
         animation: time-fade-in 0.6s var(--ease-out-quint) 0.45s both;

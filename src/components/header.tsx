@@ -19,7 +19,7 @@ const Header = () => {
                     </p>
                 )}
                 <p className='text-sm text-muted-foreground/80'>
-                    Toronto, Canada
+                    Toronto
                     <LocalTime />
                 </p>
             </div>

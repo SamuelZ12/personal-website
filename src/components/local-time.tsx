@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 
 // Samuel's local time in Toronto, ticking once a second. The value can't be
-// known at build time, so the line ships as plain "Toronto, Canada" and the
+// known at build time, so the line ships as plain "Toronto" and the
 // clock fades in a beat after hydration — returning null until mounted keeps
 // SSR and the first client render in agreement.
 //
