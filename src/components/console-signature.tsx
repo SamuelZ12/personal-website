@@ -13,7 +13,7 @@ export function ConsoleSignature() {
         printed = true
 
         console.log(
-            '%cif u see this, msg me for ur prize :)',
+            '%cif u see this, msg me for ur prize :) 🌟',
             'font-size:12px;color:#9aa0a6;'
         )
     }, [])
