@@ -44,7 +44,7 @@ const Experience = () => {
                                     <span className='link-underline'>
                                         {item.company}
                                     </span>
-                                    <Icons.arrowUpRight className='ml-1 inline-block size-3 align-[-0.125em] opacity-0 transition-opacity duration-200 group-hover/link:opacity-100 group-focus-visible/link:opacity-100' />
+                                    <Icons.arrowUpRight className='ml-1 inline-block size-3 align-[-0.125em] opacity-0 transition-opacity duration-200 group-hover:opacity-50 group-hover/link:!opacity-100 group-focus-visible/link:!opacity-100' />
                                 </Link>
                             ) : (
                                 <span className='text-muted-foreground'>
