@@ -13,9 +13,7 @@ export function ConsoleSignature() {
         printed = true
 
         console.log(
-            '%cSamuel Zhang\n%cIf you’re reading this, we’ll probably get along.\n%c→ zhangsamuel12@gmail.com',
-            'font-weight:600;font-size:14px;',
-            'font-size:12px;color:#9aa0a6;',
+            '%cif u see this, msg me for ur prize :)',
             'font-size:12px;color:#9aa0a6;'
         )
     }, [])
