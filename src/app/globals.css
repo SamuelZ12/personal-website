@@ -175,6 +175,30 @@
     }
 }
 
+/* Tactile button press for the icon/text buttons (socials, theme toggle,
+   webring). It owns the whole transition so the hover tint keeps its quick
+   150ms cross-fade while the scale-down gets the asymmetry that makes a press
+   actually felt: it snaps in fast (90ms) so even a quick tap lands the dip, then
+   releases on the page's one curve, and that slow settle is the part the hand
+   reads as "click". Plain active:scale-90 was symmetric and slower than a real
+   click, so the dip never landed — present but imperceptible.
+
+   Deliberately outside @layer: the base <Button> ships `transition-colors` in
+   Tailwind's utilities layer, and un-layered rules outrank every layer, so this
+   wins the `transition-*` longhands without a specificity hack. The
+   reduced-motion override below is `!important` inside a layer, which still wins,
+   so the press correctly collapses to an instant scale when motion is reduced. */
+.btn-press {
+    transition-property: color, opacity, transform;
+    transition-timing-function: var(--ease-out-quint);
+    transition-duration: 150ms, 150ms, 350ms;
+}
+.btn-press:active {
+    transform: scale(0.9);
+    /* Fast in: shorten only the transform leg; color/opacity keep their 150ms. */
+    transition-duration: 150ms, 150ms, 90ms;
+}
+
 /* Defined here, not in tailwind.config.ts: Tailwind emits a @keyframes block
    only when a theme.animation entry references it. .animate-enter is hand-written
    CSS, so its keyframe must be hand-written too — otherwise Tailwind tree-shakes

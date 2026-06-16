@@ -45,7 +45,7 @@ export function CopyEmail({ href, label }: CopyEmailProps) {
                     <Button
                         asChild
                         variant='ghost'
-                        className='size-10 p-0 text-muted-foreground transition duration-150 hover:text-foreground focus-visible:text-foreground active:scale-90'
+                        className='size-10 p-0 text-muted-foreground btn-press hover:text-foreground focus-visible:text-foreground'
                     >
                         {/* Plain anchor, not next/link: a mailto: must reach the
                             browser's native handler. next/link intercepts the click

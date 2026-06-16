@@ -41,7 +41,7 @@ const Contact = () => {
                                         <Button
                                             asChild
                                             variant='ghost'
-                                            className='size-10 p-0 text-muted-foreground transition duration-150 hover:text-foreground focus-visible:text-foreground active:scale-90'
+                                            className='size-10 p-0 text-muted-foreground btn-press hover:text-foreground focus-visible:text-foreground'
                                         >
                                             <Link
                                                 href={social.url}
@@ -69,7 +69,7 @@ const Contact = () => {
                     <Link
                         href='https://cs.uwatering.com/#samuelzhang.ca?nav=prev'
                         aria-label='Previous site in the CS webring'
-                        className='group flex h-10 w-6 items-center justify-center transition duration-150 hover:text-foreground focus-visible:text-foreground active:scale-90'
+                        className='group flex h-10 w-6 items-center justify-center btn-press hover:text-foreground focus-visible:text-foreground'
                     >
                         <span className='inline-block transition-transform duration-200 group-hover:-translate-x-0.5 group-focus-visible:-translate-x-0.5'>
                             ←
@@ -78,7 +78,7 @@ const Contact = () => {
                     <Link
                         href='https://cs.uwatering.com/#samuelzhang.ca'
                         target='_blank'
-                        className='flex h-10 w-6 items-center justify-center opacity-70 transition duration-150 hover:opacity-100 focus-visible:opacity-100 active:scale-90'
+                        className='flex h-10 w-6 items-center justify-center opacity-70 btn-press hover:opacity-100 focus-visible:opacity-100'
                     >
                         <img
                             src='https://cs.uwatering.com/icon.black.svg'
@@ -94,7 +94,7 @@ const Contact = () => {
                     <Link
                         href='https://cs.uwatering.com/#samuelzhang.ca?nav=next'
                         aria-label='Next site in the CS webring'
-                        className='group flex h-10 w-6 items-center justify-center transition duration-150 hover:text-foreground focus-visible:text-foreground active:scale-90'
+                        className='group flex h-10 w-6 items-center justify-center btn-press hover:text-foreground focus-visible:text-foreground'
                     >
                         <span className='inline-block transition-transform duration-200 group-hover:translate-x-0.5 group-focus-visible:translate-x-0.5'>
                             →

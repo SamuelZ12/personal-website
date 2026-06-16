@@ -21,7 +21,7 @@ export function ModeToggle() {
     return (
         <Button
             variant='ghost'
-            className='size-10 p-0 text-muted-foreground transition duration-150 hover:text-foreground focus-visible:text-foreground active:scale-90'
+            className='size-10 p-0 text-muted-foreground btn-press hover:text-foreground focus-visible:text-foreground'
             onClick={toggle}
         >
             <span
