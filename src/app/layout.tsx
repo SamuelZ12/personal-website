@@ -85,7 +85,7 @@ export default function RootLayout({
                     <EntranceRelease />
                     <ThemeProvider
                         attribute='class'
-                        defaultTheme='dark'
+                        defaultTheme='system'
                         enableSystem
                         disableTransitionOnChange
                     >
