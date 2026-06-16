@@ -5,6 +5,13 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { useTheme } from 'next-themes'
 import { useState } from 'react'
+import { flushSync } from 'react-dom'
+
+// document.startViewTransition is newer than the installed TS DOM lib; type it
+// narrowly here rather than reaching for a global augmentation.
+type DocumentWithViewTransition = Document & {
+    startViewTransition?: (callback: () => void) => unknown
+}
 
 export function ModeToggle() {
     const { setTheme, resolvedTheme } = useTheme()
@@ -14,8 +21,30 @@ export function ModeToggle() {
     const [spins, setSpins] = useState(0)
 
     const toggle = () => {
-        setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
+        const next = resolvedTheme === 'dark' ? 'light' : 'dark'
         setSpins((n) => n + 1)
+
+        const doc = document as DocumentWithViewTransition
+        const reduceMotion = window.matchMedia(
+            '(prefers-reduced-motion: reduce)'
+        ).matches
+
+        // No View Transitions support, or the visitor asked for less motion:
+        // fall through to next-themes' instant swap. Its disableTransitionOnChange
+        // keeps that hard cut clean — the icon spin still plays.
+        if (reduceMotion || typeof doc.startViewTransition !== 'function') {
+            setTheme(next)
+            return
+        }
+
+        // Crossfade the whole document old -> new on the page's one curve (see
+        // ::view-transition rules in globals.css). next-themes applies the theme
+        // class in a passive effect, so flushSync forces it to land *inside* this
+        // callback; without it the View Transition snapshots the new frame before
+        // the class flips and animates between two identical states.
+        doc.startViewTransition(() => {
+            flushSync(() => setTheme(next))
+        })
     }
 
     return (

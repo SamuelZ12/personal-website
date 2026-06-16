@@ -199,6 +199,30 @@
     transition-duration: 150ms, 150ms, 90ms;
 }
 
+/* Theme switch crossfade. The toggle (components/mode-toggle.tsx) runs the theme
+   change inside a View Transition, so the whole document settles from the old
+   palette to the new one over one short, calm beat instead of hard-cutting —
+   the single interaction whose motion used to stop at the spinning icon. Tuned
+   to the page's one curve. The default root cross-fade already dissolves the old
+   snapshot over the (opaque) new page beneath; we only set its tempo here.
+
+   The toggle skips the transition entirely under reduced motion and on browsers
+   without the API, where this falls through to next-themes' instant swap. The
+   media guard below is belt-and-suspenders for any other path that might start a
+   root transition — it collapses the crossfade to that same instant swap. */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 220ms;
+    animation-timing-function: var(--ease-out-quint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation: none !important;
+    }
+}
+
 /* Defined here, not in tailwind.config.ts: Tailwind emits a @keyframes block
    only when a theme.animation entry references it. .animate-enter is hand-written
    CSS, so its keyframe must be hand-written too — otherwise Tailwind tree-shakes
