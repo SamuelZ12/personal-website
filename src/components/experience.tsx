@@ -79,12 +79,12 @@ const Experience = () => {
                                 <span className='text-[15px] font-medium text-foreground/90'>
                                     {project.name}
                                 </span>
-                                <div className='flex items-center gap-1 opacity-60 transition-opacity duration-200 focus-within:opacity-100 group-hover:opacity-100'>
+                                <div className='touch-actions flex items-center gap-1 opacity-60 transition-opacity duration-200 focus-within:opacity-100 group-hover:opacity-100'>
                                     {project.github && (
                                         <Link
                                             href={project.github}
                                             target='_blank'
-                                            className='text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
+                                            className='touch-target btn-press inline-flex items-center justify-center text-muted-foreground hover:text-foreground focus-visible:text-foreground'
                                             aria-label='GitHub'
                                         >
                                             <Icons.github className='size-3.5' />
@@ -94,7 +94,7 @@ const Experience = () => {
                                         <Link
                                             href={project.url}
                                             target='_blank'
-                                            className='text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
+                                            className='touch-target btn-press inline-flex items-center justify-center text-muted-foreground hover:text-foreground focus-visible:text-foreground'
                                             aria-label='Visit'
                                         >
                                             <Icons.arrowUpRight className='size-3.5' />

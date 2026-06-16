@@ -20,7 +20,7 @@ const Contact = () => {
             {/* Divider */}
             <div className='mx-4 mb-4 h-px bg-border' />
 
-            <div className='flex items-center justify-between px-4'>
+            <div className='flex flex-wrap items-center justify-between gap-y-2 px-4'>
                 {/* Social Links */}
                 <div className='flex items-center gap-1'>
                     <TooltipProvider delayDuration={70}>
@@ -69,7 +69,7 @@ const Contact = () => {
                     <Link
                         href='https://cs.uwatering.com/#samuelzhang.ca?nav=prev'
                         aria-label='Previous site in the CS webring'
-                        className='group flex h-10 w-6 items-center justify-center btn-press hover:text-foreground focus-visible:text-foreground'
+                        className='group touch-target flex h-10 w-6 items-center justify-center btn-press hover:text-foreground focus-visible:text-foreground'
                     >
                         <span className='inline-block transition-transform duration-200 group-hover:-translate-x-0.5 group-focus-visible:-translate-x-0.5'>
                             ←
@@ -78,7 +78,7 @@ const Contact = () => {
                     <Link
                         href='https://cs.uwatering.com/#samuelzhang.ca'
                         target='_blank'
-                        className='flex h-10 w-6 items-center justify-center opacity-70 btn-press hover:opacity-100 focus-visible:opacity-100'
+                        className='touch-target flex h-10 w-6 items-center justify-center opacity-70 btn-press hover:opacity-100 focus-visible:opacity-100'
                     >
                         <img
                             src='https://cs.uwatering.com/icon.black.svg'
@@ -94,7 +94,7 @@ const Contact = () => {
                     <Link
                         href='https://cs.uwatering.com/#samuelzhang.ca?nav=next'
                         aria-label='Next site in the CS webring'
-                        className='group flex h-10 w-6 items-center justify-center btn-press hover:text-foreground focus-visible:text-foreground'
+                        className='group touch-target flex h-10 w-6 items-center justify-center btn-press hover:text-foreground focus-visible:text-foreground'
                     >
                         <span className='inline-block transition-transform duration-200 group-hover:translate-x-0.5 group-focus-visible:translate-x-0.5'>
                             →

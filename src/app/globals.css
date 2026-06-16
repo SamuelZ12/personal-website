@@ -91,6 +91,15 @@
         @apply bg-background text-foreground;
     }
 
+    /* Custom-shaped icon and text links carry their own hover / focus / press
+       feedback (see .btn-press); the browser's default grey tap flash is a
+       rounded rectangle that ignores their real geometry and reads as cheap
+       against the monochrome design. Drop it — on touch, the press scale and the
+       navigation itself are the feedback. */
+    html {
+        -webkit-tap-highlight-color: transparent;
+    }
+
     /* Selection color with accent */
     ::selection {
         background: hsl(var(--accent-primary) / 0.18);
@@ -197,6 +206,29 @@
     transform: scale(0.9);
     /* Fast in: shorten only the transform leg; color/opacity keep their 150ms. */
     transition-duration: 150ms, 150ms, 90ms;
+}
+
+/* Touch ergonomics. The page is tuned for a precise cursor: 14px project action
+   icons that wait at 60% and brighten on row-hover, a 24px-wide webring arrow.
+   But PRODUCT.md says most visits are mobile, where there is no hover to reveal
+   an affordance and no pixel-accurate cursor to land a 14px glyph. These two
+   rules engage only on a coarse pointer / no-hover device, so the desktop design
+   is byte-for-byte unchanged — and there the affordances rest at full strength
+   while every tap target grows to the 44px Apple-HIG floor (the glyph keeps its
+   design size; only the hit box grows, via min-* over the smaller width/height).
+
+   Un-layered like .btn-press above so the opacity reset outranks Tailwind's
+   `opacity-60` base utility without a specificity hack. The hover-reveal utility
+   (`group-hover:opacity-100`) has higher specificity but can never match on a
+   device that has no hover, so it doesn't fight this. */
+@media (hover: none), (pointer: coarse) {
+    .touch-actions {
+        opacity: 1;
+    }
+    .touch-target {
+        min-width: 44px;
+        min-height: 44px;
+    }
 }
 
 /* Theme switch crossfade. The toggle (components/mode-toggle.tsx) runs the theme
