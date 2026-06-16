@@ -4,13 +4,18 @@ import { cn } from '@/lib/utils'
 import { HighlightInit } from '@highlight-run/next/client'
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata } from 'next'
-import { Inter as FontSans } from 'next/font/google'
+import { Hanken_Grotesk as FontSans } from 'next/font/google'
 import './globals.css'
 import Contact from '@/components/contact'
 import { ConsoleSignature } from '@/components/console-signature'
 import { EntranceRelease } from '@/components/entrance'
 import { GoogleAnalytics } from '@next/third-parties/google'
 
+// A warm humanist grotesque rather than the Inter template default: precise
+// letterforms, but rounder and more human — the brand voice's "warm and human"
+// that Inter's neutral grotesque misses. Variable, so the three weights in use
+// (400 body / 500 labels / 700 name) ship in a single file, and next/font
+// self-hosts it with a metric-matched fallback so the swap costs no layout shift.
 const fontSans = FontSans({
     subsets: ['latin'],
     variable: '--font-sans',
