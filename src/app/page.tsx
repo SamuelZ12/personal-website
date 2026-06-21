@@ -13,7 +13,7 @@ export default function Home() {
                 className='animate-enter px-4'
                 style={{ '--i': 1 } as CSSProperties}
             >
-                <p className='text-[15px] leading-relaxed text-muted-foreground/80'>
+                <p className='text-pretty text-[15px] leading-relaxed text-muted-foreground/80'>
                     {CONFIG.description}
                 </p>
             </div>

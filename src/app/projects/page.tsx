@@ -81,7 +81,7 @@ const Projects = () => {
                                     )}
                                 </div>
                             </div>
-                            <p className='text-sm text-muted-foreground/80'>
+                            <p className='text-pretty text-sm text-muted-foreground/80'>
                                 {project.description}
                             </p>
                         </li>

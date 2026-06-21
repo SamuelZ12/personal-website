@@ -22,7 +22,7 @@ export default function NotFound() {
 
             <div className='px-4'>
                 <p
-                    className='animate-enter text-[15px] leading-relaxed text-muted-foreground/80'
+                    className='animate-enter text-pretty text-[15px] leading-relaxed text-muted-foreground/80'
                     style={{ '--i': 1 } as CSSProperties}
                 >
                     This page doesn&rsquo;t exist. The odds were never great.
