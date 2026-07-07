@@ -70,10 +70,22 @@ export const CONFIG: Config = {
             github: 'https://github.com/SamuelZ12/longcut'
         },
         {
+            name: 'Reposeek',
+            description: 'Repo discovery for coding agents. Find the repo to build on before you code',
+            url: 'https://reposeek.ai',
+            featured: true
+        },
+        {
             name: 'Screen Scribe',
             description: 'macOS app that converts screen captures into text (LaTeX, Markdown, etc.)',
-            featured: true,
+            featured: false,
             github: 'https://github.com/samuelz12/screen-scribe'
+        },
+        {
+            name: 'prtokens',
+            description: 'See how much your PR costs in LLM tokens, attributed from agent transcripts',
+            featured: false,
+            github: 'https://github.com/SamuelZ12/prtokens'
         },
         {
             name: '2048 AI',
