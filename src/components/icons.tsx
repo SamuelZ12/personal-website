@@ -1,4 +1,4 @@
-import { ArrowUpRight, type LucideProps, Sun } from 'lucide-react'
+import { ArrowUpRight, Lock, type LucideProps, Sun } from 'lucide-react'
 
 export const Icons = {
     github: (props: LucideProps) => (
@@ -78,4 +78,5 @@ export const Icons = {
         </svg>
     ),
     arrowUpRight: ArrowUpRight,
+    lock: Lock,
 }

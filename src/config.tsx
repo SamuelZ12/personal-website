@@ -16,6 +16,7 @@ type Config = {
         description: string
         url?: string
         github?: string
+        email?: string
         featured: boolean
     }[]
     experience: {
@@ -82,10 +83,22 @@ export const CONFIG: Config = {
             github: 'https://github.com/samuelz12/screen-scribe'
         },
         {
+            name: 'Deeppling',
+            description: 'Rippling-style autonomous payroll agent. Won $2K at Unlink x Monad hackathon',
+            featured: false,
+            github: 'https://github.com/DerrickHa/deeppling'
+        },
+        {
             name: 'prtokens',
             description: 'See how much your PR costs in LLM tokens, attributed from agent transcripts',
             featured: false,
             github: 'https://github.com/SamuelZ12/prtokens'
+        },
+        {
+            name: 'vm',
+            description: 'Vim-like modal text editor in C++20 with syntax highlighting and macros',
+            featured: false,
+            email: 'mailto:zhangsamuel12@gmail.com?subject=vm%20repo%20access'
         },
         {
             name: '2048 AI',

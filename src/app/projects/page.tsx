@@ -8,6 +8,12 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from '@/components/ui/tooltip'
 import { CONFIG } from '@/config'
 import Link from 'next/link'
 import type { CSSProperties } from 'react'
@@ -78,6 +84,27 @@ const Projects = () => {
                                         >
                                             <Icons.arrowUpRight className='size-3.5' />
                                         </Link>
+                                    )}
+                                    {project.email && (
+                                        <TooltipProvider delayDuration={70}>
+                                            <Tooltip>
+                                                <TooltipTrigger asChild>
+                                                    <Link
+                                                        href={project.email}
+                                                        className='touch-target btn-press inline-flex items-center justify-center text-muted-foreground hover:text-foreground focus-visible:text-foreground'
+                                                        aria-label='Email for repo'
+                                                    >
+                                                        <Icons.lock className='size-3.5' />
+                                                    </Link>
+                                                </TooltipTrigger>
+                                                <TooltipContent
+                                                    side='top'
+                                                    className='border-border bg-card text-xs'
+                                                >
+                                                    Email for repo
+                                                </TooltipContent>
+                                            </Tooltip>
+                                        </TooltipProvider>
                                     )}
                                 </div>
                             </div>
