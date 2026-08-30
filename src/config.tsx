@@ -74,12 +74,12 @@ export const CONFIG: Config = {
             name: 'Reposeek',
             description: 'Repo discovery for coding agents. Find the repo to build on before you code',
             url: 'https://reposeek.ai',
-            featured: true
+            featured: false
         },
         {
             name: 'Screen Scribe',
             description: 'macOS app that converts screen captures into text (LaTeX, Markdown, etc.)',
-            featured: false,
+            featured: true,
             github: 'https://github.com/samuelz12/screen-scribe'
         },
         {
@@ -118,7 +118,12 @@ export const CONFIG: Config = {
     experience: {
         work: [
             {
-                role: 'Engineering',
+                role: 'Software Engineer',
+                company: 'OpenArt',
+                link: 'https://openart.ai/'
+            },
+            {
+                role: 'Software Engineer',
                 company: 'Memories.ai',
                 link: 'https://memories.ai'
             },
