@@ -52,14 +52,13 @@ const Projects = () => {
             </div>
 
             {/* Minimal project list */}
-            <div className='px-4'>
+            <div
+                className='animate-enter px-4'
+                style={{ '--i': 1 } as CSSProperties}
+            >
                 <ul className='space-y-3'>
                     {CONFIG.projects.map((project, idx) => (
-                        <li
-                            key={idx}
-                            className='group animate-enter'
-                            style={{ '--i': idx + 1 } as CSSProperties}
-                        >
+                        <li key={idx} className='group'>
                             <div className='flex items-center gap-2'>
                                 <span className='text-[15px] font-medium text-foreground/90'>
                                     {project.name}

@@ -15,7 +15,7 @@ const Contact = () => {
     return (
         <div
             className='mt-8 animate-enter'
-            style={{ '--i': 11 } as CSSProperties}
+            style={{ '--i': 4 } as CSSProperties}
         >
             {/* Divider */}
             <div className='mx-4 mb-4 h-px bg-border' />

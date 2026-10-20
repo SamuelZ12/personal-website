@@ -148,9 +148,10 @@
 }
 
 @layer utilities {
-    /* Page-load entrance. One keyframe, one curve; each element places itself in
-       the cascade with --i (its running index) so the lists settle in item by
-       item instead of arriving as a single block.
+    /* Page-load entrance. One keyframe, one curve, deliberately quiet: a short
+       fade with a few pixels of rise, staggered by section (--i is the section's
+       place in the sequence) so the page comes into focus top to bottom without
+       assembling itself row by row. The whole home page settles in ~0.7s.
 
        The animation is gated on two classes toggled by an inline script in
        <head> (see layout.tsx) rather than living on .animate-enter directly.
@@ -167,8 +168,8 @@
         opacity: 0;
     }
     .enter-go .animate-enter {
-        animation: slide-from-down-and-fade 0.7s var(--ease-out-quint) both;
-        animation-delay: calc(0.1s + var(--i, 0) * 0.06s);
+        animation: slide-from-down-and-fade 0.45s var(--ease-out-quint) both;
+        animation-delay: calc(0.05s + var(--i, 0) * 0.05s);
     }
 
     /* Reduced motion support */
@@ -260,15 +261,13 @@
    CSS, so its keyframe must be hand-written too — otherwise Tailwind tree-shakes
    it out and the entrance silently no-ops (every element jumps to its end state). */
 @keyframes slide-from-down-and-fade {
-    0% {
+    from {
         opacity: 0;
-        transform: translateY(20px);
-        filter: blur(4px);
+        transform: translateY(6px);
     }
-    100% {
+    to {
         opacity: 1;
         transform: translateY(0);
-        filter: blur(0px);
     }
 }
 

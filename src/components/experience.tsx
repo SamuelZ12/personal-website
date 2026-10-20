@@ -7,31 +7,24 @@ const Experience = () => {
     const work = CONFIG.experience.work
     const featured = CONFIG.projects.filter((p) => p.featured)
 
-    // Running index in the page-load cascade (header = 0, bio = 1). Each row
-    // places itself so the lists settle in one item at a time rather than as a
-    // single block. Contact (in layout) closes the sequence at index 11.
-    const workHeading = 2
-    const projectsHeading = workHeading + 1 + work.length
-    const viewAll = projectsHeading + 1 + featured.length
+    // Place in the page-load cascade (header = 0, bio = 1). Each subsection
+    // enters as one block; Contact (in layout) closes the sequence at index 4.
 
     return (
         <section className='space-y-8 px-4'>
             {/* Work subsection */}
-            <div className='space-y-2'>
-                <h3
-                    className='animate-enter text-xs font-medium uppercase tracking-wider text-muted-foreground/80'
-                    style={{ '--i': workHeading } as CSSProperties}
-                >
+            <div
+                className='animate-enter space-y-2'
+                style={{ '--i': 2 } as CSSProperties}
+            >
+                <h3 className='text-xs font-medium uppercase tracking-wider text-muted-foreground/80'>
                     Work
                 </h3>
                 <ul className='space-y-1.5'>
                     {work.map((item, idx) => (
                         <li
                             key={idx}
-                            className='group animate-enter text-[15px] leading-relaxed'
-                            style={
-                                { '--i': workHeading + 1 + idx } as CSSProperties
-                            }
+                            className='group text-[15px] leading-relaxed'
                         >
                             <span className='text-foreground/90'>{item.role}</span>
                             <span className='text-muted-foreground/80'> @ </span>
@@ -57,24 +50,16 @@ const Experience = () => {
             </div>
 
             {/* Projects subsection */}
-            <div className='space-y-2'>
-                <h3
-                    className='animate-enter text-xs font-medium uppercase tracking-wider text-muted-foreground/80'
-                    style={{ '--i': projectsHeading } as CSSProperties}
-                >
+            <div
+                className='animate-enter space-y-2'
+                style={{ '--i': 3 } as CSSProperties}
+            >
+                <h3 className='text-xs font-medium uppercase tracking-wider text-muted-foreground/80'>
                     Projects
                 </h3>
                 <ul className='space-y-3'>
                     {featured.map((project, idx) => (
-                        <li
-                            key={idx}
-                            className='group animate-enter'
-                            style={
-                                {
-                                    '--i': projectsHeading + 1 + idx,
-                                } as CSSProperties
-                            }
-                        >
+                        <li key={idx} className='group'>
                             <div className='flex items-center gap-2'>
                                 <span className='text-[15px] font-medium text-foreground/90'>
                                     {project.name}
@@ -110,8 +95,7 @@ const Experience = () => {
                 </ul>
                 <Link
                     href='/projects'
-                    className='group/link mt-2 inline-flex animate-enter items-center gap-1.5 text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
-                    style={{ '--i': viewAll } as CSSProperties}
+                    className='group/link mt-2 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
                 >
                     <span className='link-underline'>View all projects</span>
                     <Icons.arrowUpRight className='size-3.5 transition-transform duration-200 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-focus-visible/link:-translate-y-0.5 group-focus-visible/link:translate-x-0.5' />
