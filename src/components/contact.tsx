@@ -9,14 +9,10 @@ import {
 } from '@/components/ui/tooltip'
 import { CONFIG } from '@/config'
 import Link from 'next/link'
-import type { CSSProperties } from 'react'
 
 const Contact = () => {
     return (
-        <div
-            className='mt-8 animate-enter'
-            style={{ '--i': 4 } as CSSProperties}
-        >
+        <div className='mt-8 animate-enter'>
             {/* Divider */}
             <div className='mx-4 mb-4 h-px bg-border' />
 

@@ -16,7 +16,6 @@ import {
 } from '@/components/ui/tooltip'
 import { CONFIG } from '@/config'
 import Link from 'next/link'
-import type { CSSProperties } from 'react'
 
 export const metadata = {
     title: 'Projects',
@@ -26,10 +25,7 @@ const Projects = () => {
     return (
         <div>
             {/* Breadcrumb header */}
-            <div
-                className='mb-8 flex animate-enter items-center justify-between px-4'
-                style={{ '--i': 0 } as CSSProperties}
-            >
+            <div className='mb-8 flex animate-enter items-center justify-between px-4'>
                 <Breadcrumb>
                     <BreadcrumbList>
                         <BreadcrumbItem>
@@ -52,10 +48,7 @@ const Projects = () => {
             </div>
 
             {/* Minimal project list */}
-            <div
-                className='animate-enter px-4'
-                style={{ '--i': 1 } as CSSProperties}
-            >
+            <div className='animate-enter px-4'>
                 <ul className='space-y-3'>
                     {CONFIG.projects.map((project, idx) => (
                         <li key={idx} className='group'>

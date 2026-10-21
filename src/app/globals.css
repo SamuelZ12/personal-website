@@ -146,12 +146,6 @@
         transform: scaleX(1);
     }
 
-    /* Live local clock in the header (see components/local-time.tsx). It mounts
-       client-side after the static "Toronto" line, so it arrives a beat
-       late on purpose — a quiet grace note rather than a layout glitch. */
-    .animate-time-in {
-        animation: time-fade-in 0.6s var(--ease-out-quint) 0.45s both;
-    }
     /* The colons breathe at ~1Hz: the universal "running clock" cue, so the
        seconds read as live without a separate status dot. Reduced motion neutralizes
        the loop via the global override below (lands at full opacity, static). */
@@ -161,28 +155,27 @@
 }
 
 @layer utilities {
-    /* Page-load entrance. One keyframe, one curve, deliberately quiet: a short
-       fade with a few pixels of rise, staggered by section (--i is the section's
-       place in the sequence) so the page comes into focus top to bottom without
-       assembling itself row by row. The whole home page settles in ~0.7s.
+    /* Page-load entrance. Every .animate-enter block runs the same opacity-only
+       fade on the same clock, so the page arrives as one quiet piece instead of
+       assembling itself section by section: no rise, no stagger. 1.2s with the
+       plain `ease` curve reads as slow and deliberate while the text is already
+       legible around the halfway mark; much longer and a mostly-mobile visitor
+       is left waiting on a page they came to skim.
 
        The animation is gated on two classes toggled by an inline script in
        <head> (see layout.tsx) rather than living on .animate-enter directly.
        Why: a CSS animation's clock starts at the first render — for SSR content
        that's ~navigation, long before a cold dev compile or a hydration stall
        lets the first real frame paint. With the clock pinned that early, the
-       short-delay items at the top burn down to their end state during the stall
-       and arrive already settled, so only the lower items are still moving when
-       pixels finally reach the screen. `enter-armed` holds everything hidden;
-       `enter-go` (added one frame after the DOM is ready) starts the cascade at
-       real paint time, so every item animates. With no JS or reduced motion,
-       neither class is set and content is simply visible. */
+       fade burns down during the stall and the page arrives half-faded or
+       already settled. `enter-armed` holds everything hidden; `enter-go` (added
+       once hydration has painted) starts the fade at real paint time. With no JS
+       or reduced motion, neither class is set and content is simply visible. */
     .enter-armed .animate-enter {
         opacity: 0;
     }
     .enter-go .animate-enter {
-        animation: slide-from-down-and-fade 0.45s var(--ease-out-quint) both;
-        animation-delay: calc(0.05s + var(--i, 0) * 0.05s);
+        animation: page-fade-in 1.2s ease both;
     }
 
     /* Reduced motion support */
@@ -287,22 +280,7 @@
    only when a theme.animation entry references it. .animate-enter is hand-written
    CSS, so its keyframe must be hand-written too — otherwise Tailwind tree-shakes
    it out and the entrance silently no-ops (every element jumps to its end state). */
-@keyframes slide-from-down-and-fade {
-    from {
-        opacity: 0;
-        transform: translateY(6px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Hand-written like the entrance keyframe above, and for the same reason:
-   Tailwind only emits @keyframes that a theme.animation entry references, so a
-   keyframe driven by hand-written CSS must live outside the @layer to survive
-   tree-shaking. */
-@keyframes time-fade-in {
+@keyframes page-fade-in {
     from {
         opacity: 0;
     }

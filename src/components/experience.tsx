@@ -1,22 +1,14 @@
 import { Icons } from '@/components/icons'
 import { CONFIG } from '@/config'
 import Link from 'next/link'
-import type { CSSProperties } from 'react'
 
 const Experience = () => {
     const work = CONFIG.experience.work
     const featured = CONFIG.projects.filter((p) => p.featured)
-
-    // Place in the page-load cascade (header = 0, bio = 1). Each subsection
-    // enters as one block; Contact (in layout) closes the sequence at index 4.
-
     return (
         <section className='space-y-8 px-4'>
             {/* Work subsection */}
-            <div
-                className='animate-enter space-y-2'
-                style={{ '--i': 2 } as CSSProperties}
-            >
+            <div className='animate-enter space-y-2'>
                 <h2 className='text-xs font-medium uppercase tracking-wider text-muted-foreground/80'>
                     Work
                 </h2>
@@ -50,10 +42,7 @@ const Experience = () => {
             </div>
 
             {/* Projects subsection */}
-            <div
-                className='animate-enter space-y-2'
-                style={{ '--i': 3 } as CSSProperties}
-            >
+            <div className='animate-enter space-y-2'>
                 <h2 className='text-xs font-medium uppercase tracking-wider text-muted-foreground/80'>
                     Projects
                 </h2>

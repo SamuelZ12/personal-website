@@ -1,7 +1,6 @@
 import Experience from '@/components/experience'
 import Header from '@/components/header'
 import { CONFIG } from '@/config'
-import type { CSSProperties } from 'react'
 
 export default function Home() {
     return (
@@ -9,10 +8,7 @@ export default function Home() {
             <Header />
 
             {/* Bio section */}
-            <div
-                className='animate-enter px-4'
-                style={{ '--i': 1 } as CSSProperties}
-            >
+            <div className='animate-enter px-4'>
                 <p className='text-pretty text-base leading-relaxed text-muted-foreground/80'>
                     {CONFIG.description}
                 </p>

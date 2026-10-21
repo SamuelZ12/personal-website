@@ -55,12 +55,12 @@ export default function RootLayout({
                         name='google-site-verification'
                         content='kMkiYVJqqIhu8LsCDe8BTV0Juty1tXWM9ur8S3_eENg'
                     />
-                    {/* Arm the entrance cascade hidden before first paint. The
+                    {/* Arm the entrance fade hidden before first paint. The
                         release (enter-armed -> enter-go) happens after hydration
                         in <EntranceRelease/>, so the animation clock starts at
                         real paint time rather than before hydration — otherwise
-                        the short-delay top items settle during the cold-load
-                        hydration gap and only the lower items are seen animating.
+                        the fade burns down during the cold-load hydration gap
+                        and the page arrives already half-faded.
                         The timeout is a safety net: if hydration never runs,
                         reveal the content anyway. No-JS and reduced-motion never
                         arm and fall through to fully-visible content. */}

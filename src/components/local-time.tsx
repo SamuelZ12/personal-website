@@ -3,9 +3,11 @@
 import { useEffect, useState } from 'react'
 
 // Samuel's local time in Toronto, ticking once a second. The value can't be
-// known at build time, so the line ships as plain "Toronto" and the
-// clock fades in a beat after hydration — returning null until mounted keeps
-// SSR and the first client render in agreement.
+// known at build time, so the line ships as plain "Toronto" and the clock
+// mounts right after hydration — while the header is still at the start of the
+// page fade, so it arrives inside that fade instead of popping in on its own.
+// Returning null until mounted keeps SSR and the first client render in
+// agreement.
 //
 // The colons breathe at ~1Hz (see .time-colon in globals.css): the universal
 // "this is a running clock" cue, so the liveness reads without a separate
@@ -36,7 +38,7 @@ export function LocalTime() {
         <span
             aria-hidden='true'
             // tabular-nums so ticking digits never shift the line's width.
-            className='animate-time-in tabular-nums'
+            className='tabular-nums'
         >
             {' · '}
             {parts.map((part, i) => {
