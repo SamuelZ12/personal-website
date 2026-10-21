@@ -17,14 +17,14 @@ const Experience = () => {
                 className='animate-enter space-y-2'
                 style={{ '--i': 2 } as CSSProperties}
             >
-                <h3 className='text-xs font-medium uppercase tracking-wider text-muted-foreground/80'>
+                <h2 className='text-xs font-medium uppercase tracking-wider text-muted-foreground/80'>
                     Work
-                </h3>
+                </h2>
                 <ul className='space-y-1.5'>
                     {work.map((item, idx) => (
                         <li
                             key={idx}
-                            className='group text-[15px] leading-relaxed'
+                            className='group text-base leading-relaxed'
                         >
                             <span className='text-foreground/90'>{item.role}</span>
                             <span className='text-muted-foreground/80'> @ </span>
@@ -32,15 +32,15 @@ const Experience = () => {
                                 <Link
                                     href={item.link}
                                     target='_blank'
-                                    className='group/link text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
+                                    className='group/link whitespace-nowrap text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
                                 >
                                     <span className='link-underline'>
                                         {item.company}
                                     </span>
-                                    <Icons.arrowUpRight className='ml-1 inline-block size-3 align-[-0.125em] opacity-0 transition-opacity duration-200 group-hover:opacity-50 group-hover/link:!opacity-100 group-focus-visible/link:!opacity-100' />
+                                    <Icons.arrowUpRight className='touch-actions ml-1 inline-block size-3 align-[-0.125em] opacity-0 transition-opacity duration-200 group-hover:opacity-50 group-hover/link:!opacity-100 group-focus-visible/link:!opacity-100' />
                                 </Link>
                             ) : (
-                                <span className='text-muted-foreground'>
+                                <span className='whitespace-nowrap text-muted-foreground'>
                                     {item.company}
                                 </span>
                             )}
@@ -54,17 +54,17 @@ const Experience = () => {
                 className='animate-enter space-y-2'
                 style={{ '--i': 3 } as CSSProperties}
             >
-                <h3 className='text-xs font-medium uppercase tracking-wider text-muted-foreground/80'>
+                <h2 className='text-xs font-medium uppercase tracking-wider text-muted-foreground/80'>
                     Projects
-                </h3>
+                </h2>
                 <ul className='space-y-3'>
                     {featured.map((project, idx) => (
                         <li key={idx} className='group'>
                             <div className='flex items-center gap-2'>
-                                <span className='text-[15px] font-medium text-foreground/90'>
+                                <span className='text-base font-medium text-foreground/90'>
                                     {project.name}
                                 </span>
-                                <div className='touch-actions flex items-center gap-1 opacity-60 transition-opacity duration-200 focus-within:opacity-100 group-hover:opacity-100'>
+                                <div className='touch-actions flex items-center gap-1.5 opacity-60 transition-opacity duration-200 focus-within:opacity-100 group-hover:opacity-100'>
                                     {project.github && (
                                         <Link
                                             href={project.github}

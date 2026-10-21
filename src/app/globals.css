@@ -100,6 +100,19 @@
         -webkit-tap-highlight-color: transparent;
     }
 
+    /* Keyboard focus. Text links already answer focus with a color shift and the
+       underline wipe, but icon-only links (project actions, webring) have no
+       underline, and color alone is a weak focus cue (WCAG 2.4.7). One hairline
+       ring in the neutral --ring ink, offset so it never touches the glyph, on
+       every link; pointer clicks never trigger it (:focus-visible). Shadcn
+       <Button>s ship their own ring and `outline-none` in the utilities layer,
+       which outranks this base rule, so nothing double-rings. */
+    a:focus-visible {
+        outline: 2px solid hsl(var(--ring));
+        outline-offset: 2px;
+        border-radius: 2px;
+    }
+
     /* Selection color with accent */
     ::selection {
         background: hsl(var(--accent-primary) / 0.18);
@@ -212,11 +225,17 @@
 /* Touch ergonomics. The page is tuned for a precise cursor: 14px project action
    icons that wait at 60% and brighten on row-hover, a 24px-wide webring arrow.
    But PRODUCT.md says most visits are mobile, where there is no hover to reveal
-   an affordance and no pixel-accurate cursor to land a 14px glyph. These two
-   rules engage only on a coarse pointer / no-hover device, so the desktop design
-   is byte-for-byte unchanged — and there the affordances rest at full strength
-   while every tap target grows to the 44px Apple-HIG floor (the glyph keeps its
-   design size; only the hit box grows, via min-* over the smaller width/height).
+   an affordance and no pixel-accurate cursor to land a 14px glyph. These rules
+   engage only on a coarse pointer / no-hover device, so the desktop design is
+   byte-for-byte unchanged — and there the affordances rest at full strength
+   while every tap target grows to 32×44px (WCAG 2.2's web floor is 24px).
+
+   The hit box must grow without moving the layout: a 44px-tall box in the
+   project row's flex line would push the name away from its description and
+   balloon every row. So the width grows in layout (min-width; adjacent icons
+   must not share an overlapping hit area), while the height grows through an
+   absolutely-positioned ::before, which is hit-tested as part of the link but
+   takes no space.
 
    Un-layered like .btn-press above so the opacity reset outranks Tailwind's
    `opacity-60` base utility without a specificity hack. The hover-reveal utility
@@ -227,8 +246,16 @@
         opacity: 1;
     }
     .touch-target {
-        min-width: 44px;
-        min-height: 44px;
+        position: relative;
+        min-width: 32px;
+    }
+    .touch-target::before {
+        content: '';
+        position: absolute;
+        inset-inline: 0;
+        top: 50%;
+        height: 44px;
+        transform: translateY(-50%);
     }
 }
 

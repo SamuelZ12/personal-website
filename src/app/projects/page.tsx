@@ -60,10 +60,10 @@ const Projects = () => {
                     {CONFIG.projects.map((project, idx) => (
                         <li key={idx} className='group'>
                             <div className='flex items-center gap-2'>
-                                <span className='text-[15px] font-medium text-foreground/90'>
+                                <span className='text-base font-medium text-foreground/90'>
                                     {project.name}
                                 </span>
-                                <div className='touch-actions flex items-center gap-1 opacity-60 transition-opacity duration-200 focus-within:opacity-100 group-hover:opacity-100'>
+                                <div className='touch-actions flex items-center gap-1.5 opacity-60 transition-opacity duration-200 focus-within:opacity-100 group-hover:opacity-100'>
                                     {project.github && (
                                         <Link
                                             href={project.github}
