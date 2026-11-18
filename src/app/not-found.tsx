@@ -27,14 +27,9 @@ export default function NotFound() {
 
                 <Link
                     href='/'
-                    className='group/link mt-6 inline-flex animate-enter items-center gap-1.5 text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
+                    className='group/link mt-6 inline-flex animate-enter items-center gap-1.5 text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground active:text-foreground'
                 >
-                    <span
-                        aria-hidden='true'
-                        className='inline-block transition-transform duration-200 group-hover/link:-translate-x-0.5 group-focus-visible/link:-translate-x-0.5'
-                    >
-                        &larr;
-                    </span>
+                    <span aria-hidden='true'>&larr;</span>
                     <span className='link-underline'>Back home</span>
                 </Link>
             </div>

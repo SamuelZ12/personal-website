@@ -11,6 +11,13 @@ const config = {
         './src/**/*.{ts,tsx}',
     ],
     prefix: '',
+    // Every hover: / group-hover: variant only applies on a device that can
+    // actually hover. A phone fires :hover on tap and leaves it stuck until
+    // the next tap elsewhere, which is how "Email" kept its hover colour
+    // after being tapped.
+    future: {
+        hoverOnlyWhenSupported: true,
+    },
     theme: {
         container: {
             center: true,

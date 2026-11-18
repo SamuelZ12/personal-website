@@ -6,7 +6,7 @@ import Link from 'next/link'
 // the left, the webring on the right. Words rather than icons so nothing here
 // needs a tooltip to be understood.
 const socialLink =
-    'touch-target link-underline inline-flex justify-center text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
+    'touch-target link-underline inline-flex justify-center text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground active:text-foreground'
 
 const Contact = () => {
     return (
@@ -42,11 +42,9 @@ const Contact = () => {
                     <Link
                         href='https://cs.uwatering.com/#samuelzhang.ca?nav=prev'
                         aria-label='Previous site in the CS webring'
-                        className='group touch-target flex h-10 w-6 items-center justify-center btn-press hover:text-foreground focus-visible:text-foreground'
+                        className='touch-target flex h-10 w-6 items-center justify-center btn-press hover:text-foreground focus-visible:text-foreground active:text-foreground'
                     >
-                        <span className='inline-block transition-transform duration-200 group-hover:-translate-x-0.5 group-focus-visible:-translate-x-0.5'>
-                            ←
-                        </span>
+                        ←
                     </Link>
                     <Link
                         href='https://cs.uwatering.com/#samuelzhang.ca'
@@ -67,11 +65,9 @@ const Contact = () => {
                     <Link
                         href='https://cs.uwatering.com/#samuelzhang.ca?nav=next'
                         aria-label='Next site in the CS webring'
-                        className='group touch-target flex h-10 w-6 items-center justify-center btn-press hover:text-foreground focus-visible:text-foreground'
+                        className='touch-target flex h-10 w-6 items-center justify-center btn-press hover:text-foreground focus-visible:text-foreground active:text-foreground'
                     >
-                        <span className='inline-block transition-transform duration-200 group-hover:translate-x-0.5 group-focus-visible:translate-x-0.5'>
-                            →
-                        </span>
+                        →
                     </Link>
                 </div>
             </div>
