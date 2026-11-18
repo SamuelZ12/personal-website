@@ -1,4 +1,5 @@
 import { Icons } from '@/components/icons'
+import { ProjectList } from '@/components/project-list'
 import { CONFIG } from '@/config'
 import Link from 'next/link'
 
@@ -39,49 +40,14 @@ const Experience = () => {
             </div>
 
             {/* Projects subsection */}
-            <div className='animate-enter space-y-2'>
+            <div className='flex animate-enter flex-col gap-2'>
                 <h2 className='text-muted-foreground'>
                     Projects
                 </h2>
-                <ul className='space-y-3'>
-                    {featured.map((project, idx) => (
-                        <li key={idx} className='group'>
-                            <div className='flex items-center gap-2'>
-                                <span className='font-medium'>
-                                    {project.name}
-                                </span>
-                                <div className='touch-actions flex items-center gap-1.5 opacity-60 transition-opacity duration-200 focus-within:opacity-100 group-hover:opacity-100'>
-                                    {project.github && (
-                                        <Link
-                                            href={project.github}
-                                            target='_blank'
-                                            className='touch-target btn-press inline-flex items-center justify-center text-muted-foreground hover:text-foreground focus-visible:text-foreground active:text-foreground'
-                                            aria-label='GitHub'
-                                        >
-                                            <Icons.github className='size-3.5' />
-                                        </Link>
-                                    )}
-                                    {project.url && (
-                                        <Link
-                                            href={project.url}
-                                            target='_blank'
-                                            className='touch-target btn-press inline-flex items-center justify-center text-muted-foreground hover:text-foreground focus-visible:text-foreground active:text-foreground'
-                                            aria-label='Visit'
-                                        >
-                                            <Icons.arrowUpRight className='size-3.5' />
-                                        </Link>
-                                    )}
-                                </div>
-                            </div>
-                            <p className='text-pretty text-muted-foreground'>
-                                {project.description}
-                            </p>
-                        </li>
-                    ))}
-                </ul>
+                <ProjectList projects={featured} />
                 <Link
                     href='/projects'
-                    className='group/link mt-2 inline-flex items-center gap-1.5 text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground active:text-foreground'
+                    className='group/link inline-flex items-center gap-1.5 self-start text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground active:text-foreground'
                 >
                     <span className='link-underline'>View all projects</span>
                     <Icons.arrowUpRight className='size-3.5' />
