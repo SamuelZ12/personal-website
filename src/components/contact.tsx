@@ -1,67 +1,44 @@
 import { CopyEmail } from '@/components/copy-email'
-import { Icons } from '@/components/icons'
-import { Button } from '@/components/ui/button'
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from '@/components/ui/tooltip'
 import { CONFIG } from '@/config'
 import Link from 'next/link'
 
+// One quiet row along the bottom edge of every page: the socials as words on
+// the left, the webring on the right. Words rather than icons so nothing here
+// needs a tooltip to be understood.
+const socialLink =
+    'touch-target link-underline inline-flex justify-center text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
+
 const Contact = () => {
     return (
-        <div className='mt-8 animate-enter'>
-            {/* Divider */}
-            <div className='mx-4 mb-4 h-px bg-border' />
-
-            <div className='flex flex-wrap items-center justify-between gap-y-2 px-4'>
-                {/* Social Links */}
-                <div className='flex items-center gap-1'>
-                    <TooltipProvider delayDuration={70}>
-                        {CONFIG.socials.map((social, idx) => {
-                            const Icon = Icons[social.icon]
-                            if (social.icon === 'email') {
-                                return (
-                                    <CopyEmail
-                                        key={idx}
-                                        href={social.url}
-                                        label={social.name}
-                                    />
-                                )
-                            }
-                            return (
-                                <Tooltip key={idx}>
-                                    <TooltipTrigger asChild>
-                                        <Button
-                                            asChild
-                                            variant='ghost'
-                                            className='size-10 p-0 text-muted-foreground btn-press hover:text-foreground focus-visible:text-foreground'
-                                        >
-                                            <Link
-                                                href={social.url}
-                                                target='_blank'
-                                                aria-label={social.name}
-                                            >
-                                                <Icon className='size-5' />
-                                            </Link>
-                                        </Button>
-                                    </TooltipTrigger>
-                                    <TooltipContent
-                                        side='top'
-                                        className='border-border bg-card text-xs'
-                                    >
-                                        {social.name}
-                                    </TooltipContent>
-                                </Tooltip>
-                            )
-                        })}
-                    </TooltipProvider>
-                </div>
+        <footer className='animate-enter px-4 pb-10'>
+            <div className='flex flex-wrap items-center justify-between gap-x-6 gap-y-2'>
+                <nav
+                    aria-label='Social'
+                    className='flex flex-wrap items-center gap-x-5'
+                >
+                    {CONFIG.socials.map((social, idx) =>
+                        social.icon === 'email' ? (
+                            <CopyEmail
+                                key={idx}
+                                href={social.url}
+                                label={social.name}
+                                className={socialLink}
+                            />
+                        ) : (
+                            <Link
+                                key={idx}
+                                href={social.url}
+                                target='_blank'
+                                className={socialLink}
+                            >
+                                {social.name}
+                            </Link>
+                        )
+                    )}
+                </nav>
 
                 {/* Webring */}
-                <div className='flex items-center gap-0 text-muted-foreground'>
+                <div className='-mx-1.5 flex items-center text-muted-foreground'>
                     <Link
                         href='https://cs.uwatering.com/#samuelzhang.ca?nav=prev'
                         aria-label='Previous site in the CS webring'
@@ -79,12 +56,12 @@ const Contact = () => {
                         <img
                             src='https://cs.uwatering.com/icon.black.svg'
                             alt='CS Webring'
-                            className='h-5 w-5 dark:hidden'
+                            className='size-4 dark:hidden'
                         />
                         <img
                             src='https://cs.uwatering.com/icon.white.svg'
                             alt='CS Webring'
-                            className='hidden h-5 w-5 dark:block'
+                            className='hidden size-4 dark:block'
                         />
                     </Link>
                     <Link
@@ -98,7 +75,7 @@ const Contact = () => {
                     </Link>
                 </div>
             </div>
-        </div>
+        </footer>
     )
 }
 

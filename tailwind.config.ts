@@ -23,6 +23,20 @@ const config = {
             fontFamily: {
                 sans: ['var(--font-sans)', ...fontFamily.sans],
             },
+            fontSize: {
+                // The one size above body copy: 28px on a 40px line, tracked
+                // tight, at 440: barely heavier than text, so size carries the
+                // hierarchy. Size, leading, tracking and weight travel
+                // together so a heading is one decision.
+                display: [
+                    '1.75rem',
+                    {
+                        lineHeight: '1.4286',
+                        letterSpacing: '-0.045em',
+                        fontWeight: '440',
+                    },
+                ],
+            },
             colors: {
                 border: 'hsl(var(--border))',
                 input: 'hsl(var(--input))',
