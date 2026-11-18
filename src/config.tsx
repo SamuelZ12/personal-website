@@ -71,6 +71,12 @@ export const CONFIG: Config = {
             github: 'https://github.com/SamuelZ12/longcut'
         },
         {
+            name: 'vidscribe',
+            description: 'Lets AI agents watch videos: local transcripts and frames on Apple Silicon',
+            featured: true,
+            github: 'https://github.com/SamuelZ12/vidscribe'
+        },
+        {
             name: 'Reposeek',
             description: 'Repo discovery for coding agents. Find the repo to build on before you code',
             url: 'https://reposeek.ai',
@@ -79,7 +85,7 @@ export const CONFIG: Config = {
         {
             name: 'Screen Scribe',
             description: 'macOS app that converts screen captures into text (LaTeX, Markdown, etc.)',
-            featured: true,
+            featured: false,
             github: 'https://github.com/samuelz12/screen-scribe'
         },
         {
