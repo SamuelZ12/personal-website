@@ -265,9 +265,11 @@
 /* Theme switch crossfade. The toggle (components/mode-toggle.tsx) runs the theme
    change inside a View Transition, so the whole document settles from the old
    palette to the new one over one short, calm beat instead of hard-cutting —
-   the single interaction whose motion used to stop at the spinning icon. Tuned
-   to the page's one curve. The default root cross-fade already dissolves the old
-   snapshot over the (opaque) new page beneath; we only set its tempo here.
+   the single interaction whose motion used to stop at the spinning icon. Timing
+   matches 2.computer's day/night switch: 450ms on the standard ease-in-out, so
+   the swap reads as a deliberate crossfade rather than a flicker. The default
+   root cross-fade already dissolves the old snapshot over the (opaque) new page
+   beneath; we only set its tempo here.
 
    The toggle skips the transition entirely under reduced motion and on browsers
    without the API, where this falls through to next-themes' instant swap. The
@@ -275,8 +277,8 @@
    root transition — it collapses the crossfade to that same instant swap. */
 ::view-transition-old(root),
 ::view-transition-new(root) {
-    animation-duration: 220ms;
-    animation-timing-function: var(--ease-out-quint);
+    animation-duration: 450ms;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
