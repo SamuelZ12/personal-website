@@ -15,6 +15,7 @@ type CopyEmailProps = {
 export function CopyEmail({ href, label, className }: CopyEmailProps) {
     const address = href.replace(/^mailto:/, '')
     const [copied, setCopied] = useState(false)
+    const [swapped, setSwapped] = useState(false)
     const timer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
     const handleClick = () => {
@@ -22,6 +23,7 @@ export function CopyEmail({ href, label, className }: CopyEmailProps) {
         navigator.clipboard
             .writeText(address)
             .then(() => {
+                setSwapped(true)
                 setCopied(true)
                 if (timer.current) clearTimeout(timer.current)
                 timer.current = setTimeout(() => setCopied(false), 1600)
@@ -45,7 +47,15 @@ export function CopyEmail({ href, label, className }: CopyEmailProps) {
                 onClick={handleClick}
                 className={className}
             >
-                {copied ? 'Copied' : label}
+                {/* Re-keyed so each swap mounts a fresh span and plays the
+                    blur-in. `swapped` keeps the first render plain: the
+                    label must not animate on page load. */}
+                <span
+                    key={copied ? 'copied' : 'label'}
+                    className={swapped ? 'label-swap' : undefined}
+                >
+                    {copied ? 'Copied' : label}
+                </span>
             </a>
             <span role='status' aria-live='polite' className='sr-only'>
                 {copied ? `${address} copied to clipboard` : ''}

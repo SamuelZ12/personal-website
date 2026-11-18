@@ -21,7 +21,7 @@ const Experience = () => {
                                 <Link
                                     href={item.link}
                                     target='_blank'
-                                    className='group/link whitespace-nowrap text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
+                                    className='group/link whitespace-nowrap text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground active:text-foreground'
                                 >
                                     <span className='link-underline'>
                                         {item.company}
@@ -55,7 +55,7 @@ const Experience = () => {
                                         <Link
                                             href={project.github}
                                             target='_blank'
-                                            className='touch-target btn-press inline-flex items-center justify-center text-muted-foreground hover:text-foreground focus-visible:text-foreground'
+                                            className='touch-target btn-press inline-flex items-center justify-center text-muted-foreground hover:text-foreground focus-visible:text-foreground active:text-foreground'
                                             aria-label='GitHub'
                                         >
                                             <Icons.github className='size-3.5' />
@@ -65,7 +65,7 @@ const Experience = () => {
                                         <Link
                                             href={project.url}
                                             target='_blank'
-                                            className='touch-target btn-press inline-flex items-center justify-center text-muted-foreground hover:text-foreground focus-visible:text-foreground'
+                                            className='touch-target btn-press inline-flex items-center justify-center text-muted-foreground hover:text-foreground focus-visible:text-foreground active:text-foreground'
                                             aria-label='Visit'
                                         >
                                             <Icons.arrowUpRight className='size-3.5' />
@@ -81,10 +81,10 @@ const Experience = () => {
                 </ul>
                 <Link
                     href='/projects'
-                    className='group/link mt-2 inline-flex items-center gap-1.5 text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
+                    className='group/link mt-2 inline-flex items-center gap-1.5 text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground active:text-foreground'
                 >
                     <span className='link-underline'>View all projects</span>
-                    <Icons.arrowUpRight className='size-3.5 transition-transform duration-200 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-focus-visible/link:-translate-y-0.5 group-focus-visible/link:translate-x-0.5' />
+                    <Icons.arrowUpRight className='size-3.5' />
                 </Link>
             </div>
         </section>

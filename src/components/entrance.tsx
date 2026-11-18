@@ -24,12 +24,22 @@ export function EntranceRelease() {
     useEffect(() => {
         const root = document.documentElement
         if (!root.classList.contains('enter-armed')) return
+        let settle: ReturnType<typeof setTimeout> | undefined
         const id = requestAnimationFrame(() =>
-            requestAnimationFrame(() =>
+            requestAnimationFrame(() => {
                 root.classList.replace('enter-armed', 'enter-go')
-            )
+                // Once the arrival fade (1.2s) is over, later pages reached by
+                // in-site links fade in quickly instead of replaying it.
+                settle = setTimeout(
+                    () => root.classList.add('enter-settled'),
+                    1300
+                )
+            })
         )
-        return () => cancelAnimationFrame(id)
+        return () => {
+            cancelAnimationFrame(id)
+            clearTimeout(settle)
+        }
     }, [])
 
     return null

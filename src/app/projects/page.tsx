@@ -32,7 +32,7 @@ const Projects = () => {
                             <BreadcrumbLink asChild>
                                 <Link
                                     href='/'
-                                    className='link-underline text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
+                                    className='link-underline text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground active:text-foreground'
                                 >
                                     Home
                                 </Link>
@@ -61,7 +61,7 @@ const Projects = () => {
                                         <Link
                                             href={project.github}
                                             target='_blank'
-                                            className='touch-target btn-press inline-flex items-center justify-center text-muted-foreground hover:text-foreground focus-visible:text-foreground'
+                                            className='touch-target btn-press inline-flex items-center justify-center text-muted-foreground hover:text-foreground focus-visible:text-foreground active:text-foreground'
                                             aria-label='GitHub'
                                         >
                                             <Icons.github className='size-3.5' />
@@ -71,7 +71,7 @@ const Projects = () => {
                                         <Link
                                             href={project.url}
                                             target='_blank'
-                                            className='touch-target btn-press inline-flex items-center justify-center text-muted-foreground hover:text-foreground focus-visible:text-foreground'
+                                            className='touch-target btn-press inline-flex items-center justify-center text-muted-foreground hover:text-foreground focus-visible:text-foreground active:text-foreground'
                                             aria-label='Visit'
                                         >
                                             <Icons.arrowUpRight className='size-3.5' />
@@ -83,7 +83,7 @@ const Projects = () => {
                                                 <TooltipTrigger asChild>
                                                     <Link
                                                         href={project.email}
-                                                        className='touch-target btn-press inline-flex items-center justify-center text-muted-foreground hover:text-foreground focus-visible:text-foreground'
+                                                        className='touch-target btn-press inline-flex items-center justify-center text-muted-foreground hover:text-foreground focus-visible:text-foreground active:text-foreground'
                                                         aria-label='Email for repo'
                                                     >
                                                         <Icons.lock className='size-3.5' />
