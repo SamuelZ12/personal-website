@@ -3,12 +3,14 @@ import { CONFIG } from '@/config'
 import { cn } from '@/lib/utils'
 import { HighlightInit } from '@highlight-run/next/client'
 import { Analytics } from '@vercel/analytics/react'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter as FontSans } from 'next/font/google'
 import './globals.css'
 import Contact from '@/components/contact'
 import { ConsoleSignature } from '@/components/console-signature'
 import { EntranceRelease } from '@/components/entrance'
+import { ThemeColorSync } from '@/components/theme-color'
+import { THEME_COLOR } from '@/lib/theme-color'
 import { GoogleAnalytics } from '@next/third-parties/google'
 
 // Inter, set small and tight (see the body rule in globals.css). The warmth
@@ -28,6 +30,15 @@ export const metadata: Metadata = {
         template: `${CONFIG.name} | %s`,
     },
     description: CONFIG.descriptionRaw,
+}
+
+// Browser-bar colour per system colour scheme. <ThemeColorSync/> retargets
+// these when the toggle picks the other theme.
+export const viewport: Viewport = {
+    themeColor: [
+        { media: '(prefers-color-scheme: light)', color: THEME_COLOR.light },
+        { media: '(prefers-color-scheme: dark)', color: THEME_COLOR.dark },
+    ],
 }
 
 export default function RootLayout({
@@ -89,6 +100,7 @@ export default function RootLayout({
                         enableSystem
                         disableTransitionOnChange
                     >
+                        <ThemeColorSync />
                         {/* The page fills the window: one column as tall as
                             the viewport, wide enough (544px of text) that
                             every project description fits on one line, the content
