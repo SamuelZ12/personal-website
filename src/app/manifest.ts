@@ -1,4 +1,5 @@
 import { CONFIG } from '@/config'
+import { THEME_COLOR } from '@/lib/theme-color'
 import { getInitials } from '@/lib/utils'
 import { MetadataRoute } from 'next'
 
@@ -9,8 +10,8 @@ export default function manifest(): MetadataRoute.Manifest {
         description: CONFIG.descriptionRaw,
         start_url: '/',
         display: 'standalone',
-        background_color: '#f7f6f4',
-        theme_color: '#f7f6f4',
+        background_color: THEME_COLOR.light,
+        theme_color: THEME_COLOR.light,
         icons: [
             {
                 src: '/favicon.ico',
