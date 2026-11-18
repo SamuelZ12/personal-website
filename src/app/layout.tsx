@@ -18,9 +18,15 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 // in use (400 body / 440 display / 500 names) ship in a single file,
 // and next/font self-hosts it with a metric-matched fallback so the swap costs
 // no layout shift.
+//
+// The optical-size axis rides along (about 25KB more woff2) so the 28px name
+// is drawn in Inter's display cut, which is narrower and spaced for that size.
+// font-optical-sizing is `auto` by default, so each size picks its own cut and
+// 14px copy stays on the text cut it had before.
 const fontSans = FontSans({
     subsets: ['latin'],
     variable: '--font-sans',
+    axes: ['opsz'],
 })
 
 export const metadata: Metadata = {
