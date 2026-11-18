@@ -9,7 +9,7 @@ export default function Home() {
 
             {/* Bio section */}
             <div className='animate-enter px-4'>
-                <p className='text-pretty text-base leading-relaxed text-muted-foreground/80'>
+                <p className='text-pretty text-muted-foreground'>
                     {CONFIG.description}
                 </p>
             </div>

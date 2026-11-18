@@ -1,7 +1,6 @@
 'use client'
 
 import { Icons } from '@/components/icons'
-import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { useTheme } from 'next-themes'
 import { useState } from 'react'
@@ -47,23 +46,25 @@ export function ModeToggle() {
         })
     }
 
+    // A bare 16px glyph, like the rest of the footer row; the ::before pads the
+    // hit area out to 44px without moving anything.
     return (
-        <Button
-            variant='ghost'
-            className='size-10 p-0 text-muted-foreground btn-press hover:text-foreground focus-visible:text-foreground'
+        <button
+            type='button'
+            className="btn-press relative grid size-4 place-items-center rounded-sm text-foreground before:absolute before:-inset-3.5 before:content-[''] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
             onClick={toggle}
         >
             <span
                 key={spins}
                 className={cn(
-                    'relative inline-flex size-6 items-center justify-center',
+                    'relative inline-flex size-4 items-center justify-center',
                     spins > 0 && 'animate-toggle-rotate'
                 )}
             >
-                <Icons.sun className='size-6 rotate-0 scale-100 dark:-rotate-90 dark:scale-0' />
-                <Icons.moon className='absolute size-6 rotate-90 scale-0 dark:rotate-0 dark:scale-100' />
+                <Icons.sun className='size-4 rotate-0 scale-100 dark:-rotate-90 dark:scale-0' />
+                <Icons.moon className='absolute size-4 rotate-90 scale-0 dark:rotate-0 dark:scale-100' />
             </span>
             <span className='sr-only'>Toggle theme</span>
-        </Button>
+        </button>
     )
 }

@@ -9,17 +9,14 @@ const Experience = () => {
         <section className='space-y-8 px-4'>
             {/* Work subsection */}
             <div className='animate-enter space-y-2'>
-                <h2 className='text-xs font-medium uppercase tracking-wider text-muted-foreground/80'>
+                <h2 className='text-muted-foreground'>
                     Work
                 </h2>
-                <ul className='space-y-1.5'>
+                <ul>
                     {work.map((item, idx) => (
-                        <li
-                            key={idx}
-                            className='group text-base leading-relaxed'
-                        >
-                            <span className='text-foreground/90'>{item.role}</span>
-                            <span className='text-muted-foreground/80'> @ </span>
+                        <li key={idx} className='group'>
+                            <span>{item.role}</span>
+                            <span className='text-muted-foreground'> @ </span>
                             {item.link ? (
                                 <Link
                                     href={item.link}
@@ -43,14 +40,14 @@ const Experience = () => {
 
             {/* Projects subsection */}
             <div className='animate-enter space-y-2'>
-                <h2 className='text-xs font-medium uppercase tracking-wider text-muted-foreground/80'>
+                <h2 className='text-muted-foreground'>
                     Projects
                 </h2>
                 <ul className='space-y-3'>
                     {featured.map((project, idx) => (
                         <li key={idx} className='group'>
                             <div className='flex items-center gap-2'>
-                                <span className='text-base font-medium text-foreground/90'>
+                                <span className='font-medium'>
                                     {project.name}
                                 </span>
                                 <div className='touch-actions flex items-center gap-1.5 opacity-60 transition-opacity duration-200 focus-within:opacity-100 group-hover:opacity-100'>
@@ -76,7 +73,7 @@ const Experience = () => {
                                     )}
                                 </div>
                             </div>
-                            <p className='text-pretty text-sm text-muted-foreground/80'>
+                            <p className='text-pretty text-muted-foreground'>
                                 {project.description}
                             </p>
                         </li>
@@ -84,7 +81,7 @@ const Experience = () => {
                 </ul>
                 <Link
                     href='/projects'
-                    className='group/link mt-2 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
+                    className='group/link mt-2 inline-flex items-center gap-1.5 text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
                 >
                     <span className='link-underline'>View all projects</span>
                     <Icons.arrowUpRight className='size-3.5 transition-transform duration-200 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-focus-visible/link:-translate-y-0.5 group-focus-visible/link:translate-x-0.5' />

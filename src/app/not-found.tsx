@@ -1,3 +1,4 @@
+import { ModeToggle } from '@/components/mode-toggle'
 import Link from 'next/link'
 
 export const metadata = {
@@ -12,18 +13,21 @@ export const metadata = {
 export default function NotFound() {
     return (
         <div className='flex flex-col gap-8'>
-            <h1 className='animate-enter px-4 text-3xl font-bold tracking-tight'>
-                404
-            </h1>
+            <div className='flex animate-enter items-start justify-between px-4'>
+                <h1 className='text-display'>404</h1>
+                <div className='flex h-10 items-center'>
+                    <ModeToggle />
+                </div>
+            </div>
 
             <div className='px-4'>
-                <p className='animate-enter text-pretty text-base leading-relaxed text-muted-foreground/80'>
+                <p className='animate-enter text-pretty text-muted-foreground'>
                     This page doesn&rsquo;t exist. The odds were never great.
                 </p>
 
                 <Link
                     href='/'
-                    className='group/link mt-6 inline-flex animate-enter items-center gap-1.5 text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
+                    className='group/link mt-6 inline-flex animate-enter items-center gap-1.5 text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
                 >
                     <span
                         aria-hidden='true'
