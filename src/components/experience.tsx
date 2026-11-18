@@ -6,7 +6,7 @@ const Experience = () => {
     const work = CONFIG.experience.work
     const featured = CONFIG.projects.filter((p) => p.featured)
     return (
-        <section className='space-y-8 px-4'>
+        <section className='space-y-10 px-4'>
             {/* Work subsection */}
             <div className='animate-enter space-y-2'>
                 <h2 className='text-muted-foreground'>

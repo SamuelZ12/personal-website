@@ -72,7 +72,7 @@ export default function RootLayout({
                 </head>
                 <body
                     className={cn(
-                        'min-h-screen bg-background font-sans antialiased',
+                        'bg-background font-sans antialiased',
                         fontSans.variable
                     )}
                 >
@@ -89,10 +89,19 @@ export default function RootLayout({
                         enableSystem
                         disableTransitionOnChange
                     >
-                        <main className='mx-auto max-w-xl py-8 md:pt-16'>
-                            {children}
+                        {/* The page fills the window: one column as tall as
+                            the viewport, wide enough (544px of text) that
+                            every project description fits on one line, the content
+                            starting at a fixed height so the name sits in the
+                            same place on every page, the footer resting on
+                            the bottom edge. A page longer than the window
+                            just scrolls, footer last. */}
+                        <div className='mx-auto flex min-h-dvh max-w-xl flex-col'>
+                            <main className='flex-1 py-8 md:py-16'>
+                                {children}
+                            </main>
                             <Contact />
-                        </main>
+                        </div>
                     </ThemeProvider>
                 </body>
             </html>

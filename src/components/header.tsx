@@ -1,4 +1,3 @@
-import { LocalTime } from '@/components/local-time'
 import { ModeToggle } from '@/components/mode-toggle'
 import { CONFIG } from '@/config'
 
@@ -10,10 +9,6 @@ const Header = () => {
                 {CONFIG.title && (
                     <p className='text-muted-foreground'>{CONFIG.title}</p>
                 )}
-                <p className='text-muted-foreground'>
-                    Toronto
-                    <LocalTime />
-                </p>
             </div>
             {/* As tall as the name's line, so the glyph centres on it */}
             <div className='flex h-10 items-center'>

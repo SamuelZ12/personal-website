@@ -2,16 +2,16 @@ import { CopyEmail } from '@/components/copy-email'
 import { CONFIG } from '@/config'
 import Link from 'next/link'
 
-// One quiet row under a hairline, on every page: the socials as words on the
-// left, the webring on the right. Words rather than icons so nothing here
+// One quiet row along the bottom edge of every page: the socials as words on
+// the left, the webring on the right. Words rather than icons so nothing here
 // needs a tooltip to be understood.
 const socialLink =
     'touch-target link-underline inline-flex justify-center text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground'
 
 const Contact = () => {
     return (
-        <footer className='mt-12 animate-enter px-4'>
-            <div className='flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t pt-4'>
+        <footer className='animate-enter px-4 pb-10'>
+            <div className='flex flex-wrap items-center justify-between gap-x-6 gap-y-2'>
                 <nav
                     aria-label='Social'
                     className='flex flex-wrap items-center gap-x-5'

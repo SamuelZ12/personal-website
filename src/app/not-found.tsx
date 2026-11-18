@@ -12,7 +12,7 @@ export const metadata = {
 // Contact footer and the entrance fade come for free.
 export default function NotFound() {
     return (
-        <div className='flex flex-col gap-8'>
+        <div className='flex flex-col gap-5'>
             <div className='flex animate-enter items-start justify-between px-4'>
                 <h1 className='text-display'>404</h1>
                 <div className='flex h-10 items-center'>

@@ -162,13 +162,6 @@
     .group\/link:focus-visible .link-underline::after {
         transform: scaleX(1);
     }
-
-    /* The colons breathe at ~1Hz: the universal "running clock" cue, so the
-       seconds read as live without a separate status dot. Reduced motion neutralizes
-       the loop via the global override below (lands at full opacity, static). */
-    .time-colon {
-        animation: time-colon-pulse 1s ease-in-out infinite;
-    }
 }
 
 @layer utilities {
@@ -303,15 +296,5 @@
     }
     to {
         opacity: 1;
-    }
-}
-
-@keyframes time-colon-pulse {
-    0%,
-    100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.4;
     }
 }
