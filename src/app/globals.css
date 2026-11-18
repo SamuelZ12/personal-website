@@ -182,12 +182,14 @@
 }
 
 @layer utilities {
-    /* Page-load entrance. Every .animate-enter block runs the same opacity-only
-       fade on the same clock, so the page arrives as one quiet piece instead of
-       assembling itself section by section: no rise, no stagger. 1.2s with the
-       plain `ease` curve reads as slow and deliberate while the text is already
-       legible around the halfway mark; much longer and a mostly-mobile visitor
-       is left waiting on a page they came to skim.
+    /* Page-load entrance. Every .animate-enter block runs the same fade on the
+       same clock, so the page arrives as one quiet piece instead of assembling
+       itself section by section: no rise, no stagger. The fade also comes
+       into focus from a 4px blur, so the page seems to materialise rather
+       than just brighten (see page-fade-in). 1.2s with the plain `ease` curve
+       reads as slow and deliberate while the text is already legible around
+       the halfway mark; much longer and a mostly-mobile visitor is left
+       waiting on a page they came to skim.
 
        The animation is gated on two classes toggled by an inline script in
        <head> (see layout.tsx) rather than living on .animate-enter directly.
@@ -202,7 +204,7 @@
         opacity: 0;
     }
     .enter-go .animate-enter {
-        animation: page-fade-in 1.2s ease both;
+        animation: page-fade-in 1.2s ease backwards;
     }
     /* The slow fade is for arriving at the site, once. A page reached by a
        link inside the site was asked for, so it answers quickly: `enter-settled`
@@ -316,9 +318,15 @@
    only when a theme.animation entry references it. .animate-enter is hand-written
    CSS, so its keyframe must be hand-written too — otherwise Tailwind tree-shakes
    it out and the entrance silently no-ops (every element jumps to its end state). */
+/* Filled `backwards`, not `both`: the start state is held until the fade
+   begins, but nothing is held after it ends. Under `both` the filter would sit
+   at a lingering blur(0px), which keeps every block on its own compositing
+   layer (softer text in Safari) and makes it a containing block for fixed
+   children. With no fill after the end, filter falls back to `none`. */
 @keyframes page-fade-in {
     from {
         opacity: 0;
+        filter: blur(4px);
     }
     to {
         opacity: 1;
