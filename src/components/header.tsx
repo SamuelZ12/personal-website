@@ -6,9 +6,6 @@ const Header = () => {
     return (
         <header className='mb-4 animate-enter'>
             <h1 className='font-medium'>{CONFIG.name}</h1>
-            {CONFIG.title && (
-                <p className='text-muted-foreground'>{CONFIG.title}</p>
-            )}
         </header>
     )
 }

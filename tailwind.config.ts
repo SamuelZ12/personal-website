@@ -4,12 +4,7 @@ const { fontFamily } = require('tailwindcss/defaultTheme')
 
 const config = {
     darkMode: ['class'],
-    content: [
-        './pages/**/*.{ts,tsx}',
-        './components/**/*.{ts,tsx}',
-        './app/**/*.{ts,tsx}',
-        './src/**/*.{ts,tsx}',
-    ],
+    content: ['./src/**/*.{ts,tsx}'],
     prefix: '',
     // Every hover: / group-hover: variant only applies on a device that can
     // actually hover. A phone fires :hover on tap and leaves it stuck until
@@ -19,13 +14,6 @@ const config = {
         hoverOnlyWhenSupported: true,
     },
     theme: {
-        container: {
-            center: true,
-            padding: '2rem',
-            screens: {
-                '2xl': '1400px',
-            },
-        },
         extend: {
             fontFamily: {
                 sans: ['var(--font-sans)', ...fontFamily.sans],
@@ -37,21 +25,12 @@ const config = {
             },
             colors: {
                 border: 'hsl(var(--border))',
-                input: 'hsl(var(--input))',
                 ring: 'hsl(var(--ring))',
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',
-                primary: {
-                    DEFAULT: 'hsl(var(--primary))',
-                    foreground: 'hsl(var(--primary-foreground))',
-                },
                 secondary: {
                     DEFAULT: 'hsl(var(--secondary))',
                     foreground: 'hsl(var(--secondary-foreground))',
-                },
-                destructive: {
-                    DEFAULT: 'hsl(var(--destructive))',
-                    foreground: 'hsl(var(--destructive-foreground))',
                 },
                 muted: {
                     DEFAULT: 'hsl(var(--muted))',
@@ -60,16 +39,6 @@ const config = {
                 accent: {
                     DEFAULT: 'hsl(var(--accent))',
                     foreground: 'hsl(var(--accent-foreground))',
-                    primary: 'hsl(var(--accent-primary))',
-                    secondary: 'hsl(var(--accent-secondary))',
-                },
-                popover: {
-                    DEFAULT: 'hsl(var(--popover))',
-                    foreground: 'hsl(var(--popover-foreground))',
-                },
-                card: {
-                    DEFAULT: 'hsl(var(--card))',
-                    foreground: 'hsl(var(--card-foreground))',
                 },
             },
             borderRadius: {
@@ -78,14 +47,6 @@ const config = {
                 sm: 'calc(var(--radius) - 4px)',
             },
             keyframes: {
-                'accordion-down': {
-                    from: { height: '0' },
-                    to: { height: 'var(--radix-accordion-content-height)' },
-                },
-                'accordion-up': {
-                    from: { height: 'var(--radix-accordion-content-height)' },
-                    to: { height: '0' },
-                },
                 'toggle-rotate': {
                     '0%': { transform: 'rotate(0deg)' },
                     '100%': { transform: 'rotate(360deg)' },
@@ -97,13 +58,10 @@ const config = {
                 'out-quint': 'var(--ease-out-quint)',
             },
             animation: {
-                'accordion-down': 'accordion-down 0.2s ease-out',
-                'accordion-up': 'accordion-up 0.2s ease-out',
                 'toggle-rotate': 'toggle-rotate 0.5s var(--ease-out-quint)',
             },
         },
     },
-    plugins: [require('tailwindcss-animate')],
 } satisfies Config
 
 export default config

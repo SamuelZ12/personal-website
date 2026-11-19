@@ -12,16 +12,6 @@
         --background: 40 15.8% 96.3%;
         --foreground: 42 57.3% 14.7%;
 
-        /* Raised surfaces (tooltips) */
-        --card: 0 0% 100%;
-        --card-foreground: 42 57.3% 14.7%;
-
-        --popover: 0 0% 100%;
-        --popover-foreground: 42 57.3% 14.7%;
-
-        --primary: 42 57.3% 14.7%;
-        --primary-foreground: 40 15.8% 96.3%;
-
         /* Fills: ink 6% */
         --secondary: 41 12.3% 91.4%;
         --secondary-foreground: 42 57.3% 14.7%;
@@ -35,15 +25,11 @@
         --accent: 41 11.9% 89.7%;
         --accent-foreground: 42 57.3% 14.7%;
 
+        /* Text selection: the ink at 18% (see ::selection) */
         --accent-primary: 42 57.3% 14.7%;
-        --accent-secondary: 42 16.6% 37.5%;
-
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
 
         /* Lines: ink 10%. Focus ring: ink 70% (5:1, a focus cue needs 3:1) */
         --border: 41 11.6% 88.1%;
-        --input: 41 11.6% 88.1%;
         --ring: 42 15.5% 39.2%;
 
         --radius: 0.625rem;
@@ -59,15 +45,6 @@
         --background: 29 10.1% 5.9%;
         --foreground: 40 16.2% 93.7%;
 
-        --card: 29 7.5% 10.7%;
-        --card-foreground: 40 16.2% 93.7%;
-
-        --popover: 29 7.5% 10.7%;
-        --popover-foreground: 40 16.2% 93.7%;
-
-        --primary: 40 16.2% 93.7%;
-        --primary-foreground: 29 7.5% 10.7%;
-
         /* Fills: ink 8% */
         --secondary: 30 4.9% 13%;
         --secondary-foreground: 40 16.2% 93.7%;
@@ -80,15 +57,11 @@
         --accent: 30 4.4% 14.7%;
         --accent-foreground: 40 16.2% 93.7%;
 
+        /* Text selection */
         --accent-primary: 40 16.2% 93.7%;
-        --accent-secondary: 37 5.5% 63.8%;
-
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 40 16.2% 93.7%;
 
         /* Lines: ink 12% */
         --border: 31 3.9% 16.5%;
-        --input: 31 3.9% 16.5%;
         --ring: 31 4.4% 45.2%;
 
     }
@@ -119,9 +92,7 @@
        underline wipe, but icon-only links (the webring mark) have no
        underline, and color alone is a weak focus cue (WCAG 2.4.7). One hairline
        ring in the neutral --ring ink, offset so it never touches the glyph, on
-       every link; pointer clicks never trigger it (:focus-visible). Shadcn
-       <Button>s ship their own ring and `outline-none` in the utilities layer,
-       which outranks this base rule, so nothing double-rings. */
+       every link; pointer clicks never trigger it (:focus-visible). */
     a:focus-visible {
         outline: 2px solid hsl(var(--ring));
         outline-offset: 2px;
@@ -233,9 +204,9 @@
    reads as "click". Plain active:scale-90 was symmetric and slower than a real
    click, so the dip never landed — present but imperceptible.
 
-   Deliberately outside @layer: the base <Button> ships `transition-colors` in
-   Tailwind's utilities layer, and un-layered rules outrank every layer, so this
-   wins the `transition-*` longhands without a specificity hack. The
+   Deliberately outside @layer: un-layered rules outrank every layer, so this
+   wins the `transition-*` longhands over any Tailwind transition utility
+   without a specificity hack. The
    reduced-motion override below is `!important` inside a layer, which still wins,
    so the press correctly collapses to an instant scale when motion is reduced. */
 .btn-press {
@@ -250,8 +221,7 @@
 }
 
 /* Touch ergonomics. The page is tuned for a precise cursor: inline bio links
-   a line of text tall, a 16px webring mark. But PRODUCT.md says most
-   visits are mobile, where there is no pixel-accurate cursor to land a small
+   a line of text tall, a 16px webring mark. But most visits are mobile, where there is no pixel-accurate cursor to land a small
    target. This rule engages only on a coarse pointer / no-hover device, so the
    desktop design is byte-for-byte unchanged — and there every tap target grows
    to at least 44px tall, 16px wider than the word (WCAG 2.2's web floor is 24px).

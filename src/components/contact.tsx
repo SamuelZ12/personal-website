@@ -20,7 +20,7 @@ const Contact = () => {
                     className='flex flex-wrap items-center gap-x-5'
                 >
                     {CONFIG.socials.map((social, idx) =>
-                        social.icon === 'email' ? (
+                        social.kind === 'email' ? (
                             <CopyEmail
                                 key={idx}
                                 href={social.url}

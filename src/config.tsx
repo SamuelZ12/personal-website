@@ -1,4 +1,3 @@
-import { Icons } from '@/components/icons'
 import Link from 'next/link'
 
 // A link inside the muted bio sentence. At rest it is marked by ink alone,
@@ -34,12 +33,12 @@ const BIO: (string | { text: string; href: string })[] = [
 
 type Config = {
     name: string
-    title: string
     siteUrl: string
     socials: {
         name: string
         url: string
-        icon: keyof typeof Icons
+        // email renders as a copy-to-clipboard mailto; links open a new tab
+        kind: 'link' | 'email'
     }[]
     description: string | JSX.Element
     descriptionRaw: string
@@ -54,28 +53,27 @@ type Config = {
 
 export const CONFIG: Config = {
     name: 'samuel zhang',
-    title: '',
     siteUrl: 'https://samuelzhang.ca/',
     socials: [
         {
             name: 'github',
             url: 'https://github.com/samuelz12',
-            icon: 'github',
+            kind: 'link',
         },
         {
             name: 'linkedin',
             url: 'https://linkedin.com/in/samuelz12',
-            icon: 'linkedin',
+            kind: 'link',
         },
         {
             name: 'x',
             url: 'https://x.com/samuelxzhang',
-            icon: 'x',
+            kind: 'link',
         },
         {
             name: 'email',
             url: 'mailto:zhangsamuel12@gmail.com',
-            icon: 'email',
+            kind: 'email',
         },
     ],
     description: (
