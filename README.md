@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# personal-website
 
-## Getting Started
+The source for [samuelzhang.ca](https://samuelzhang.ca): a single page with a short bio, a few projects, and contact links. It's built with Next.js and Tailwind and edited through one config file.
 
-First, run the development server:
+- **One source of truth.** The bio, projects, and socials live in [`src/config.tsx`](src/config.tsx). The page, the meta description, and [`/llms.txt`](https://samuelzhang.ca/llms.txt) are all generated from it, so they never disagree.
+- **Readable by agents.** [`/llms.txt`](src/app/llms.txt/route.ts) serves the whole site as plain markdown, prerendered at build time.
+- **Light and dark.** It follows the system theme, has a manual toggle, and keeps the browser bar color in sync with whichever theme is showing.
+- **Quiet motion.** Content fades in once after hydration. With reduced motion or no JavaScript, it's simply visible.
+
+![Share card: "samuel zhang — cs @ waterloo. building with ai."](src/app/opengraph-image.png)
+
+---
+
+## Run it locally
+
+You'll need Node.js 18.17 or later (required by Next.js 14).
 
 ```bash
+git clone https://github.com/SamuelZ12/personal-website.git
+cd personal-website
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open <http://localhost:3000>.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Edit the content
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Almost every change happens in [`src/config.tsx`](src/config.tsx):
 
-## Learn More
+```tsx
+projects: [
+    {
+        name: 'longcut',
+        description: 'turns youtube videos into highlight reels, cited answers, and notes',
+        url: 'https://www.longcut.ai',            // optional: live site
+        github: 'https://github.com/SamuelZ12/longcut', // optional: repo
+    },
+],
+```
 
-To learn more about Next.js, take a look at the following resources:
+- **`BIO`** is the bio, written as strings and `{ text, href }` links.
+- **`projects`** fill the project list. A row links to `url` if there is one, otherwise to `github`.
+- **`socials`** fill the footer. `icon` must be a key in [`src/components/icons.tsx`](src/components/icons.tsx).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The share image ([`opengraph-image.png`](src/app/opengraph-image.png) and its [alt text](src/app/opengraph-image.alt.txt)) is a static file. If you change the bio, update it by hand.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Project layout
 
-## Deploy on Vercel
+```
+src/
+├── config.tsx              content: bio, projects, socials
+├── app/
+│   ├── page.tsx            the home page
+│   ├── layout.tsx          fonts, theme, analytics, entrance fade
+│   ├── llms.txt/route.ts   /llms.txt
+│   ├── sitemap.ts, robots.ts, manifest.ts
+│   └── opengraph-image.*   share card
+├── components/             header, project list, footer (socials, webring, theme toggle)
+└── lib/                    theme colors, class helper
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+| Command         | What it does                     |
+| --------------- | -------------------------------- |
+| `npm run dev`   | Start the dev server on :3000    |
+| `npm run build` | Make a production build          |
+| `npm start`     | Serve the production build       |
+
+## Analytics
+
+The site uses Vercel Analytics. Google Analytics and Highlight session replay load only in production (`NODE_ENV === 'production'`). Their IDs are hardcoded in [`src/app/layout.tsx`](src/app/layout.tsx). If you fork this, remove them or swap in your own.
+
+## License
+
+[MIT](LICENSE). Feel free to borrow the code. The bio and project text are mine, so please don't reuse them as your own.
