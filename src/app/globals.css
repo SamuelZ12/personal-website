@@ -116,7 +116,7 @@
     }
 
     /* Keyboard focus. Text links already answer focus with a color shift and the
-       underline wipe, but icon-only links (the webring arrows) have no
+       underline wipe, but icon-only links (the webring mark) have no
        underline, and color alone is a weak focus cue (WCAG 2.4.7). One hairline
        ring in the neutral --ring ink, offset so it never touches the glyph, on
        every link; pointer clicks never trigger it (:focus-visible). Shadcn
@@ -250,7 +250,7 @@
 }
 
 /* Touch ergonomics. The page is tuned for a precise cursor: inline bio links
-   a line of text tall, a 24px-wide webring arrow. But PRODUCT.md says most
+   a line of text tall, a 16px webring mark. But PRODUCT.md says most
    visits are mobile, where there is no pixel-accurate cursor to land a small
    target. This rule engages only on a coarse pointer / no-hover device, so the
    desktop design is byte-for-byte unchanged — and there every tap target grows

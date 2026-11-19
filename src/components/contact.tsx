@@ -38,40 +38,29 @@ const Contact = () => {
                     )}
                 </nav>
 
-                <div className='flex items-center gap-x-5'>
-                    {/* Webring */}
-                    <div className='-mx-1.5 flex items-center text-muted-foreground'>
-                        <Link
-                            href='https://cs.uwatering.com/#samuelzhang.ca?nav=prev'
-                            aria-label='Previous site in the CS webring'
-                            className='touch-target flex h-10 w-6 items-center justify-center btn-press hover:text-foreground focus-visible:text-foreground active:text-foreground'
-                        >
-                            ←
-                        </Link>
-                        <Link
-                            href='https://cs.uwatering.com/#samuelzhang.ca'
-                            target='_blank'
-                            className='touch-target flex h-10 w-6 items-center justify-center opacity-70 btn-press hover:opacity-100 focus-visible:opacity-100'
-                        >
-                            <img
-                                src='https://cs.uwatering.com/icon.black.svg'
-                                alt='CS Webring'
-                                className='size-4 dark:hidden'
-                            />
-                            <img
-                                src='https://cs.uwatering.com/icon.white.svg'
-                                alt='CS Webring'
-                                className='hidden size-4 dark:block'
-                            />
-                        </Link>
-                        <Link
-                            href='https://cs.uwatering.com/#samuelzhang.ca?nav=next'
-                            aria-label='Next site in the CS webring'
-                            className='touch-target flex h-10 w-6 items-center justify-center btn-press hover:text-foreground focus-visible:text-foreground active:text-foreground'
-                        >
-                            →
-                        </Link>
-                    </div>
+                <div className='flex items-center gap-x-6'>
+                    {/* Webring: one bare 16px mark, the theme toggle's twin. It
+                        opens the ring's hub, where prev / next live. The ::before
+                        pads the hit area to 44px tall without moving anything, and
+                        stops short on the right so it never overlaps the toggle's. */}
+                    <Link
+                        href='https://cs.uwatering.com/#samuelzhang.ca'
+                        target='_blank'
+                        aria-label='CS Webring'
+                        title='CS Webring'
+                        className="btn-press relative grid size-4 place-items-center opacity-60 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-offset-4 active:opacity-100 before:absolute before:-inset-y-3.5 before:-left-3.5 before:-right-2.5 before:content-['']"
+                    >
+                        <img
+                            src='https://cs.uwatering.com/icon.black.svg'
+                            alt=''
+                            className='size-4 dark:hidden'
+                        />
+                        <img
+                            src='https://cs.uwatering.com/icon.white.svg'
+                            alt=''
+                            className='hidden size-4 dark:block'
+                        />
+                    </Link>
                     <ModeToggle />
                 </div>
             </div>
