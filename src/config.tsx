@@ -28,7 +28,7 @@ const BIO: (string | { text: string; href: string })[] = [
     { text: 'memories', href: 'https://memories.ai' },
     '. i studied cs at ',
     { text: 'waterloo', href: 'https://uwaterloo.ca' },
-    '. in hs, i competed in ',
+    '. in high school, i competed in ',
     {
         text: 'math',
         href: 'https://www.ycdsb.ca/st-robert-chs-students-achieved-worlds-1-team-standing-in-three-university-of-waterloo-math-contests/',
