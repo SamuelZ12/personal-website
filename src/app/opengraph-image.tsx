@@ -3,10 +3,13 @@ import { join } from 'node:path'
 import { ImageResponse } from 'next/og'
 import { BIO, CONFIG } from '@/config'
 
-// The share card: the name, the bio, and the domain on the light theme's
-// paper. Drawn from BIO, the same source the home page renders, so a bio edit
-// reaches the card without anyone re-exporting an image; prerendered once at
-// build time like any static file.
+// The share card: the top of the home page on the light theme's paper, set
+// the way the page sets it. One size throughout, with weight and ink carrying
+// the hierarchy: the name medium, a line's gap over the muted bio. No domain,
+// since every link preview prints that beside the card already. Drawn from
+// BIO, the same source the page renders, so a bio edit reaches the card
+// without anyone re-exporting an image; prerendered once at build time like
+// any static file.
 export const alt = `${CONFIG.name}. ${CONFIG.descriptionRaw}`
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
@@ -54,18 +57,18 @@ export default async function Image() {
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
-                    padding: '92px 104px 84px',
+                    justifyContent: 'center',
+                    padding: '0 104px',
                     background: PAPER,
                     color: MUTED,
                     fontFamily: 'Inter',
+                    fontSize: 44,
                 }}
             >
                 <div
                     style={{
-                        fontSize: 76,
                         fontWeight: 500,
-                        lineHeight: 1.2,
-                        letterSpacing: '-0.02em',
+                        lineHeight: 1.5,
                         color: INK,
                     }}
                 >
@@ -76,9 +79,8 @@ export default async function Image() {
                         display: 'flex',
                         flexWrap: 'wrap',
                         columnGap: '0.28em',
-                        marginTop: 46,
-                        fontSize: 34,
-                        lineHeight: '54px',
+                        marginTop: 44,
+                        lineHeight: 1.65,
                     }}
                 >
                     {words.map((word, i) => (
@@ -93,9 +95,6 @@ export default async function Image() {
                             ))}
                         </div>
                     ))}
-                </div>
-                <div style={{ marginTop: 'auto', fontSize: 28 }}>
-                    {new URL(CONFIG.siteUrl).host}
                 </div>
             </div>
         ),
