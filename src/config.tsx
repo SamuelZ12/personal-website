@@ -30,8 +30,6 @@ type Config = {
         description: string
         url?: string
         github?: string
-        email?: string
-        featured: boolean
     }[]
 }
 
@@ -75,61 +73,35 @@ export const CONFIG: Config = {
     descriptionRaw: `CS at UWaterloo. Building with AI. Previously at OpenArt and Memories.ai. Also into lifting, fencing, and poker.`,
     projects: [
         {
-            name: 'LongCut',
-            description: 'Transforms long-form YouTube videos into a structured learning workspace',
-            url: 'https://www.longcut.ai',
-            featured: true,
-            github: 'https://github.com/SamuelZ12/longcut'
-        },
-        {
             name: 'vidscribe',
             description: 'Lets AI agents watch videos: local transcripts and frames on Apple Silicon',
-            featured: true,
             github: 'https://github.com/SamuelZ12/vidscribe'
         },
         {
+            name: 'OpenArt Arena',
+            description: 'Expert-led leaderboard for AI image and video models on real creative work',
+            url: 'https://openart.ai/arena'
+        },
+        {
+            name: 'Internet2EgoExo',
+            description: 'Turns internet video into egocentric and exocentric training data',
+            github: 'https://github.com/Memories-ai-labs/Internet2EgoExo'
+        },
+        {
+            name: 'LongCut',
+            description: 'Transforms long-form YouTube videos into a structured learning workspace',
+            url: 'https://www.longcut.ai',
+            github: 'https://github.com/SamuelZ12/longcut'
+        },
+        {
             name: 'Reposeek',
-            description: 'Repo discovery for coding agents. Find the repo to build on before you code',
-            url: 'https://reposeek.ai',
-            featured: false
+            description: 'Search that finds coding agents an open-source repo worth building on',
+            url: 'https://reposeek.ai'
         },
         {
             name: 'Screen Scribe',
             description: 'macOS app that converts screen captures into text (LaTeX, Markdown, etc.)',
-            featured: false,
             github: 'https://github.com/samuelz12/screen-scribe'
-        },
-        {
-            name: 'Deeppling',
-            description: 'Rippling-style autonomous payroll agent. Won $2K at Unlink x Monad hackathon',
-            featured: false,
-            github: 'https://github.com/DerrickHa/deeppling'
-        },
-        {
-            name: 'prtokens',
-            description: 'See how much your PR costs in LLM tokens, attributed from agent transcripts',
-            featured: false,
-            github: 'https://github.com/SamuelZ12/prtokens'
-        },
-        {
-            name: 'vm',
-            description: 'Vim-like modal text editor in C++20 with syntax highlighting and macros',
-            featured: false,
-            email: 'mailto:zhangsamuel12@gmail.com?subject=vm%20repo%20access'
-        },
-        {
-            name: '2048 AI',
-            description: 'AI agent that plays the 2048 game using expectimax search algorithm',
-            url: 'https://samuelz12.github.io/2048-ai/',
-            featured: false,
-            github: 'https://github.com/SamuelZ12/2048-ai'
-        },
-        {
-            name: 'Swapify',
-            description: 'University of Waterloo skill exchange platform (discontinued unfortunately)',
-            url: 'https://swapifyy.vercel.app',
-            featured: false,
-            github: 'https://github.com/SamuelZ12/swapify'
         }
     ],
 }
