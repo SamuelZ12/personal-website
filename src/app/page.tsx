@@ -6,7 +6,7 @@ export default function Home() {
     return (
         // Two rhythms, after jakub.kr: tight within a group (the name 16px
         // over the bio, a label 12px over its list) and wide between groups
-        // (64px, 128px from sm up), so each section reads as its own block.
+        // (128px at every width, as on desktop), so each section reads as its own block.
         <>
             <Header />
 

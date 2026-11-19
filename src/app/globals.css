@@ -254,22 +254,21 @@
    visits are mobile, where there is no pixel-accurate cursor to land a small
    target. This rule engages only on a coarse pointer / no-hover device, so the
    desktop design is byte-for-byte unchanged — and there every tap target grows
-   to 32×44px (WCAG 2.2's web floor is 24px).
+   to at least 44px tall, 16px wider than the word (WCAG 2.2's web floor is 24px).
 
-   The hit box must grow without moving the layout: a 44px-tall box in a line
-   of text would push the lines apart. So the width grows in layout (min-width;
-   adjacent targets must not share an overlapping hit area), while the height
-   grows through an absolutely-positioned ::before, which is hit-tested as part
-   of the link but takes no space. */
+   The hit box must grow without moving the layout, so spacing on a phone
+   matches the desktop exactly. Both dimensions grow through an
+   absolutely-positioned ::before, which is hit-tested as part of the link but
+   takes no space: 8px out to each side (neighbours sit 20px apart, so their
+   hit areas never overlap) and 44px tall. */
 @media (hover: none), (pointer: coarse) {
     .touch-target {
         position: relative;
-        min-width: 32px;
     }
     .touch-target::before {
         content: '';
         position: absolute;
-        inset-inline: 0;
+        inset-inline: -8px;
         top: 50%;
         height: 44px;
         transform: translateY(-50%);
