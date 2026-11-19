@@ -100,12 +100,12 @@ export const CONFIG: Config = {
     projects: [
         {
             name: 'vidscribe',
-            description: 'lets ai agents watch videos: local transcripts and frames on apple silicon',
+            description: 'local video understanding for ai agents',
             github: 'https://github.com/SamuelZ12/vidscribe'
         },
         {
             name: 'openart arena',
-            description: 'expert-led leaderboard for ai image and video models on real creative work',
+            description: 'expert-led leaderboard for ai image and video models on creative work',
             url: 'https://openart.ai/arena'
         },
         {
