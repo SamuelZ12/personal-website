@@ -73,30 +73,35 @@ export const CONFIG: Config = {
     descriptionRaw: `CS at UWaterloo. Building with AI. Previously at OpenArt and Memories.ai. Also into lifting, fencing, and poker.`,
     projects: [
         {
+            name: 'vidscribe',
+            description: 'Lets AI agents watch videos: local transcripts and frames on Apple Silicon',
+            github: 'https://github.com/SamuelZ12/vidscribe'
+        },
+        {
+            name: 'OpenArt Arena',
+            description: 'Expert-led leaderboard for AI image and video models on real creative work',
+            url: 'https://openart.ai/arena'
+        },
+        {
+            name: 'Internet2EgoExo',
+            description: 'Turns internet video into egocentric and exocentric training data',
+            github: 'https://github.com/Memories-ai-labs/Internet2EgoExo'
+        },
+        {
             name: 'LongCut',
             description: 'Transforms long-form YouTube videos into a structured learning workspace',
             url: 'https://www.longcut.ai',
             github: 'https://github.com/SamuelZ12/longcut'
         },
         {
-            name: 'vidscribe',
-            description: 'Lets AI agents watch videos: local transcripts and frames on Apple Silicon',
-            github: 'https://github.com/SamuelZ12/vidscribe'
-        },
-        {
             name: 'Reposeek',
-            description: 'Repo discovery for coding agents. Find the repo to build on before you code',
+            description: 'Search that finds coding agents an open-source repo worth building on',
             url: 'https://reposeek.ai'
         },
         {
             name: 'Screen Scribe',
             description: 'macOS app that converts screen captures into text (LaTeX, Markdown, etc.)',
             github: 'https://github.com/samuelz12/screen-scribe'
-        },
-        {
-            name: 'Deeppling',
-            description: 'Rippling-style autonomous payroll agent. Won $2K at Unlink x Monad hackathon',
-            github: 'https://github.com/DerrickHa/deeppling'
         }
     ],
 }
