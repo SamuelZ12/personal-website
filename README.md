@@ -7,8 +7,6 @@ The source for [samuelzhang.ca](https://samuelzhang.ca): a single page with a sh
 - **Light and dark.** It follows the system theme, has a manual toggle, and keeps the browser bar color in sync with whichever theme is showing.
 - **Quiet motion.** Content fades in once after hydration. With reduced motion or no JavaScript, it's simply visible.
 
----
-
 ## Run it locally
 
 You'll need Node.js 18.17 or later (required by Next.js 14).
