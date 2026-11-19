@@ -64,16 +64,18 @@ export const CONFIG: Config = {
     ],
     description: (
         <>
-            CS at <BioLink href='https://uwaterloo.ca'>UWaterloo</BioLink>.
-            Building with AI.
-            <br />
-            Previously at <BioLink href='https://openart.ai/'>OpenArt</BioLink>{' '}
-            and <BioLink href='https://memories.ai'>Memories.ai</BioLink>.
-            <br />
-            Also into lifting, fencing, and poker.
+            Currently{' '}
+            <BioLink href='https://www.noahpinion.blog/p/bumbition'>
+                bumming
+            </BioLink>{' '}
+            around. I studied CS at{' '}
+            <BioLink href='https://uwaterloo.ca'>UWaterloo</BioLink>. I was the
+            youngest engineer at{' '}
+            <BioLink href='https://openart.ai/'>OpenArt</BioLink> and{' '}
+            <BioLink href='https://memories.ai'>Memories</BioLink>.
         </>
     ),
-    descriptionRaw: `CS at UWaterloo. Building with AI. Previously at OpenArt and Memories.ai. Also into lifting, fencing, and poker.`,
+    descriptionRaw: `Currently bumming around. I studied CS at UWaterloo. I was the youngest engineer at OpenArt and Memories.`,
     projects: [
         {
             name: 'vidscribe',
