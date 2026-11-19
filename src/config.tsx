@@ -22,12 +22,12 @@ const BioLink = ({ href, children }: { href: string; children: string }) => (
 const BIO: (string | { text: string; href: string })[] = [
     'currently ',
     { text: 'bumming', href: 'https://www.noahpinion.blog/p/bumbition' },
-    ' around. i studied cs at ',
-    { text: 'waterloo', href: 'https://uwaterloo.ca' },
-    '. i was the youngest engineer at ',
+    ' around. i was the youngest engineer at ',
     { text: 'openart', href: 'https://openart.ai/' },
     ' and ',
     { text: 'memories', href: 'https://memories.ai' },
+    '. i studied cs at ',
+    { text: 'waterloo', href: 'https://uwaterloo.ca' },
     '. in hs, i competed in ',
     {
         text: 'math',
