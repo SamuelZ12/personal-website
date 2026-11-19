@@ -1,0 +1,128 @@
+# Reviews each pull request with Open Code Review (`ocr`) on the Mac mini's
+# self-hosted runner, using the ChatGPT sign-in stored there. Findings are
+# posted as inline review comments; a clean review posts nothing.
+#
+# The job only runs for branches of this repository. Pull requests from forks
+# are skipped here, and repo settings hold every outside contributor's
+# workflow run for manual approval, so no fork code reaches the runner.
+
+name: Open Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: ocr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository
+      && !github.event.pull_request.draft
+    runs-on: [self-hosted, ocr]
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Review the pull request diff
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          OCR_NO_UPDATE: "1"
+        run: |
+          export PATH="$HOME/.local/share/fnm/aliases/default/bin:/opt/homebrew/bin:$PATH"
+          ocr version
+          ocr review --from "origin/$BASE_REF" --to "$HEAD_SHA" \
+            --format json --output "$RUNNER_TEMP/ocr-result.json"
+
+      - name: Post findings
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          OCR_RESULT: ${{ runner.temp }}/ocr-result.json
+        with:
+          script: |
+            const fs = require('fs');
+            const result = JSON.parse(fs.readFileSync(process.env.OCR_RESULT, 'utf8'));
+            const findings = result.comments || [];
+            const pr = context.payload.pull_request;
+            const stats = result.summary || {};
+            const header =
+              `**Open Code Review** (${result.llm?.model || 'unknown model'}) read ` +
+              `${stats.files_reviewed ?? '?'} file(s) at ${pr.head.sha.slice(0, 7)} ` +
+              `and left ${findings.length} finding(s).`;
+            await core.summary.addRaw(`${header}\n\n${result.message || ''}`).write();
+            if (findings.length === 0) return;
+
+            const label = (f) => [f.severity, f.category].filter(Boolean).join(' · ');
+            const where = (f) => {
+              const first = f.start_line || f.end_line;
+              const last = f.end_line || f.start_line;
+              if (!first) return f.path || 'general';
+              return first === last ? `${f.path}:${first}` : `${f.path}:${first}-${last}`;
+            };
+            const inlineBody = (f) => (label(f) ? `**${label(f)}**\n\n${f.content}` : f.content);
+            const listed = (f) =>
+              `- \`${where(f)}\`${label(f) ? ` (${label(f)})` : ''}: ${f.content}`;
+            const toInline = (f) => {
+              const comment = {
+                path: f.path,
+                body: inlineBody(f),
+                side: 'RIGHT',
+                line: f.end_line || f.start_line,
+              };
+              if (f.start_line && f.end_line && f.start_line < f.end_line) {
+                comment.start_line = f.start_line;
+                comment.start_side = 'RIGHT';
+              }
+              return comment;
+            };
+
+            const target = {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number,
+              commit_id: pr.head.sha,
+            };
+            const placeable = findings.filter((f) => f.path && (f.start_line || f.end_line));
+            const unplaced = findings.filter((f) => !placeable.includes(f));
+            const withList = (items) =>
+              items.length === 0 ? header : `${header}\n\n${items.map(listed).join('\n')}`;
+
+            try {
+              await github.rest.pulls.createReview({
+                ...target,
+                event: 'COMMENT',
+                body: withList(unplaced),
+                comments: placeable.map(toInline),
+              });
+              return;
+            } catch (error) {
+              core.warning(`Posting the review in one request failed: ${error.message}`);
+            }
+
+            // GitHub rejects the whole review when one finding sits on a line
+            // outside the diff, so post them one at a time and list the rest.
+            for (const finding of placeable) {
+              try {
+                await github.rest.pulls.createReviewComment({ ...target, ...toInline(finding) });
+              } catch (error) {
+                core.warning(`${where(finding)} could not be placed inline: ${error.message}`);
+                unplaced.push(finding);
+              }
+            }
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number,
+              body: withList(unplaced),
+            });
