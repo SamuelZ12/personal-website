@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import type { ReactNode } from 'react'
 
 // A link inside the muted bio sentence. At rest it is marked by ink alone,
 // the same way a project's name stands out from its description; the
@@ -51,7 +52,7 @@ type Config = {
         // email renders as a copy-to-clipboard mailto; links open a new tab
         kind: 'link' | 'email'
     }[]
-    description: string | JSX.Element
+    description: ReactNode
     descriptionRaw: string
     descriptionMarkdown: string
     projects: {

@@ -9,7 +9,7 @@ The source for [samuelzhang.ca](https://samuelzhang.ca): a single page with a sh
 
 ## Run it locally
 
-You'll need Node.js 18.17 or later (required by Next.js 14).
+You'll need Node.js 20.9 or later (required by Next.js 16).
 
 ```bash
 git clone https://github.com/SamuelZ12/samuelzhang.ca.git
