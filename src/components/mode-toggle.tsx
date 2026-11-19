@@ -51,7 +51,7 @@ export function ModeToggle() {
     return (
         <button
             type='button'
-            className="btn-press relative grid size-4 place-items-center rounded-sm text-foreground before:absolute before:-inset-3.5 before:content-[''] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+            className="btn-press relative grid size-4 place-items-center rounded-sm text-muted-foreground hover:text-foreground before:absolute before:-inset-3.5 before:content-[''] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
             onClick={toggle}
         >
             <span

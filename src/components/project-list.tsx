@@ -11,37 +11,38 @@ type Project = (typeof CONFIG.projects)[number]
 // word inside it; the anchor's own ring (the a:focus-visible rule in
 // globals.css) is switched off to match.
 const rowLink =
-    "focus-visible:outline-none after:absolute after:inset-0 after:rounded-md after:content-[''] focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-ring"
+    "focus-visible:outline-none after:absolute after:inset-0 after:rounded-lg after:content-[''] focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-ring"
 
 const ProjectRow = ({ project }: { project: Project }) => {
     // Where the row goes: the live site if there is one, else the repo.
     const href = project.url ?? project.github
 
     return (
-        // The fill bleeds 16px into the column's 24px gutter, so the text
-        // never moves. The space between rows is the rows' own padding, so
-        // the whole of it is clickable: 20px between rows on a phone, 28px
-        // from sm up (12px each side plus the list's 4px gap), where the
-        // hover fills need a sliver of paper between them. Pressing the row
-        // steps the fill up once, which is the only tap feedback on touch,
-        // where there is no hover.
-        <li className='relative -mx-4 rounded-md px-4 py-2.5 transition-colors duration-150 hover:bg-secondary has-[[data-row-link]:active]:bg-accent sm:py-3'>
-            {href ? (
-                <Link
-                    href={href}
-                    target='_blank'
-                    data-row-link
-                    className={rowLink}
-                >
-                    {project.name}
-                    {!project.url && <span className='sr-only'> on GitHub</span>}
-                </Link>
-            ) : (
-                <span>{project.name}</span>
-            )}
-            <p className='text-pretty text-muted-foreground'>
-                {project.description}
-            </p>
+        // The fill bleeds 8px into the column's gutter, so the text never
+        // moves, and leaves 12px of paper between neighbouring rows' fills.
+        // Pressing the row steps the fill up once, which is the only tap
+        // feedback on touch, where there is no hover.
+        <li className='py-1.5'>
+            <div className='relative -mx-2 rounded-lg p-2 transition-colors duration-150 hover:bg-secondary has-[[data-row-link]:active]:bg-accent'>
+                {href ? (
+                    <Link
+                        href={href}
+                        target='_blank'
+                        data-row-link
+                        className={rowLink}
+                    >
+                        {project.name}
+                        {!project.url && (
+                            <span className='sr-only'> on GitHub</span>
+                        )}
+                    </Link>
+                ) : (
+                    <span>{project.name}</span>
+                )}
+                <p className='text-pretty text-muted-foreground'>
+                    {project.description}
+                </p>
+            </div>
         </li>
     )
 }
@@ -50,7 +51,7 @@ const ProjectRow = ({ project }: { project: Project }) => {
 // one row gap below its label (20px, then 28px) and ends on its last line of
 // text, leaving the section gap below it exact.
 export const ProjectList = ({ projects }: { projects: Project[] }) => (
-    <ul className='-my-2.5 flex flex-col sm:-mb-3 sm:mt-0 sm:gap-1'>
+    <ul className='flex flex-col'>
         {projects.map((project) => (
             <ProjectRow key={project.name} project={project} />
         ))}

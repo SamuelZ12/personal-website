@@ -4,12 +4,9 @@ import { CONFIG } from '@/config'
 
 export default function Home() {
     return (
-        // Two rhythms: a label sits 24px above what it names (the name over
-        // the bio, "Projects" over its list), and a section's gap (40px, 48px
-        // from sm up) stands between one group and the next. The gap is kept
-        // to about twice the space between project rows: enough to read as a
-        // break, small enough that the whole page fits a laptop window
-        // without scrolling.
+        // Two rhythms, after jakub.kr: tight within a group (the name 16px
+        // over the bio, a label 12px over its list) and wide between groups
+        // (64px, 128px from sm up), so each section reads as its own block.
         <>
             <Header />
 

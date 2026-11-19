@@ -1,4 +1,3 @@
-import { ModeToggle } from '@/components/mode-toggle'
 import Link from 'next/link'
 
 export const metadata = {
@@ -13,12 +12,7 @@ export const metadata = {
 export default function NotFound() {
     return (
         <>
-            <div className='mb-5 flex animate-enter items-start justify-between sm:mb-6'>
-                <h1 className='font-medium'>404</h1>
-                <div className='flex h-6 items-center'>
-                    <ModeToggle />
-                </div>
-            </div>
+            <h1 className='mb-4 animate-enter font-medium'>404</h1>
 
             <p className='animate-enter text-pretty leading-prose text-muted-foreground'>
                 This page doesn&rsquo;t exist. The odds were never great.

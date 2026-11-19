@@ -92,7 +92,6 @@ export default function RootLayout({
                         fontSans.variable
                     )}
                 >
-
                     {process.env.NODE_ENV === 'production' && (
                         <GoogleAnalytics gaId='G-32FLEBL3F6' />
                     )}
@@ -109,17 +108,13 @@ export default function RootLayout({
                         {/* One column, 644px of text inside a 24px gutter:
                             wide enough that every project description fits
                             on one line. The gutter lives here and nowhere
-                            else, so every block shares a left edge. The
-                            content starts at a fixed height so the name sits
-                            in the same place on every page; the footer rests
-                            on the bottom edge of a tall window and otherwise
-                            follows the content at one section's distance
-                            (40px, 48px from sm up: the same gap that
-                            separates the sections in page.tsx). */}
-                        <div className='mx-auto flex min-h-dvh max-w-[692px] flex-col px-6'>
-                            <main className='flex-1 pb-10 pt-12 sm:pb-12 md:pt-16'>
-                                {children}
-                            </main>
+                            else, so every block shares a left edge. 64px
+                            above and below (128px from sm up), the same gap
+                            that separates the sections, so the name sits in
+                            the same place on every page and the footer
+                            follows the content as one more section. */}
+                        <div className='mx-auto max-w-[692px] px-6 py-16 sm:py-32'>
+                            <main>{children}</main>
                             <Contact />
                         </div>
                     </ThemeProvider>
