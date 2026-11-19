@@ -25,8 +25,10 @@
         --accent: 41 11.9% 89.7%;
         --accent-foreground: 42 57.3% 14.7%;
 
-        /* Text selection: the ink at 18% (see ::selection) */
-        --accent-primary: 42 57.3% 14.7%;
+        /* Text selection: the favicon's amber, #FFCA59, at 45% (see
+           ::selection). The text keeps its ink. */
+        --accent-primary: 41 100% 67.5%;
+        --selection-alpha: 0.45;
 
         /* Lines: ink 10%. Focus ring: ink 70% (5:1, a focus cue needs 3:1) */
         --border: 41 11.6% 88.1%;
@@ -57,8 +59,10 @@
         --accent: 30 4.4% 14.7%;
         --accent-foreground: 40 16.2% 93.7%;
 
-        /* Text selection */
-        --accent-primary: 40 16.2% 93.7%;
+        /* Text selection: the same amber, at 40%; any thinner turns brown
+           over the near-black */
+        --accent-primary: 41 100% 67.5%;
+        --selection-alpha: 0.4;
 
         /* Lines: ink 12% */
         --border: 31 3.9% 16.5%;
@@ -100,7 +104,7 @@
     }
 
     ::selection {
-        background: hsl(var(--accent-primary) / 0.18);
+        background: hsl(var(--accent-primary) / var(--selection-alpha));
         color: hsl(var(--foreground));
     }
 }
