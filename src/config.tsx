@@ -38,7 +38,7 @@ const BIO: (string | { text: string; href: string })[] = [
         text: 'fencing',
         href: 'https://www.fencingtimelive.com/events/results/BEC40366CA3F43759C8193EBF16BAD6E',
     },
-    '.',
+    '. i was born in toronto but lived in fuzhou, china, where my family is from, until i was 6.',
 ]
 
 type Config = {
