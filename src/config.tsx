@@ -28,6 +28,16 @@ const BIO: (string | { text: string; href: string })[] = [
     { text: 'openart', href: 'https://openart.ai/' },
     ' and ',
     { text: 'memories', href: 'https://memories.ai' },
+    '. in hs, i competed in ',
+    {
+        text: 'math',
+        href: 'https://www.ycdsb.ca/st-robert-chs-students-achieved-worlds-1-team-standing-in-three-university-of-waterloo-math-contests/',
+    },
+    ' and ',
+    {
+        text: 'fencing',
+        href: 'https://www.fencingtimelive.com/events/results/BEC40366CA3F43759C8193EBF16BAD6E',
+    },
     '.',
 ]
 
