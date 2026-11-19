@@ -102,7 +102,7 @@ export const CONFIG: Config = {
         },
         {
             name: 'Screen Scribe',
-            description: 'macOS app that converts screen captures into text (LaTeX, Markdown, etc.)',
+            description: 'macOS app that converts screen captures into text',
             github: 'https://github.com/samuelz12/screen-scribe'
         }
     ],
