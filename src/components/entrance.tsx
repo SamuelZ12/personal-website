@@ -28,11 +28,12 @@ export function EntranceRelease() {
         const id = requestAnimationFrame(() =>
             requestAnimationFrame(() => {
                 root.classList.replace('enter-armed', 'enter-go')
-                // Once the arrival fade (1.2s) is over, later pages reached by
+                // Once the arrival fade (2.4s, the longer of the two entrance
+                // animations in globals.css) is over, later pages reached by
                 // in-site links fade in quickly instead of replaying it.
                 settle = setTimeout(
                     () => root.classList.add('enter-settled'),
-                    1300
+                    2500
                 )
             })
         )

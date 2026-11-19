@@ -139,12 +139,16 @@
 @layer utilities {
     /* Page-load entrance. Every .animate-enter block runs the same fade on the
        same clock, so the page arrives as one quiet piece instead of assembling
-       itself section by section: no rise, no stagger. The fade also comes
-       into focus from a 4px blur, so the page seems to materialise rather
-       than just brighten (see page-fade-in). 1.2s with the plain `ease` curve
-       reads as slow and deliberate while the text is already legible around
-       the halfway mark; much longer and a mostly-mobile visitor is left
-       waiting on a page they came to skim.
+       itself section by section: no rise, no stagger.
+
+       Two animations run together, on separate clocks. page-focus-in clears
+       a 4px blur in 0.9s, so the page seems to materialise rather than just
+       brighten. page-fade-in carries opacity over 2.4s on the plain `ease`
+       curve, which is past halfway by the time the blur is gone and spends
+       the rest on a long, soft settle. The split is the point: blurred text
+       is unreadable where dim text is not, so the blur is kept short and only
+       the opacity tail is slow. Lengthening the blur to match would leave a
+       mostly-mobile visitor waiting on a page they came to skim.
 
        The animation is gated on two classes toggled by an inline script in
        <head> (see layout.tsx) rather than living on .animate-enter directly.
@@ -159,7 +163,9 @@
         opacity: 0;
     }
     .enter-go .animate-enter {
-        animation: page-fade-in 1.2s ease backwards;
+        animation:
+            page-fade-in 2.4s ease backwards,
+            page-focus-in 0.9s ease-out backwards;
     }
     /* The slow fade is for arriving at the site, once. A page reached by a
        link inside the site was asked for, so it answers quickly: `enter-settled`
@@ -263,14 +269,21 @@
    begins, but nothing is held after it ends. Under `both` the filter would sit
    at a lingering blur(0px), which keeps every block on its own compositing
    layer (softer text in Safari) and makes it a containing block for fixed
-   children. With no fill after the end, filter falls back to `none`. */
+   children. With no fill after the end, filter falls back to `none` — and
+   since page-focus-in ends well before page-fade-in, the long opacity tail
+   runs with no filter at all. */
 @keyframes page-fade-in {
     from {
         opacity: 0;
-        filter: blur(4px);
     }
     to {
         opacity: 1;
+    }
+}
+
+@keyframes page-focus-in {
+    from {
+        filter: blur(4px);
     }
 }
 
