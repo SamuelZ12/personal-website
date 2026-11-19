@@ -115,7 +115,7 @@ export const CONFIG: Config = {
         },
         {
             name: 'longcut',
-            description: 'transforms long-form youtube videos into a structured learning workspace',
+            description: 'turns youtube videos into highlight reels, cited answers, and notes',
             url: 'https://www.longcut.ai',
             github: 'https://github.com/SamuelZ12/longcut'
         }
