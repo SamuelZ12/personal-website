@@ -7,7 +7,7 @@ The source for [samuelzhang.ca](https://samuelzhang.ca): a single page with a sh
 - **Light and dark.** It follows the system theme, has a manual toggle, and keeps the browser bar color in sync with whichever theme is showing.
 - **Quiet motion.** Content fades in once after hydration. With reduced motion or no JavaScript, it's simply visible.
 
-![Share card: "samuel zhang — currently bumming around. i was the youngest engineer at openart and memories."](src/app/opengraph-image.png)
+![Share card: "samuel zhang — currently bumming around. i was the youngest engineer at openart and memories."](https://samuelzhang.ca/opengraph-image)
 
 ---
 
@@ -43,7 +43,7 @@ projects: [
 - **`projects`** fill the project list. A row links to `url` if there is one, otherwise to `github`.
 - **`socials`** fill the footer. `icon` must be a key in [`src/components/icons.tsx`](src/components/icons.tsx).
 
-The share image ([`opengraph-image.png`](src/app/opengraph-image.png) and its [alt text](src/app/opengraph-image.alt.txt)) is a static file. If you change the bio, update it by hand.
+The share image and its alt text are drawn from the bio by [`opengraph-image.tsx`](src/app/opengraph-image.tsx), so they follow `config.tsx` on their own.
 
 ## Project layout
 
@@ -55,8 +55,9 @@ src/
 │   ├── layout.tsx          fonts, theme, analytics, entrance fade
 │   ├── llms.txt/route.ts   /llms.txt
 │   ├── sitemap.ts, robots.ts, manifest.ts
-│   └── opengraph-image.*   share card
+│   └── opengraph-image.tsx share card, drawn from the bio
 ├── components/             header, project list, footer (socials, webring, theme toggle)
+├── assets/fonts/           inter, as static files for the share card
 └── lib/                    theme colors, class helper
 ```
 

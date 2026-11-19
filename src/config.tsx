@@ -18,8 +18,9 @@ const BioLink = ({ href, children }: { href: string; children: string }) => (
 
 // The bio, written once as text and links. The page renders it with
 // BioLinks; the meta description takes the plain text; llms.txt takes it as
-// markdown, links kept. One source, so the three always say the same thing.
-const BIO: (string | { text: string; href: string })[] = [
+// markdown, links kept; the share card draws it too. One source, so they all
+// say the same thing.
+export const BIO: (string | { text: string; href: string })[] = [
     'currently ',
     { text: 'bumming', href: 'https://www.noahpinion.blog/p/bumbition' },
     ' around. i was the youngest engineer at ',
