@@ -83,7 +83,7 @@ export const CONFIG: Config = {
         },
         {
             name: 'email',
-            url: 'mailto:zhangsamuel12@gmail.com',
+            url: 'mailto:hi@samuelzhang.ca',
             kind: 'email',
         },
     ],
