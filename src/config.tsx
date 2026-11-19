@@ -1,4 +1,18 @@
 import { Icons } from '@/components/icons'
+import Link from 'next/link'
+
+// A link inside the muted bio sentence. Ink alone is only about 2.3:1
+// against the muted text around it, too quiet to say "link" on a phone, where
+// nothing hovers, so the hairline is always there and hover only firms it up.
+const BioLink = ({ href, children }: { href: string; children: string }) => (
+    <Link
+        href={href}
+        target='_blank'
+        className='touch-target text-foreground underline decoration-foreground/25 decoration-1 underline-offset-[3px] transition-[text-decoration-color] duration-150 hover:decoration-foreground/70 focus-visible:decoration-foreground/70 active:decoration-foreground/70'
+    >
+        {children}
+    </Link>
+)
 
 type Config = {
     name: string
@@ -19,13 +33,6 @@ type Config = {
         email?: string
         featured: boolean
     }[]
-    experience: {
-        work: {
-            role: string
-            company: string
-            link?: string
-        }[]
-    }
 }
 
 export const CONFIG: Config = {
@@ -56,12 +63,16 @@ export const CONFIG: Config = {
     ],
     description: (
         <>
-            CS @ UWaterloo. Building with AI.
+            CS at <BioLink href='https://uwaterloo.ca'>UWaterloo</BioLink>.
+            Building with AI.
+            <br />
+            Previously at <BioLink href='https://openart.ai/'>OpenArt</BioLink>{' '}
+            and <BioLink href='https://memories.ai'>Memories.ai</BioLink>.
             <br />
             Also into lifting, fencing, and poker.
         </>
     ),
-    descriptionRaw: `CS @ UWaterloo. Building with AI. Also into lifting, fencing, and poker.`,
+    descriptionRaw: `CS at UWaterloo. Building with AI. Previously at OpenArt and Memories.ai. Also into lifting, fencing, and poker.`,
     projects: [
         {
             name: 'LongCut',
@@ -121,23 +132,4 @@ export const CONFIG: Config = {
             github: 'https://github.com/SamuelZ12/swapify'
         }
     ],
-    experience: {
-        work: [
-            {
-                role: 'Software Engineer',
-                company: 'OpenArt',
-                link: 'https://openart.ai/'
-            },
-            {
-                role: 'Software Engineer',
-                company: 'Memories.ai',
-                link: 'https://memories.ai'
-            },
-            {
-                role: 'Undergraduate Research Assistant',
-                company: 'University of Waterloo',
-                link: 'https://uwaterloo.ca'
-            }
-        ]
-    }
 }

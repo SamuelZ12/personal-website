@@ -1,4 +1,4 @@
-import Experience from '@/components/experience'
+import FeaturedProjects from '@/components/featured-projects'
 import Header from '@/components/header'
 import { CONFIG } from '@/config'
 
@@ -18,8 +18,7 @@ export default function Home() {
                 </div>
             </div>
 
-            {/* Unified Experience section */}
-            <Experience />
+            <FeaturedProjects />
         </div>
     )
 }
