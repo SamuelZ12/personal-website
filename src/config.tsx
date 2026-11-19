@@ -97,16 +97,6 @@ export const CONFIG: Config = {
             description: 'Transforms long-form YouTube videos into a structured learning workspace',
             url: 'https://www.longcut.ai',
             github: 'https://github.com/SamuelZ12/longcut'
-        },
-        {
-            name: 'Reposeek',
-            description: 'Search that finds coding agents an open-source repo worth building on',
-            url: 'https://reposeek.ai'
-        },
-        {
-            name: 'Screen Scribe',
-            description: 'macOS app that converts screen captures into text',
-            github: 'https://github.com/samuelz12/screen-scribe'
         }
     ],
 }
