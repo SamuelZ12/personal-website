@@ -10,7 +10,7 @@ const socialLink =
 
 const Contact = () => {
     return (
-        <footer className='animate-enter px-4 pb-10'>
+        <footer className='animate-enter pb-10'>
             <div className='flex flex-wrap items-center justify-between gap-x-6 gap-y-2'>
                 <nav
                     aria-label='Social'

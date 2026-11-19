@@ -12,27 +12,25 @@ export const metadata = {
 // Contact footer and the entrance fade come for free.
 export default function NotFound() {
     return (
-        <div className='flex flex-col gap-5'>
-            <div className='flex animate-enter items-start justify-between px-4'>
-                <h1 className='text-display'>404</h1>
-                <div className='flex h-10 items-center'>
+        <>
+            <div className='mb-5 flex animate-enter items-start justify-between sm:mb-6'>
+                <h1 className='font-medium'>404</h1>
+                <div className='flex h-6 items-center'>
                     <ModeToggle />
                 </div>
             </div>
 
-            <div className='px-4'>
-                <p className='animate-enter text-pretty text-muted-foreground'>
-                    This page doesn&rsquo;t exist. The odds were never great.
-                </p>
+            <p className='animate-enter text-pretty leading-prose text-muted-foreground'>
+                This page doesn&rsquo;t exist. The odds were never great.
+            </p>
 
-                <Link
-                    href='/'
-                    className='group/link mt-6 inline-flex animate-enter items-center gap-1.5 text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground active:text-foreground'
-                >
-                    <span aria-hidden='true'>&larr;</span>
-                    <span className='link-underline'>Back home</span>
-                </Link>
-            </div>
-        </div>
+            <Link
+                href='/'
+                className='group/link mt-6 inline-flex animate-enter items-center gap-1.5 text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground active:text-foreground'
+            >
+                <span aria-hidden='true'>&larr;</span>
+                <span className='link-underline'>Back home</span>
+            </Link>
+        </>
     )
 }

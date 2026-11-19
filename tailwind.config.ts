@@ -30,22 +30,10 @@ const config = {
             fontFamily: {
                 sans: ['var(--font-sans)', ...fontFamily.sans],
             },
-            fontSize: {
-                // The one size above body copy: 28px on a 40px line, tracked
-                // tight, at 440: barely heavier than text, so size carries the
-                // hierarchy. Size, leading, tracking and weight travel
-                // together so a heading is one decision. At this size Inter
-                // draws its display cut (see layout.tsx), which is already
-                // spaced tight, so the tracking only finishes the job; the
-                // text cut needed -0.045em to look the same.
-                display: [
-                    '1.75rem',
-                    {
-                        lineHeight: '1.4286',
-                        letterSpacing: '-0.025em',
-                        fontWeight: '440',
-                    },
-                ],
+            lineHeight: {
+                // Running prose (the bio). Everything else sits on the
+                // default 1.5 line, so a two-line project row is exactly 48px.
+                prose: '1.65',
             },
             colors: {
                 border: 'hsl(var(--border))',

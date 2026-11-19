@@ -4,21 +4,20 @@ import { CONFIG } from '@/config'
 
 export default function Home() {
     return (
-        // Two rhythms: 20px inside a group, 40px between groups, so the name
-        // and bio read as one unit and each section stands apart from it.
-        <div className='flex flex-col gap-10'>
-            <div className='flex flex-col gap-5'>
-                <Header />
+        // Two rhythms: a label sits 24px above what it names (the name over
+        // the bio, "Projects" over its list), and a section's gap (40px, 48px
+        // from sm up) stands between one group and the next. The gap is kept
+        // to about twice the space between project rows: enough to read as a
+        // break, small enough that the whole page fits a laptop window
+        // without scrolling.
+        <>
+            <Header />
 
-                {/* Bio section */}
-                <div className='animate-enter px-4'>
-                    <p className='text-pretty text-muted-foreground'>
-                        {CONFIG.description}
-                    </p>
-                </div>
-            </div>
+            <p className='animate-enter text-pretty leading-prose text-muted-foreground'>
+                {CONFIG.description}
+            </p>
 
             <Projects />
-        </div>
+        </>
     )
 }

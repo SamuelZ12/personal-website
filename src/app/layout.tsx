@@ -13,16 +13,15 @@ import { ThemeColorSync } from '@/components/theme-color'
 import { THEME_COLOR } from '@/lib/theme-color'
 import { GoogleAnalytics } from '@next/third-parties/google'
 
-// Inter, set small and tight (see the body rule in globals.css). The warmth
-// comes from the paper and ink, not the letterforms. Variable, so the weights
-// in use (400 body / 440 display / 500 names) ship in a single file,
-// and next/font self-hosts it with a metric-matched fallback so the swap costs
-// no layout shift.
+// Inter at one size (see the body rule in globals.css). The warmth comes from
+// the paper and ink, not the letterforms. Variable, so the weights in use
+// (400 text / 500 name and section labels) ship in a single file, and
+// next/font self-hosts it with a metric-matched fallback so the swap costs no
+// layout shift.
 //
-// The optical-size axis rides along (about 25KB more woff2) so the 28px name
-// is drawn in Inter's display cut, which is narrower and spaced for that size.
-// font-optical-sizing is `auto` by default, so each size picks its own cut and
-// 14px copy stays on the text cut it had before.
+// The optical-size axis rides along (about 25KB more woff2).
+// font-optical-sizing is `auto` by default, so 16px copy is drawn in the cut
+// Inter spaces for that size and needs no tracking of its own.
 const fontSans = FontSans({
     subsets: ['latin'],
     variable: '--font-sans',
@@ -107,15 +106,18 @@ export default function RootLayout({
                         disableTransitionOnChange
                     >
                         <ThemeColorSync />
-                        {/* The page fills the window: one column as tall as
-                            the viewport, wide enough (544px of text) that
-                            every project description fits on one line, the content
-                            starting at a fixed height so the name sits in the
-                            same place on every page, the footer resting on
-                            the bottom edge. A page longer than the window
-                            just scrolls, footer last. */}
-                        <div className='mx-auto flex min-h-dvh max-w-xl flex-col'>
-                            <main className='flex-1 py-8 md:py-16'>
+                        {/* One column, 644px of text inside a 24px gutter:
+                            wide enough that every project description fits
+                            on one line. The gutter lives here and nowhere
+                            else, so every block shares a left edge. The
+                            content starts at a fixed height so the name sits
+                            in the same place on every page; the footer rests
+                            on the bottom edge of a tall window and otherwise
+                            follows the content at one section's distance
+                            (40px, 48px from sm up: the same gap that
+                            separates the sections in page.tsx). */}
+                        <div className='mx-auto flex min-h-dvh max-w-[692px] flex-col px-6'>
+                            <main className='flex-1 pb-10 pt-12 sm:pb-12 md:pt-16'>
                                 {children}
                             </main>
                             <Contact />

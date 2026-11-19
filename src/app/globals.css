@@ -27,7 +27,7 @@
         --secondary-foreground: 42 57.3% 14.7%;
 
         /* Secondary text: ink 72%, which holds 5.2:1 on the paper (AA for
-           14px text; the 60% a designer reaches for first is only 3.7:1) */
+           body text; the 60% a designer reaches for first is only 3.7:1) */
         --muted: 41 12.3% 91.4%;
         --muted-foreground: 42 16.6% 37.5%;
 
@@ -98,14 +98,12 @@
     * {
         @apply border-border;
     }
-    /* Body copy is small and set tight: 14px on a 24px line, tracked in a
-       touch. Everything inherits it; only the display size (tailwind.config)
-       and the 12px tooltip step off it. */
+    /* One size for the whole page: the browser's own 16px on a 1.5 line, with
+       no tracking. Weight and ink carry the hierarchy (medium for the name and
+       section labels, muted for supporting text), and running prose opens up
+       to 1.65 (leading-prose in tailwind.config). */
     body {
         @apply bg-background text-foreground;
-        font-size: 0.875rem;
-        line-height: 1.7143;
-        letter-spacing: -0.018em;
     }
 
     /* Custom-shaped icon and text links carry their own hover / focus / press

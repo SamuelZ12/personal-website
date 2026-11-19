@@ -4,11 +4,13 @@ import Link from 'next/link'
 // A link inside the muted bio sentence. Ink alone is only about 2.3:1
 // against the muted text around it, too quiet to say "link" on a phone, where
 // nothing hovers, so the hairline is always there and hover only firms it up.
+// The line takes its position from the font and its weight from the type
+// size, so it stays in proportion wherever the link is set.
 const BioLink = ({ href, children }: { href: string; children: string }) => (
     <Link
         href={href}
         target='_blank'
-        className='touch-target text-foreground underline decoration-foreground/25 decoration-1 underline-offset-[3px] transition-[text-decoration-color] duration-150 hover:decoration-foreground/70 focus-visible:decoration-foreground/70 active:decoration-foreground/70'
+        className='touch-target text-foreground underline decoration-foreground/25 decoration-[0.08em] [text-underline-position:from-font] transition-[text-decoration-color] duration-150 hover:decoration-foreground/70 focus-visible:decoration-foreground/70 active:decoration-foreground/70'
     >
         {children}
     </Link>
