@@ -1,11 +1,13 @@
 import { CopyEmail } from '@/components/copy-email'
+import { Icons } from '@/components/icons'
 import { ModeToggle } from '@/components/mode-toggle'
 import { CONFIG } from '@/config'
 import Link from 'next/link'
 
-// One quiet row closing every page: the socials as words on the left, the
-// webring and the theme toggle on the right. Words rather than icons so nothing here
-// needs a tooltip to be understood.
+// One quiet row closing every page: the socials as words on the left, and on
+// the right the things about the site itself, as three bare 16px glyphs:
+// the webring, llms.txt, the theme toggle. The socials stay words, since they
+// are what most visitors come down here for.
 const socialLink =
     'touch-target link-underline inline-flex justify-center text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground active:text-foreground'
 
@@ -42,7 +44,7 @@ const Contact = () => {
                     {/* Webring: one bare 16px mark, the theme toggle's twin. It
                         opens the ring's hub, where prev / next live. The ::before
                         pads the hit area to 44px tall without moving anything, and
-                        stops short on the right so it never overlaps the toggle's. */}
+                        stops short on the right so it never overlaps its neighbour's. */}
                     <Link
                         href='https://cs.uwatering.com/#samuelzhang.ca'
                         target='_blank'
@@ -60,6 +62,18 @@ const Contact = () => {
                             alt=''
                             className='hidden size-4 dark:block'
                         />
+                    </Link>
+                    {/* llms.txt: a robot, as the page is the site written
+                        for agents. A bare 16px glyph in the toggle's inks; the
+                        title names it on hover. Same tab, as it is part of this
+                        site. The hit area matches the webring mark's. */}
+                    <Link
+                        href='/llms.txt'
+                        aria-label='llms.txt'
+                        title='llms.txt'
+                        className="btn-press relative grid size-4 place-items-center text-muted-foreground hover:text-foreground focus-visible:text-foreground focus-visible:outline-offset-4 active:text-foreground before:absolute before:-inset-y-3.5 before:-left-3.5 before:-right-2.5 before:content-['']"
+                    >
+                        <Icons.bot className='size-4' aria-hidden />
                     </Link>
                     <ModeToggle />
                 </div>

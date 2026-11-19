@@ -17,6 +17,21 @@ const BioLink = ({ href, children }: { href: string; children: string }) => (
     </Link>
 )
 
+// The bio, written once as text and links. The page renders it with
+// BioLinks; the meta description takes the plain text; llms.txt takes it as
+// markdown, links kept. One source, so the three always say the same thing.
+const BIO: (string | { text: string; href: string })[] = [
+    'Currently ',
+    { text: 'bumming', href: 'https://www.noahpinion.blog/p/bumbition' },
+    ' around. I studied CS at ',
+    { text: 'UWaterloo', href: 'https://uwaterloo.ca' },
+    '. I was the youngest engineer at ',
+    { text: 'OpenArt', href: 'https://openart.ai/' },
+    ' and ',
+    { text: 'Memories', href: 'https://memories.ai' },
+    '.',
+]
+
 type Config = {
     name: string
     title: string
@@ -28,6 +43,7 @@ type Config = {
     }[]
     description: string | JSX.Element
     descriptionRaw: string
+    descriptionMarkdown: string
     projects: {
         name: string
         description: string
@@ -64,18 +80,23 @@ export const CONFIG: Config = {
     ],
     description: (
         <>
-            Currently{' '}
-            <BioLink href='https://www.noahpinion.blog/p/bumbition'>
-                bumming
-            </BioLink>{' '}
-            around. I studied CS at{' '}
-            <BioLink href='https://uwaterloo.ca'>UWaterloo</BioLink>. I was the
-            youngest engineer at{' '}
-            <BioLink href='https://openart.ai/'>OpenArt</BioLink> and{' '}
-            <BioLink href='https://memories.ai'>Memories</BioLink>.
+            {BIO.map((part, i) =>
+                typeof part === 'string' ? (
+                    part
+                ) : (
+                    <BioLink key={i} href={part.href}>
+                        {part.text}
+                    </BioLink>
+                )
+            )}
         </>
     ),
-    descriptionRaw: `Currently bumming around. I studied CS at UWaterloo. I was the youngest engineer at OpenArt and Memories.`,
+    descriptionRaw: BIO.map((part) =>
+        typeof part === 'string' ? part : part.text
+    ).join(''),
+    descriptionMarkdown: BIO.map((part) =>
+        typeof part === 'string' ? part : `[${part.text}](${part.href})`
+    ).join(''),
     projects: [
         {
             name: 'vidscribe',

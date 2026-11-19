@@ -1,4 +1,4 @@
-import { type LucideProps, Sun } from 'lucide-react'
+import { Bot, type LucideProps, Sun } from 'lucide-react'
 
 export const Icons = {
     github: (props: LucideProps) => (
@@ -58,6 +58,7 @@ export const Icons = {
             />
         </svg>
     ),
+    bot: Bot,
     sun: Sun,
     moon: (props: LucideProps) => (
         <svg
