@@ -1,5 +1,5 @@
-import FeaturedProjects from '@/components/featured-projects'
 import Header from '@/components/header'
+import Projects from '@/components/projects'
 import { CONFIG } from '@/config'
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <FeaturedProjects />
+            <Projects />
         </div>
     )
 }
