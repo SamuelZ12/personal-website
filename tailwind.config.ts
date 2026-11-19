@@ -5,7 +5,6 @@ const { fontFamily } = require('tailwindcss/defaultTheme')
 const config = {
     darkMode: ['class'],
     content: ['./src/**/*.{ts,tsx}'],
-    prefix: '',
     // Every hover: / group-hover: variant only applies on a device that can
     // actually hover. A phone fires :hover on tap and leaves it stuck until
     // the next tap elsewhere.
@@ -23,26 +22,21 @@ const config = {
                 prose: '1.65',
             },
             colors: {
-                border: 'hsl(var(--border))',
                 ring: 'hsl(var(--ring))',
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',
                 secondary: {
                     DEFAULT: 'hsl(var(--secondary))',
-                    foreground: 'hsl(var(--secondary-foreground))',
                 },
                 muted: {
-                    DEFAULT: 'hsl(var(--muted))',
                     foreground: 'hsl(var(--muted-foreground))',
                 },
                 accent: {
                     DEFAULT: 'hsl(var(--accent))',
-                    foreground: 'hsl(var(--accent-foreground))',
                 },
             },
             borderRadius: {
                 lg: 'var(--radius)',
-                md: 'calc(var(--radius) - 2px)',
                 sm: 'calc(var(--radius) - 4px)',
             },
             keyframes: {
@@ -54,7 +48,6 @@ const config = {
             transitionTimingFunction: {
                 // Every transition decelerates on the same curve as the entrance.
                 DEFAULT: 'var(--ease-out-quint)',
-                'out-quint': 'var(--ease-out-quint)',
             },
             animation: {
                 'toggle-rotate': 'toggle-rotate 0.5s var(--ease-out-quint)',

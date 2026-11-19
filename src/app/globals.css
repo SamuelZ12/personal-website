@@ -14,31 +14,26 @@
 
         /* Fills: ink 6% */
         --secondary: 41 12.3% 91.4%;
-        --secondary-foreground: 42 57.3% 14.7%;
 
         /* Secondary text: ink 72%, which holds 5.2:1 on the paper (AA for
            body text; the 60% a designer reaches for first is only 3.7:1) */
-        --muted: 41 12.3% 91.4%;
         --muted-foreground: 42 16.6% 37.5%;
 
         /* Hover fill: ink 8% */
         --accent: 41 11.9% 89.7%;
-        --accent-foreground: 42 57.3% 14.7%;
 
         /* Text selection: the favicon's amber, #FFCA59, at 45% (see
            ::selection). The text keeps its ink. */
         --accent-primary: 41 100% 67.5%;
         --selection-alpha: 0.45;
 
-        /* Lines: ink 10%. Focus ring: ink 70% (5:1, a focus cue needs 3:1) */
-        --border: 41 11.6% 88.1%;
+        /* Focus ring: ink 70% (5:1, a focus cue needs 3:1) */
         --ring: 42 15.5% 39.2%;
 
         --radius: 0.625rem;
 
         /* Motion — one curve for the whole page (entrance + interactions) */
         --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
-
     }
 
     .dark {
@@ -49,32 +44,22 @@
 
         /* Fills: ink 8% */
         --secondary: 30 4.9% 13%;
-        --secondary-foreground: 40 16.2% 93.7%;
 
         /* Secondary text: 7.7:1 on the background */
-        --muted: 30 4.9% 13%;
         --muted-foreground: 37 5.5% 63.8%;
 
         /* Hover fill: ink 10% */
         --accent: 30 4.4% 14.7%;
-        --accent-foreground: 40 16.2% 93.7%;
 
         /* Text selection: the same amber, at 40%; any thinner turns brown
            over the near-black */
-        --accent-primary: 41 100% 67.5%;
         --selection-alpha: 0.4;
 
-        /* Lines: ink 12% */
-        --border: 31 3.9% 16.5%;
         --ring: 31 4.4% 45.2%;
-
     }
 }
 
 @layer base {
-    * {
-        @apply border-border;
-    }
     /* One size for the whole page: the browser's own 16px on a 1.5 line, with
        no tracking. Weight and ink carry the hierarchy (medium for the name and
        section labels, muted for supporting text), and running prose opens up

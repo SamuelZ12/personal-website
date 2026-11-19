@@ -1,7 +1,4 @@
-import { ThemeProvider } from '@/components/theme-provider'
 import { CONFIG } from '@/config'
-import { cn } from '@/lib/utils'
-import { HighlightInit } from '@highlight-run/next/client'
 import { Analytics } from '@vercel/analytics/react'
 import type { Metadata, Viewport } from 'next'
 import { Inter as FontSans } from 'next/font/google'
@@ -12,6 +9,7 @@ import { EntranceRelease } from '@/components/entrance'
 import { ThemeColorSync } from '@/components/theme-color'
 import { THEME_COLOR } from '@/lib/theme-color'
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { ThemeProvider } from 'next-themes'
 
 // Inter at one size (see the body rule in globals.css). The warmth comes from
 // the paper and ink, not the letterforms. Variable, so the weights in use
@@ -52,76 +50,59 @@ export default function RootLayout({
     children: React.ReactNode
 }>) {
     return (
-        <>
-            {process.env.NODE_ENV === 'production' && (
-                <HighlightInit
-                    projectId={'ng2wmv0g'}
-                    serviceName='my-nextjs-frontend'
-                    tracingOrigins
-                    networkRecording={{
-                        enabled: true,
-                        recordHeadersAndBody: true,
-                        urlBlocklist: [],
+        <html lang='en' suppressHydrationWarning>
+            <head>
+                <meta
+                    name='google-site-verification'
+                    content='kMkiYVJqqIhu8LsCDe8BTV0Juty1tXWM9ur8S3_eENg'
+                />
+                {/* Arm the entrance fade hidden before first paint. The
+                    release (enter-armed -> enter-go) happens after hydration
+                    in <EntranceRelease/>, so the animation clock starts at
+                    real paint time rather than before hydration — otherwise
+                    the fade burns down during the cold-load hydration gap
+                    and the page arrives already half-faded.
+                    The timeout is a safety net: if hydration never runs,
+                    reveal the content anyway. No-JS and reduced-motion never
+                    arm and fall through to fully-visible content. */}
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `(function(){try{var d=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('enter-armed');setTimeout(function(){if(d.classList.contains('enter-armed'))d.classList.remove('enter-armed')},4000)}catch(e){}})();`,
                     }}
                 />
-            )}
-            <html lang='en' suppressHydrationWarning>
-                <head>
-                    <meta
-                        name='google-site-verification'
-                        content='kMkiYVJqqIhu8LsCDe8BTV0Juty1tXWM9ur8S3_eENg'
-                    />
-                    {/* Arm the entrance fade hidden before first paint. The
-                        release (enter-armed -> enter-go) happens after hydration
-                        in <EntranceRelease/>, so the animation clock starts at
-                        real paint time rather than before hydration — otherwise
-                        the fade burns down during the cold-load hydration gap
-                        and the page arrives already half-faded.
-                        The timeout is a safety net: if hydration never runs,
-                        reveal the content anyway. No-JS and reduced-motion never
-                        arm and fall through to fully-visible content. */}
-                    <script
-                        dangerouslySetInnerHTML={{
-                            __html: `(function(){try{var d=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('enter-armed');setTimeout(function(){if(d.classList.contains('enter-armed'))d.classList.remove('enter-armed')},4000)}catch(e){}})();`,
-                        }}
-                    />
-                </head>
-                <body
-                    className={cn(
-                        'bg-background font-sans antialiased',
-                        fontSans.variable
-                    )}
+            </head>
+            <body
+                className={`bg-background font-sans antialiased ${fontSans.variable}`}
+            >
+                {process.env.NODE_ENV === 'production' && (
+                    <GoogleAnalytics gaId='G-32FLEBL3F6' />
+                )}
+                <Analytics />
+                <ConsoleSignature />
+                <EntranceRelease />
+                <ThemeProvider
+                    attribute='class'
+                    defaultTheme='system'
+                    enableSystem
+                    disableTransitionOnChange
                 >
-                    {process.env.NODE_ENV === 'production' && (
-                        <GoogleAnalytics gaId='G-32FLEBL3F6' />
-                    )}
-                    <Analytics />
-                    <ConsoleSignature />
-                    <EntranceRelease />
-                    <ThemeProvider
-                        attribute='class'
-                        defaultTheme='system'
-                        enableSystem
-                        disableTransitionOnChange
-                    >
-                        <ThemeColorSync />
-                        {/* One column, 560px of text inside a 24px gutter:
-                            about 72 characters a line for the bio, inside
-                            the comfortable 45-75 measure, and still wide
-                            enough that every project description fits on
-                            one line. The gutter lives here and nowhere
-                            else, so every block shares a left edge. 128px
-                            above and below at every width, the same gap
-                            that separates the sections, so the name sits in
-                            the same place on every page and the footer
-                            follows the content as one more section. */}
-                        <div className='mx-auto max-w-[608px] px-6 py-32'>
-                            <main>{children}</main>
-                            <Contact />
-                        </div>
-                    </ThemeProvider>
-                </body>
-            </html>
-        </>
+                    <ThemeColorSync />
+                    {/* One column, 560px of text inside a 24px gutter:
+                        about 72 characters a line for the bio, inside
+                        the comfortable 45-75 measure, and still wide
+                        enough that every project description fits on
+                        one line. The gutter lives here and nowhere
+                        else, so every block shares a left edge. 128px
+                        above and below at every width, the same gap
+                        that separates the sections, so the name sits in
+                        the same place on every page and the footer
+                        follows the content as one more section. */}
+                    <div className='mx-auto max-w-[608px] px-6 py-32'>
+                        <main>{children}</main>
+                        <Contact />
+                    </div>
+                </ThemeProvider>
+            </body>
+        </html>
     )
 }

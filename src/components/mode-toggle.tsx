@@ -1,7 +1,6 @@
 'use client'
 
 import { Icons } from '@/components/icons'
-import { cn } from '@/lib/utils'
 import { useTheme } from 'next-themes'
 import { useState } from 'react'
 import { flushSync } from 'react-dom'
@@ -56,10 +55,9 @@ export function ModeToggle() {
         >
             <span
                 key={spins}
-                className={cn(
-                    'relative inline-flex size-4 items-center justify-center',
-                    spins > 0 && 'animate-toggle-rotate'
-                )}
+                className={`relative inline-flex size-4 items-center justify-center${
+                    spins > 0 ? ' animate-toggle-rotate' : ''
+                }`}
             >
                 <Icons.sun className='size-4 rotate-0 scale-100 dark:-rotate-90 dark:scale-0' />
                 <Icons.moon className='absolute size-4 rotate-90 scale-0 dark:rotate-0 dark:scale-100' />

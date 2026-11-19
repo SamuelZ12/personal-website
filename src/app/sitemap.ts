@@ -1,7 +1,6 @@
 import { CONFIG } from '@/config'
+import { MetadataRoute } from 'next'
 
-export default async function sitemap() {
-    const url = new URL(CONFIG.siteUrl).origin
-
-    return [{ url, lastModified: new Date().toISOString() }]
+export default function sitemap(): MetadataRoute.Sitemap {
+    return [{ url: new URL(CONFIG.siteUrl).origin }]
 }

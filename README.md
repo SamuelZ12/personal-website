@@ -37,7 +37,7 @@ projects: [
 
 - **`BIO`** is the bio, written as strings and `{ text, href }` links.
 - **`projects`** fill the project list. A row links to `url` if there is one, otherwise to `github`.
-- **`socials`** fill the footer. `icon` must be a key in [`src/components/icons.tsx`](src/components/icons.tsx).
+- **`socials`** fill the footer. `kind: 'email'` makes a link that also copies the address; everything else is `kind: 'link'`.
 
 The share image and its alt text are drawn from the bio by [`opengraph-image.tsx`](src/app/opengraph-image.tsx), so they follow `config.tsx` on their own.
 
@@ -54,7 +54,7 @@ src/
 │   └── opengraph-image.tsx share card, drawn from the bio
 ├── components/             header, project list, footer (socials, webring, theme toggle)
 ├── assets/fonts/           inter, as static files for the share card
-└── lib/                    theme colors, class helper
+└── lib/                    theme colors, initials helper
 ```
 
 ## Scripts
@@ -67,7 +67,7 @@ src/
 
 ## Analytics
 
-The site uses Vercel Analytics. Google Analytics and Highlight session replay load only in production (`NODE_ENV === 'production'`). Their IDs are hardcoded in [`src/app/layout.tsx`](src/app/layout.tsx). If you fork this, remove them or swap in your own.
+The site uses Vercel Analytics. Google Analytics loads only in production (`NODE_ENV === 'production'`). Its ID is hardcoded in [`src/app/layout.tsx`](src/app/layout.tsx). If you fork this, remove it or swap in your own.
 
 ## License
 
