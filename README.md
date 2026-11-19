@@ -1,4 +1,4 @@
-# personal-website
+# samuelzhang.ca
 
 The source for [samuelzhang.ca](https://samuelzhang.ca): a single page with a short bio, a few projects, and contact links. It's built with Next.js and Tailwind and edited through one config file.
 
@@ -16,8 +16,8 @@ The source for [samuelzhang.ca](https://samuelzhang.ca): a single page with a sh
 You'll need Node.js 18.17 or later (required by Next.js 14).
 
 ```bash
-git clone https://github.com/SamuelZ12/personal-website.git
-cd personal-website
+git clone https://github.com/SamuelZ12/samuelzhang.ca.git
+cd samuelzhang.ca
 npm install
 npm run dev
 ```
