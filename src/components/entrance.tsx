@@ -15,7 +15,7 @@ import { useEffect } from 'react'
  * React runs this effect only after the hydration commit has painted, so
  * swapping `enter-armed` -> `enter-go` here starts the fade's clock at real
  * paint time and the whole fade plays. A client-side navigation already
- * mounts under `enter-go`, which is why it was never affected.
+ * mounts under `enter-go`, so it isn't affected.
  *
  * If JS never runs (or hydration throws), the inline script's timeout reveals
  * the content; nothing here can strand it hidden.

@@ -8,8 +8,7 @@ const config = {
     prefix: '',
     // Every hover: / group-hover: variant only applies on a device that can
     // actually hover. A phone fires :hover on tap and leaves it stuck until
-    // the next tap elsewhere, which is how "Email" kept its hover colour
-    // after being tapped.
+    // the next tap elsewhere.
     future: {
         hoverOnlyWhenSupported: true,
     },

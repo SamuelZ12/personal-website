@@ -89,7 +89,7 @@
     }
 
     /* Keyboard focus. Text links already answer focus with a color shift and the
-       underline wipe, but icon-only links (the webring mark) have no
+       underline, but icon-only links (the webring mark) have no
        underline, and color alone is a weak focus cue (WCAG 2.4.7). One hairline
        ring in the neutral --ring ink, offset so it never touches the glyph, on
        every link; pointer clicks never trigger it (:focus-visible). */
@@ -99,7 +99,6 @@
         border-radius: 2px;
     }
 
-    /* Selection color with accent */
     ::selection {
         background: hsl(var(--accent-primary) / 0.18);
         color: hsl(var(--foreground));
@@ -107,13 +106,11 @@
 }
 
 @layer components {
-    /* Text-link hover: a hairline that fades in under the word, in place. It
-       used to wipe in from the left, but a hover is seen dozens of times a
-       visit and the sweep (and its retreat on the way out) drew the eye every
-       time; the colour shift already carries the response, so the line only
-       needs to appear. Triggers on the link itself (or its own `group/link`),
-       never on the surrounding row — the underline is a link affordance, so it
-       should only answer to the link. */
+    /* Text-link hover: a hairline that fades in under the word, in place. No
+       sweep: a hover is seen dozens of times a visit, and the colour shift
+       already carries the response. Triggers on the link itself (or its own
+       `group/link`), never on the surrounding row: the underline is a link
+       affordance, so it should only answer to the link. */
     .link-underline {
         position: relative;
     }
@@ -141,7 +138,7 @@
         }
     }
 
-    /* A label that replaces another in place ("Email" -> "Copied"). The new
+    /* A label that replaces another in place ("email" -> "copied"). The new
        word arrives through a 2px blur, which reads as one word changing
        rather than two words swapping. */
     .label-swap {
@@ -201,14 +198,13 @@
    150ms cross-fade while the scale-down gets the asymmetry that makes a press
    actually felt: it snaps in fast (90ms) so even a quick tap lands the dip, then
    releases on the page's one curve, and that slow settle is the part the hand
-   reads as "click". Plain active:scale-90 was symmetric and slower than a real
-   click, so the dip never landed — present but imperceptible.
+   reads as "click". A symmetric active:scale-90 is too slow for the dip to land.
 
    Deliberately outside @layer: un-layered rules outrank every layer, so this
    wins the `transition-*` longhands over any Tailwind transition utility
-   without a specificity hack. The
-   reduced-motion override below is `!important` inside a layer, which still wins,
-   so the press correctly collapses to an instant scale when motion is reduced. */
+   without a specificity hack. The reduced-motion override is `!important`
+   inside a layer, which still wins, so the press collapses to an instant
+   scale when motion is reduced. */
 .btn-press {
     transition-property: color, opacity, transform;
     transition-timing-function: var(--ease-out-quint);
@@ -221,8 +217,8 @@
 }
 
 /* Touch ergonomics. The page is tuned for a precise cursor: inline bio links
-   a line of text tall, a 16px webring mark. But most visits are mobile, where there is no pixel-accurate cursor to land a small
-   target. This rule engages only on a coarse pointer / no-hover device, so the
+   a line of text tall, a 16px webring mark. But most visits are mobile, where
+   there is no pixel-accurate cursor to land a small target. This rule engages only on a coarse pointer / no-hover device, so the
    desktop design is byte-for-byte unchanged — and there every tap target grows
    to at least 44px tall, 16px wider than the word (WCAG 2.2's web floor is 24px).
 
@@ -247,9 +243,8 @@
 
 /* Theme switch crossfade. The toggle (components/mode-toggle.tsx) runs the theme
    change inside a View Transition, so the whole document settles from the old
-   palette to the new one over one short, calm beat instead of hard-cutting —
-   the single interaction whose motion used to stop at the spinning icon. Timing
-   matches 2.computer's day/night switch: 450ms on the standard ease-in-out, so
+   palette to the new one over one short, calm beat instead of hard-cutting.
+   Timing matches 2.computer's day/night switch: 450ms on the standard ease-in-out, so
    the swap reads as a deliberate crossfade rather than a flicker. The default
    root cross-fade already dissolves the old snapshot over the (opaque) new page
    beneath; we only set its tempo here.
