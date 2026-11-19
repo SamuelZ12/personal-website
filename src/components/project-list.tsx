@@ -33,7 +33,7 @@ const ProjectRow = ({ project }: { project: Project }) => {
                     >
                         {project.name}
                         {!project.url && (
-                            <span className='sr-only'> on GitHub</span>
+                            <span className='sr-only'> on github</span>
                         )}
                     </Link>
                 ) : (

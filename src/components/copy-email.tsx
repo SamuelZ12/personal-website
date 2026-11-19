@@ -54,7 +54,7 @@ export function CopyEmail({ href, label, className }: CopyEmailProps) {
                     key={copied ? 'copied' : 'label'}
                     className={swapped ? 'label-swap' : undefined}
                 >
-                    {copied ? 'Copied' : label}
+                    {copied ? 'copied' : label}
                 </span>
             </a>
             <span role='status' aria-live='polite' className='sr-only'>

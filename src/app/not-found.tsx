@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 export const metadata = {
-    title: 'Not found',
+    title: 'not found',
 }
 
 // The one page on the site that wasn't written in Samuel's voice: an unmatched
@@ -15,7 +15,7 @@ export default function NotFound() {
             <h1 className='mb-4 animate-enter font-medium'>404</h1>
 
             <p className='animate-enter text-pretty leading-prose text-muted-foreground'>
-                This page doesn&rsquo;t exist. The odds were never great.
+                this page doesn&rsquo;t exist. the odds were never great.
             </p>
 
             <Link
@@ -23,7 +23,7 @@ export default function NotFound() {
                 className='group/link mt-6 inline-flex animate-enter items-center gap-1.5 text-muted-foreground transition-colors duration-200 hover:text-foreground focus-visible:text-foreground active:text-foreground'
             >
                 <span aria-hidden='true'>&larr;</span>
-                <span className='link-underline'>Back home</span>
+                <span className='link-underline'>back home</span>
             </Link>
         </>
     )

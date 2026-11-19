@@ -21,14 +21,14 @@ const BioLink = ({ href, children }: { href: string; children: string }) => (
 // BioLinks; the meta description takes the plain text; llms.txt takes it as
 // markdown, links kept. One source, so the three always say the same thing.
 const BIO: (string | { text: string; href: string })[] = [
-    'Currently ',
+    'currently ',
     { text: 'bumming', href: 'https://www.noahpinion.blog/p/bumbition' },
-    ' around. I studied CS at ',
-    { text: 'UWaterloo', href: 'https://uwaterloo.ca' },
-    '. I was the youngest engineer at ',
-    { text: 'OpenArt', href: 'https://openart.ai/' },
+    ' around. i studied cs at ',
+    { text: 'uwaterloo', href: 'https://uwaterloo.ca' },
+    '. i was the youngest engineer at ',
+    { text: 'openart', href: 'https://openart.ai/' },
     ' and ',
-    { text: 'Memories', href: 'https://memories.ai' },
+    { text: 'memories', href: 'https://memories.ai' },
     '.',
 ]
 
@@ -53,27 +53,27 @@ type Config = {
 }
 
 export const CONFIG: Config = {
-    name: 'Samuel Zhang',
+    name: 'samuel zhang',
     title: '',
     siteUrl: 'https://samuelzhang.ca/',
     socials: [
         {
-            name: 'GitHub',
+            name: 'github',
             url: 'https://github.com/samuelz12',
             icon: 'github',
         },
         {
-            name: 'LinkedIn',
+            name: 'linkedin',
             url: 'https://linkedin.com/in/samuelz12',
             icon: 'linkedin',
         },
         {
-            name: 'X',
+            name: 'x',
             url: 'https://x.com/samuelxzhang',
             icon: 'x',
         },
         {
-            name: 'Email',
+            name: 'email',
             url: 'mailto:zhangsamuel12@gmail.com',
             icon: 'email',
         },
@@ -100,22 +100,22 @@ export const CONFIG: Config = {
     projects: [
         {
             name: 'vidscribe',
-            description: 'Lets AI agents watch videos: local transcripts and frames on Apple Silicon',
+            description: 'lets ai agents watch videos: local transcripts and frames on apple silicon',
             github: 'https://github.com/SamuelZ12/vidscribe'
         },
         {
-            name: 'OpenArt Arena',
-            description: 'Expert-led leaderboard for AI image and video models on real creative work',
+            name: 'openart arena',
+            description: 'expert-led leaderboard for ai image and video models on real creative work',
             url: 'https://openart.ai/arena'
         },
         {
-            name: 'Internet2EgoExo',
-            description: 'Turns internet video into egocentric and exocentric training data',
+            name: 'internet2egoexo',
+            description: 'turns internet video into egocentric and exocentric training data',
             github: 'https://github.com/Memories-ai-labs/Internet2EgoExo'
         },
         {
-            name: 'LongCut',
-            description: 'Transforms long-form YouTube videos into a structured learning workspace',
+            name: 'longcut',
+            description: 'transforms long-form youtube videos into a structured learning workspace',
             url: 'https://www.longcut.ai',
             github: 'https://github.com/SamuelZ12/longcut'
         }

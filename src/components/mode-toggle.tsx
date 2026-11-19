@@ -64,7 +64,7 @@ export function ModeToggle() {
                 <Icons.sun className='size-4 rotate-0 scale-100 dark:-rotate-90 dark:scale-0' />
                 <Icons.moon className='absolute size-4 rotate-90 scale-0 dark:rotate-0 dark:scale-100' />
             </span>
-            <span className='sr-only'>Toggle theme</span>
+            <span className='sr-only'>toggle theme</span>
         </button>
     )
 }

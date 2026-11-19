@@ -16,7 +16,7 @@ const Contact = () => {
         <footer className='mt-16 animate-enter sm:mt-32'>
             <div className='flex flex-wrap items-center justify-between gap-x-6 gap-y-2'>
                 <nav
-                    aria-label='Social'
+                    aria-label='social'
                     className='flex flex-wrap items-center gap-x-5'
                 >
                     {CONFIG.socials.map((social, idx) =>
@@ -48,8 +48,8 @@ const Contact = () => {
                     <Link
                         href='https://cs.uwatering.com/#samuelzhang.ca'
                         target='_blank'
-                        aria-label='CS Webring'
-                        title='CS Webring'
+                        aria-label='cs webring'
+                        title='cs webring'
                         className="btn-press relative grid size-4 place-items-center opacity-60 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-offset-4 active:opacity-100 before:absolute before:-inset-y-3.5 before:-left-3.5 before:-right-2.5 before:content-['']"
                     >
                         <img
