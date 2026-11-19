@@ -7,8 +7,6 @@ The source for [samuelzhang.ca](https://samuelzhang.ca): a single page with a sh
 - **Light and dark.** It follows the system theme, has a manual toggle, and keeps the browser bar color in sync with whichever theme is showing.
 - **Quiet motion.** Content fades in once after hydration. With reduced motion or no JavaScript, it's simply visible.
 
-![Share card: "samuel zhang — currently bumming around. i was the youngest engineer at openart and memories."](https://samuelzhang.ca/opengraph-image)
-
 ---
 
 ## Run it locally
