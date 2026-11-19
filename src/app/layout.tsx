@@ -105,15 +105,17 @@ export default function RootLayout({
                         disableTransitionOnChange
                     >
                         <ThemeColorSync />
-                        {/* One column, 644px of text inside a 24px gutter:
-                            wide enough that every project description fits
-                            on one line. The gutter lives here and nowhere
+                        {/* One column, 560px of text inside a 24px gutter:
+                            about 72 characters a line for the bio, inside
+                            the comfortable 45-75 measure, and still wide
+                            enough that every project description fits on
+                            one line. The gutter lives here and nowhere
                             else, so every block shares a left edge. 128px
                             above and below at every width, the same gap
                             that separates the sections, so the name sits in
                             the same place on every page and the footer
                             follows the content as one more section. */}
-                        <div className='mx-auto max-w-[692px] px-6 py-32'>
+                        <div className='mx-auto max-w-[608px] px-6 py-32'>
                             <main>{children}</main>
                             <Contact />
                         </div>
