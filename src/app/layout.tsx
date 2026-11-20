@@ -64,10 +64,15 @@ export default function RootLayout({
                     and the page arrives already half-faded.
                     The timeout is a safety net: if hydration never runs,
                     reveal the content anyway. No-JS and reduced-motion never
-                    arm and fall through to fully-visible content. */}
+                    arm and fall through to fully-visible content.
+                    The arrival fade plays once per tab session: a
+                    sessionStorage flag marks later loads `enter-settled`,
+                    which gives them the quick in-site fade instead. Storage
+                    can throw (private mode, blocked site data); then every
+                    load just gets the full arrival. */}
                 <script
                     dangerouslySetInnerHTML={{
-                        __html: `(function(){try{var d=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('enter-armed');setTimeout(function(){if(d.classList.contains('enter-armed'))d.classList.remove('enter-armed')},4000)}catch(e){}})();`,
+                        __html: `(function(){try{var d=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('enter-armed');setTimeout(function(){if(d.classList.contains('enter-armed'))d.classList.remove('enter-armed')},4000);try{if(sessionStorage.getItem('entered'))d.classList.add('enter-settled');else sessionStorage.setItem('entered','1')}catch(e){}}catch(e){}})();`,
                     }}
                 />
             </head>
