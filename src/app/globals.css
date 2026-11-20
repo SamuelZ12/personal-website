@@ -142,35 +142,39 @@
        itself section by section: no rise, no stagger.
 
        Two animations run together, on separate clocks. page-focus-in clears
-       a 4px blur in 0.9s, so the page seems to materialise rather than just
-       brighten. page-fade-in carries opacity over 2.4s on the plain `ease`
-       curve, which is past halfway by the time the blur is gone and spends
-       the rest on a long, soft settle. The split is the point: blurred text
+       a 4px blur in 0.5s, so the page seems to materialise rather than just
+       brighten. page-fade-in carries opacity over 1.2s on the page's
+       ease-out curve, which does most of its work in the first 300ms and
+       spends the rest on a soft settle. The split is the point: blurred text
        is unreadable where dim text is not, so the blur is kept short and only
-       the opacity tail is slow. Lengthening the blur to match would leave a
-       mostly-mobile visitor waiting on a page they came to skim.
+       the opacity tail is slow. A curve that starts slowly (plain `ease`), or
+       a longer tail, leaves a mostly-mobile visitor waiting on a page they
+       came to skim.
 
        The animation is gated on two classes toggled by an inline script in
        <head> (see layout.tsx) rather than living on .animate-enter directly.
-       Why: a CSS animation's clock starts at the first render — for SSR content
-       that's ~navigation, long before a cold dev compile or a hydration stall
-       lets the first real frame paint. With the clock pinned that early, the
-       fade burns down during the stall and the page arrives half-faded or
-       already settled. `enter-armed` holds everything hidden; `enter-go` (added
-       once hydration has painted) starts the fade at real paint time. With no JS
-       or reduced motion, neither class is set and content is simply visible. */
+       Why: a CSS animation's clock starts when the rule first applies, which
+       can be before the first real frame paints, so the fade would arrive
+       partly spent. `enter-armed` holds everything hidden; `enter-go` (added
+       by the same script once a hidden frame has painted) starts the fade at
+       real paint time. It does not wait for hydration: the server-rendered
+       HTML fades in while the JS bundle is still loading. With no JS or
+       reduced motion, neither class is set and content is simply visible. */
     .enter-armed .animate-enter {
         opacity: 0;
     }
     .enter-go .animate-enter {
         animation:
-            page-fade-in 2.4s ease backwards,
-            page-focus-in 0.9s ease-out backwards;
+            page-fade-in 1.2s var(--ease-out-quint) backwards,
+            page-focus-in 0.5s ease-out backwards;
     }
     /* The slow fade is for arriving at the site, once. A page reached by a
        link inside the site was asked for, so it answers quickly: `enter-settled`
-       is set once the first fade has finished (see entrance.tsx). Shortening
-       the duration of the already-finished first fade does not replay it. */
+       is set once the first fade has finished (see layout.tsx). Shortening
+       the duration of the already-finished first fade does not replay it.
+       The head script in layout.tsx also sets it up front on a reload or a
+       return within the same tab session, so the arrival plays once per
+       session rather than on every load. */
     .enter-settled .animate-enter {
         animation-duration: 0.3s;
     }

@@ -5,7 +5,6 @@ import { Inter as FontSans } from 'next/font/google'
 import './globals.css'
 import Contact from '@/components/contact'
 import { ConsoleSignature } from '@/components/console-signature'
-import { EntranceRelease } from '@/components/entrance'
 import { ThemeColorSync } from '@/components/theme-color'
 import { THEME_COLOR } from '@/lib/theme-color'
 import { GoogleAnalytics } from '@next/third-parties/google'
@@ -56,18 +55,34 @@ export default function RootLayout({
                     name='google-site-verification'
                     content='kMkiYVJqqIhu8LsCDe8BTV0Juty1tXWM9ur8S3_eENg'
                 />
-                {/* Arm the entrance fade hidden before first paint. The
-                    release (enter-armed -> enter-go) happens after hydration
-                    in <EntranceRelease/>, so the animation clock starts at
-                    real paint time rather than before hydration — otherwise
-                    the fade burns down during the cold-load hydration gap
-                    and the page arrives already half-faded.
-                    The timeout is a safety net: if hydration never runs,
-                    reveal the content anyway. No-JS and reduced-motion never
-                    arm and fall through to fully-visible content. */}
+                {/* The whole page-load entrance is driven from this inline
+                    script, not from React, so it never waits on the JS
+                    bundle: the server-rendered HTML fades in as soon as it
+                    can paint. Measured on throttled mobile, releasing after
+                    hydration instead held the page blank for 1.5s on slow 4G
+                    and until the 4s safety net on 3G.
+
+                    `enter-armed` hides the content before first paint. Once
+                    the document has parsed, two animation frames later (so
+                    one hidden frame has really been painted and the
+                    animation clock starts at paint time, not before it) it
+                    is swapped for `enter-go`, which runs the fade. 1.3s on,
+                    just past the 1.2s arrival fade in globals.css,
+                    `enter-settled` switches pages reached by in-site links
+                    to the quick fade.
+
+                    The arrival plays once per tab session: a sessionStorage
+                    flag marks later loads `enter-settled` up front. Storage
+                    can throw (private mode, blocked site data); then every
+                    load just gets the full arrival.
+
+                    The 4s timeout is a safety net for frames that never
+                    come (a tab opened in the background): reveal the
+                    content anyway. No-JS and reduced-motion never arm and
+                    fall through to fully-visible content. */}
                 <script
                     dangerouslySetInnerHTML={{
-                        __html: `(function(){try{var d=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('enter-armed');setTimeout(function(){if(d.classList.contains('enter-armed'))d.classList.remove('enter-armed')},4000)}catch(e){}})();`,
+                        __html: `(function(){try{var c=document.documentElement.classList;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;c.add('enter-armed');try{if(sessionStorage.getItem('entered'))c.add('enter-settled');else sessionStorage.setItem('entered','1')}catch(e){}var go=function(){requestAnimationFrame(function(){requestAnimationFrame(function(){if(c.replace('enter-armed','enter-go'))setTimeout(function(){c.add('enter-settled')},1300)})})};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();setTimeout(function(){c.remove('enter-armed')},4000)}catch(e){}})();`,
                     }}
                 />
             </head>
@@ -79,7 +94,6 @@ export default function RootLayout({
                 )}
                 <Analytics />
                 <ConsoleSignature />
-                <EntranceRelease />
                 <ThemeProvider
                     attribute='class'
                     defaultTheme='system'
