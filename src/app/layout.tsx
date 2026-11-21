@@ -7,8 +7,8 @@ import Contact from '@/components/contact'
 import { ConsoleSignature } from '@/components/console-signature'
 import { ThemeColorSync } from '@/components/theme-color'
 import { THEME_COLOR } from '@/lib/theme-color'
-import { GoogleAnalytics } from '@next/third-parties/google'
 import { ThemeProvider } from 'next-themes'
+import Script from 'next/script'
 
 // Inter at one size (see the body rule in globals.css). The warmth comes from
 // the paper and ink, not the letterforms. Variable, so the weights in use
@@ -24,6 +24,8 @@ const fontSans = FontSans({
     variable: '--font-sans',
     axes: ['opsz'],
 })
+
+const GA_ID = 'G-32FLEBL3F6'
 
 export const metadata: Metadata = {
     metadataBase: new URL(CONFIG.siteUrl),
@@ -89,8 +91,20 @@ export default function RootLayout({
             <body
                 className={`bg-background font-sans antialiased ${fontSans.variable}`}
             >
+                {/* gtag.js is 183KB. Loaded once the page has finished
+                    loading, it no longer competes for bandwidth with the
+                    stylesheet and the font. A visitor who leaves before
+                    then is not counted. */}
                 {process.env.NODE_ENV === 'production' && (
-                    <GoogleAnalytics gaId='G-32FLEBL3F6' />
+                    <>
+                        <Script id='ga-init' strategy='lazyOnload'>
+                            {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${GA_ID}');`}
+                        </Script>
+                        <Script
+                            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+                            strategy='lazyOnload'
+                        />
+                    </>
                 )}
                 <Analytics />
                 <ConsoleSignature />
