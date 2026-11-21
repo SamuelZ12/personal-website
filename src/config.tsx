@@ -24,7 +24,7 @@ const BioLink = ({ href, children }: { href: string; children: string }) => (
 export const BIO: (string | { text: string; href: string })[] = [
     'currently ',
     { text: 'bumming', href: 'https://www.noahpinion.blog/p/bumbition' },
-    ' around. i was the youngest engineer at ',
+    ' around. before that, i was the youngest engineer at ',
     { text: 'openart', href: 'https://openart.ai/' },
     ' and ',
     { text: 'memories', href: 'https://memories.ai' },
