@@ -59,14 +59,14 @@ const Contact = () => {
                         for agents. A bare 16px glyph in the toggle's inks; the
                         title names it on hover. Same tab, as it is part of this
                         site. The hit area matches the webring mark's. */}
-                    <Link
+                    <a
                         href='/llms.txt'
                         aria-label='llms.txt'
                         title='llms.txt'
                         className="btn-press relative grid size-4 place-items-center text-muted-foreground hover:text-foreground focus-visible:text-foreground focus-visible:outline-offset-4 active:text-foreground before:absolute before:-inset-y-3.5 before:-left-3.5 before:-right-2.5 before:content-['']"
                     >
                         <Icons.bot className='size-4' aria-hidden />
-                    </Link>
+                    </a>
                     <ModeToggle />
                 </div>
             </div>
