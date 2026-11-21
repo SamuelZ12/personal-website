@@ -78,7 +78,7 @@
     }
 
     /* Keyboard focus. Text links already answer focus with a color shift and the
-       underline, but icon-only links (the llms.txt robot) have no
+       underline, but icon-only links (the webring mark) have no
        underline, and color alone is a weak focus cue (WCAG 2.4.7). One hairline
        ring in the neutral --ring ink, offset so it never touches the glyph, on
        every link; pointer clicks never trigger it (:focus-visible). */
@@ -193,7 +193,7 @@
 }
 
 /* Tactile button press for the icon/text buttons (socials, theme toggle,
-   llms.txt). It owns the whole transition so the hover tint keeps its quick
+   webring). It owns the whole transition so the hover tint keeps its quick
    150ms cross-fade while the scale-down gets the asymmetry that makes a press
    actually felt: it snaps in fast (90ms) so even a quick tap lands the dip, then
    releases on the page's one curve, and that slow settle is the part the hand
@@ -216,7 +216,7 @@
 }
 
 /* Touch ergonomics. The page is tuned for a precise cursor: inline bio links
-   a line of text tall, a 16px footer glyph. But most visits are mobile, where
+   a line of text tall, a 16px webring mark. But most visits are mobile, where
    there is no pixel-accurate cursor to land a small target. This rule engages only on a coarse pointer / no-hover device, so the
    desktop design is byte-for-byte unchanged — and there every tap target grows
    to at least 44px tall, 16px wider than the word (WCAG 2.2's web floor is 24px).

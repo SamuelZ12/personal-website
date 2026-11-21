@@ -29,7 +29,7 @@ export const BIO: (string | { text: string; href: string })[] = [
     ' and ',
     { text: 'memories', href: 'https://memories.ai' },
     '. i studied cs at ',
-    { text: 'waterloo', href: 'https://cs.uwatering.com/#samuelzhang.ca' },
+    { text: 'waterloo', href: 'https://uwaterloo.ca' },
     '. in high school, i did ',
     {
         text: 'math',
